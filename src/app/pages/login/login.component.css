@@ -1,0 +1,31 @@
+.page {
+  background-color: #12A6C0;
+  background: linear-gradient(to bottom right, #12A6C0, rgb(139, 199, 209));
+}
+Image {
+  width: 80%;
+}
+
+.form {
+  margin: 0 30;
+}
+
+TextField {
+  placeholder-color: white;
+  color: white;
+  font-size: 25;
+}
+
+.hr-light {
+  margin-bottom: 25;
+}
+
+Button {
+  height: 50;
+  color: white;
+  border-width: 2;
+  border-radius: 20 20 20 20;
+  border-color: white;
+  font-size: 30;
+  font-weight: 600;
+}
