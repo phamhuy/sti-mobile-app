@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "422739635229",
+    "firebase_url": "https://sti-mobile-app-test.firebaseio.com",
+    "project_id": "sti-mobile-app-test",
+    "storage_bucket": "sti-mobile-app-test.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:422739635229:android:4372777fe3c1e48d",
+        "android_client_info": {
+          "package_name": "org.nativescript.stimobileapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "422739635229-3p257radr3s5t6fsvddcc37issjcf78f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCA8tFFWrfvlQQV7AD1EMNPq5e_pBZ2fYc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

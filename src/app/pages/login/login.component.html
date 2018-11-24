@@ -4,15 +4,16 @@
   <StackLayout class="form">
     <!-- Phone Input -->
     <TextField hint="Phone Number"></TextField>
-    <StackLayout class="hr-light"></StackLayout>
 
     <!-- SSN Input -->
     <TextField hint="Last 4 SSN digits" secure="true"></TextField>
-    <StackLayout class="hr-light"></StackLayout>
+    <StackLayout class="spacer"></StackLayout>
+
+    <!-- Login Button -->
+    <Button text="Sign In" [isEnabled]="!isLoggingIn" (tap)="logIn()"></Button>
 
     <!-- Spinner -->
     <ActivityIndicator rowSpan="3" [busy]="isLoggingIn"></ActivityIndicator>
 
-    <Button text="Log In" [isEnabled]="!isLoggingIn" (tap)="logIn()"></Button>
   </StackLayout>
 </StackLayout>
