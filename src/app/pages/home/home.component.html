@@ -1,1 +1,29 @@
-<Button text="home works!" class="btn btn-primary"></Button>
+<StackLayout class="page">
+  <Label class="greeting" editable="false" text="Hello, Huy"></Label>
+
+  <FlexboxLayout justifyContent="space-around" flexDirection="column">
+    <!-- Account Summary -->
+    <StackLayout class="summary-container" shadow [elevation]="3">
+      <StackLayout class="summary">
+        <GridLayout rows="auto, auto, auto, auto" columns="*, *">
+          <Label col="0" row="0" text="Account #:"></Label>
+          <Label col="0" row="1" text="Savings Balance:"></Label>
+          <Label col="0" row="2" text="Next Deposit:"></Label>
+          <Label col="0" row="3" text="Next Deposit Date:"></Label>
+          <Label col="1" row="0" textAlignment="right" text="171757"></Label>
+          <Label col="1" row="1" textAlignment="right" text="157"></Label>
+          <Label col="1" row="2" textAlignment="right" text="157"></Label>
+          <Label col="1" row="3" textAlignment="right" text="09/15/2018"></Label>
+        </GridLayout>
+        <Button class="deposit-button" text="Make Deposit" *sdkIfIos shadow="3"></Button>
+        <Button class="deposit-button" text="Make Deposit" *sdkIfAndroid></Button>
+      </StackLayout>
+    </StackLayout>
+
+    <!-- Action Buttons -->
+    <Button class="action-button" shadow [elevation]="3" text="Deposit History"></Button>
+    <Button class="action-button" shadow [elevation]="3" text="Transactions"></Button>
+    <Button class="action-button" shadow [elevation]="3" text="Debt Information"></Button>
+    <Button class="action-button" shadow [elevation]="3" text="Scan Documents"></Button>
+  </FlexboxLayout>
+</StackLayout>

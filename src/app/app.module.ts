@@ -1,16 +1,15 @@
 import { NgModule, NO_ERRORS_SCHEMA } from "@angular/core";
 import { NativeScriptModule } from "nativescript-angular/nativescript.module";
+import { NgShadowModule } from 'nativescript-ng-shadow';
+import { NativeScriptFormsModule } from "nativescript-angular/forms";
+import { NativeScriptHttpClientModule } from "nativescript-angular/http-client";
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
+import { IfAndroidDirective, IfIosDirective } from "./directives/sdk-if.directive";
 
-// Uncomment and add to NgModule imports if you need to use two-way binding
-// import { NativeScriptFormsModule } from "nativescript-angular/forms";
-
-// Uncomment and add to NgModule imports if you need to use the HttpClient wrapper
-// import { NativeScriptHttpClientModule } from "nativescript-angular/http-client";
 
 @NgModule({
     bootstrap: [
@@ -18,14 +17,18 @@ import { LoginComponent } from './pages/login/login.component';
     ],
     imports: [
         NativeScriptModule,
-        AppRoutingModule
+        AppRoutingModule,
+        NgShadowModule,
+        NativeScriptFormsModule,
+        NativeScriptHttpClientModule
     ],
     declarations: [
         AppComponent,
         HomeComponent,
-        LoginComponent
+        LoginComponent,
+        IfAndroidDirective,
+        IfIosDirective
     ],
-    providers: [],
     schemas: [
         NO_ERRORS_SCHEMA
     ]

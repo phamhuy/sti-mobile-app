@@ -1,1 +1,36 @@
-/* Add mobile styles for the component here.  */
+.page {
+  background-color: rgb(235, 235, 235);
+  padding: 0 10%;
+}
+
+.greeting {
+  margin: 1%;
+  color: #12A6C0;
+  font-size: 30;
+}
+
+FlexboxLayout {
+  height: 85%;
+  font-size: 20;
+}
+
+.summary-container {
+  margin: 1%;
+}
+
+.summary {
+  padding: 3% 15%;
+  background-color: white;
+}
+
+.deposit-button {
+  color: white;
+  background-color: #12A6C0;
+}
+
+.action-button {
+  height: 15%;
+  margin: 1%;
+  color: black;
+  background-color: white;
+}
