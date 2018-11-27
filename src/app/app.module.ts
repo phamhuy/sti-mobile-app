@@ -9,6 +9,7 @@ import { AppComponent } from "./app.component";
 import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
 import { IfAndroidDirective, IfIosDirective } from "./directives/sdk-if.directive";
+import { MakeDepositComponent } from './pages/make-deposit/make-deposit.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { IfAndroidDirective, IfIosDirective } from "./directives/sdk-if.directiv
         HomeComponent,
         LoginComponent,
         IfAndroidDirective,
-        IfIosDirective
+        IfIosDirective,
+        MakeDepositComponent
     ],
     schemas: [
         NO_ERRORS_SCHEMA

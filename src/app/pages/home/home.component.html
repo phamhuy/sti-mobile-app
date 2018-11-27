@@ -15,8 +15,8 @@
           <Label col="1" row="2" textAlignment="right" text="157"></Label>
           <Label col="1" row="3" textAlignment="right" text="09/15/2018"></Label>
         </GridLayout>
-        <Button class="deposit-button" text="Make Deposit" *sdkIfIos shadow="3"></Button>
-        <Button class="deposit-button" text="Make Deposit" *sdkIfAndroid></Button>
+        <Button class="deposit-button" text="Make Deposit" *sdkIfIos shadow="3" (tap)="makeDeposit()"></Button>
+        <Button class="deposit-button" text="Make Deposit" *sdkIfAndroid (tap)="makeDeposit()"></Button>
       </StackLayout>
     </StackLayout>
 

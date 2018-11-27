@@ -12,6 +12,24 @@ refer to http://docs.nativescript.org/ui/theme.
 @import '~nativescript-theme-core/css/core.light.css';
 @import 'platform.css';
 
+.page {
+  background-color: rgb(235, 235, 235);
+  padding: 0 10%;
+}
+
 TextField {
   padding: 5;
+}
+
+.small-font {
+  font-size: 20;
+}
+
+.large-font {
+  font-size: 30;
+}
+
+.sti-btn {
+  background-color: #12A6C0;
+  color: white;
 }

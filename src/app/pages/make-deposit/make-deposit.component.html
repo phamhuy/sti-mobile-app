@@ -1,0 +1,48 @@
+<StackLayout class="page">
+  <FlexboxLayout justifyContent="space-between" flexDirection="column" class="">
+    <Label class="title large-font" text="Make Payment" textAlignment="center"></Label>
+    <Label class="alert small-font" text="You are making a deposit" textAlignment="center"></Label>
+
+    <!-- Existing ACH Details -->
+    <StackLayout shadow="3" class="card">
+      <GridLayout rows="auto, auto, auto, auto, auto, auto" , columns="*, *">
+        <Label row="0" col="0" colSpan="2" text="Existing ACH Details" textAlignment="center" class="small-font"></Label>
+        <Label row="1" col="0" text="Acct. Holder Name"></Label>
+        <Label row="1" col="1" textAlignment="right" text="John Smith"></Label>
+        <Label row="2" col="0" text="Bank Name"></Label>
+        <Label row="2" col="1" textAlignment="right" text="Chase Chxn"></Label>
+        <Label row="3" col="0" text="Account Type"></Label>
+        <Label row="3" col="1" textAlignment="right" text="Checking"></Label>
+        <Label row="4" col="0" text="Account Number"></Label>
+        <Label row="4" col="1" textAlignment="right" text="xxxxxxx1212"></Label>
+        <Label row="5" col="0" text="Routing Number"></Label>
+        <Label row="5" col="1" textAlignment="right" text="999999963"></Label>
+      </GridLayout>
+    </StackLayout>
+
+    <!-- Deposit Details -->
+    <StackLayout shadow="3" class="card">
+      <GridLayout rows="auto, auto, auto" , columns="*, *" class="small-font">
+        <Label row="0" col="0" colSpan="2" text="Deposit Details" textAlignment="center"></Label>
+        <Label row="1" col="0" text="Date"></Label>
+        <TextField row="1" col="1" class="input" shadow="3"></TextField>
+        <Label row="2" col="0" text="Amount"></Label>
+        <TextField row="2" col="1" class="input" shadow="3"></TextField>
+      </GridLayout>
+    </StackLayout>
+
+    <!-- Action Buttons -->
+    <FlexboxLayout *sdkIfAndroid class="actions small-font" shadow="3">
+      <Button flexGrow="1" text="Cancel" class="action-button cancel-button"></Button>
+      <Button flexGrow="1" text="Schedule" class="action-button sti-btn"></Button>
+    </FlexboxLayout>
+
+    <StackLayout *sdkIfIos shadow="3">
+      <FlexboxLayout class="actions small-font">
+        <Button flexGrow="1" text="Cancel" class="action-button cancel-button" shadow="3"></Button>
+        <Button flexGrow="1" text="Schedule" class="action-button sti-btn" shadow="3"></Button>
+      </FlexboxLayout>
+    </StackLayout>
+
+  </FlexboxLayout>
+</StackLayout>
