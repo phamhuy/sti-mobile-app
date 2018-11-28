@@ -1,15 +1,16 @@
-import { NgModule, NO_ERRORS_SCHEMA } from "@angular/core";
-import { NativeScriptModule } from "nativescript-angular/nativescript.module";
+import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
+import { NativeScriptModule } from 'nativescript-angular/nativescript.module';
 import { NgShadowModule } from 'nativescript-ng-shadow';
-import { NativeScriptFormsModule } from "nativescript-angular/forms";
-import { NativeScriptHttpClientModule } from "nativescript-angular/http-client";
+import { NativeScriptFormsModule } from 'nativescript-angular/forms';
+import { NativeScriptHttpClientModule } from 'nativescript-angular/http-client';
 
-import { AppRoutingModule } from "./app-routing.module";
-import { AppComponent } from "./app.component";
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
-import { IfAndroidDirective, IfIosDirective } from "./directives/sdk-if.directive";
+import { IfAndroidDirective, IfIosDirective } from './directives/sdk-if.directive';
 import { MakeDepositComponent } from './pages/make-deposit/make-deposit.component';
+import { DepositHistoryComponent } from './pages/deposit-history/deposit-history.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { MakeDepositComponent } from './pages/make-deposit/make-deposit.componen
         LoginComponent,
         IfAndroidDirective,
         IfIosDirective,
-        MakeDepositComponent
+        MakeDepositComponent,
+        DepositHistoryComponent
     ],
     schemas: [
         NO_ERRORS_SCHEMA

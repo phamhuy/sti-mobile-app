@@ -20,4 +20,8 @@ export class HomeComponent implements OnInit {
     this.router.navigate(['/make-deposit']);
   }
 
+  depositHistory() {
+    this.router.navigate(['/deposit-history']);
+  }
+
 }

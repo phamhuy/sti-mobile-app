@@ -1,0 +1,13 @@
+<StackLayout class="page">
+  <Label class="title large-font" text="Deposit History" textAlignment="center"></Label>
+  <ListView [items]="deposits" shadow="3">
+    <ng-template let-deposit="item">
+      <GrideLayout rows="50, 50" , columns="50, 50">
+        <Label row="0" col="0" text="Deposit Date:"></Label>
+        <Label row="0" col="1" [text]="deposit.date"></Label>
+        <Label row="1" col="0" text="Amount:"></Label>
+        <Label row="1" col="1" [text]="deposit.amount"></Label>
+      </GrideLayout>
+    </ng-template>
+  </ListView>
+</StackLayout>

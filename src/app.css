@@ -17,6 +17,11 @@ refer to http://docs.nativescript.org/ui/theme.
   padding: 0 10%;
 }
 
+.title {
+  margin-bottom: 1%;
+  color: #12A6C0;
+}
+
 TextField {
   padding: 5;
 }
