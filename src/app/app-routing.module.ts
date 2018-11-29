@@ -7,7 +7,7 @@ import { MakeDepositComponent } from './pages/make-deposit/make-deposit.componen
 import { DepositHistoryComponent } from './pages/deposit-history/deposit-history.component';
 
 const routes: Routes = [
-    { path: '', redirectTo: '/home', pathMatch: 'full' },
+    { path: '', redirectTo: '/login', pathMatch: 'full' },
     { path: 'home', component: HomeComponent},
     { path: 'login', component: LoginComponent},
     { path: 'make-deposit', component: MakeDepositComponent},
