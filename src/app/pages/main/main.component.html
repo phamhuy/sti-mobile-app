@@ -1,0 +1,24 @@
+<StackLayout>
+  <ActionBar title="Hi" icon="res://logo"></ActionBar>
+  <TabView>
+    <StackLayout *tabItem="{title: 'Home', iconSource: getIconSource('icon_home_24')}" class="tab">
+      <router-outlet name="homeTab"></router-outlet>
+    </StackLayout>
+
+    <StackLayout *tabItem="{title: 'Transactions', iconSource: getIconSource('icon_transactions_24')}" class="tab">
+      <router-outlet name="transactionsTab"></router-outlet>
+    </StackLayout>
+
+    <StackLayout *tabItem="{title: 'Scan', iconSource: getIconSource('icon_camera_24')}" class="tab">
+      <router-outlet name="scanTab"></router-outlet>
+    </StackLayout>
+
+    <StackLayout *tabItem="{title: 'Debts', iconSource: getIconSource('icon_dollar_24')}" class="tab">
+      <router-outlet name="debtsTab"></router-outlet>
+    </StackLayout>
+
+    <StackLayout *tabItem="{title: 'Profile', iconSource: getIconSource('icon_profile_24')}" class="tab">
+      <router-outlet name="profileTab"></router-outlet>
+    </StackLayout>
+  </TabView>
+</StackLayout>

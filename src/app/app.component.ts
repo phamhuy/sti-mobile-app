@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-const firebase = require("nativescript-plugin-firebase");
+import * as firebase from "nativescript-plugin-firebase";
 
 @Component({
     selector: "ns-app",

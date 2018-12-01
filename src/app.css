@@ -12,9 +12,12 @@ refer to http://docs.nativescript.org/ui/theme.
 @import '~nativescript-theme-core/css/core.light.css';
 @import 'platform.css';
 
-.page {
+Page {
   background-color: rgb(235, 235, 235);
-  padding: 0 10%;
+}
+
+ActionBar {
+  background-color: #12A6C0;
 }
 
 .title {

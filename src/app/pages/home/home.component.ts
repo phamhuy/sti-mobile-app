@@ -17,7 +17,7 @@ export class HomeComponent implements OnInit {
   }
 
   makeDeposit() {
-    this.router.navigate(['/make-deposit']);
+    this.router.navigate(['/main', {outlets: { homeTab: 'make-deposit'}}]);
   }
 
   depositHistory() {

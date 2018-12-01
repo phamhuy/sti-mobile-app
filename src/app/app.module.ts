@@ -6,12 +6,16 @@ import { NativeScriptHttpClientModule } from 'nativescript-angular/http-client';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
 import { IfAndroidDirective, IfIosDirective } from './directives/sdk-if.directive';
+import { HomeComponent } from './pages/home/home.component';
 import { MakeDepositComponent } from './pages/make-deposit/make-deposit.component';
 import { DepositHistoryComponent } from './pages/deposit-history/deposit-history.component';
-
+import { ProfileComponent } from './pages/profile/profile.component';
+import { DebtsComponent } from './pages/debts/debts.component';
+import { TransactionsComponent } from './pages/transactions/transactions.component';
+import { ScanComponent } from './pages/scan/scan.component';
+import { MainComponent } from './pages/main/main.component';
 
 @NgModule({
     bootstrap: [
@@ -26,12 +30,17 @@ import { DepositHistoryComponent } from './pages/deposit-history/deposit-history
     ],
     declarations: [
         AppComponent,
-        HomeComponent,
-        LoginComponent,
         IfAndroidDirective,
         IfIosDirective,
+        LoginComponent,
+        HomeComponent,
         MakeDepositComponent,
-        DepositHistoryComponent
+        DepositHistoryComponent,
+        ProfileComponent,
+        DebtsComponent,
+        TransactionsComponent,
+        ScanComponent,
+        MainComponent
     ],
     schemas: [
         NO_ERRORS_SCHEMA
