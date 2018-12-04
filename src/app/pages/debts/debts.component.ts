@@ -14,9 +14,9 @@ export class DebtsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.mobileService.getDebtAccountSummary().subscribe(res => {
-      console.log('res =', typeof res, res);
-    });
+    // this.mobileService.getDebtAccountSummary().subscribe(res => {
+    //   console.log('res =', typeof res, res);
+    // });
   }
 
 }

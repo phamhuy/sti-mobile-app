@@ -1,5 +1,9 @@
 <StackLayout>
-  <ActionBar title="Hi" icon="res://logo"></ActionBar>
+  <ActionBar>
+    <StackLayout orientation="horizontal" horizontalAlignment="center">
+      <Image src="res://logo" ios:height="45" android:height="80" class="title-icon"></Image>
+    </StackLayout>
+  </ActionBar>
   <TabView>
     <StackLayout *tabItem="{title: 'Home', iconSource: getIconSource('icon_home_24')}" class="tab">
       <router-outlet name="homeTab"></router-outlet>
