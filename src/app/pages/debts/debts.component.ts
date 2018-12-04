@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MobileService } from '~/app/services/mobile.service';
 
 @Component({
   selector: 'ns-debts',
@@ -8,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DebtsComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private mobileService: MobileService
+  ) { }
 
   ngOnInit() {
+    this.mobileService.getDebtAccountSummary().subscribe(res => {
+      console.log('res =', typeof res, res);
+    });
   }
 
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterExtensions } from 'nativescript-angular/router';
-import * as firebase from 'nativescript-plugin-firebase';
+import { AuthService } from '~/app/services/auth.service';
 
 @Component({
   selector: 'ns-login',
@@ -12,32 +12,31 @@ export class LoginComponent implements OnInit {
   isLoggingIn: boolean;
 
   constructor(
-    private router: RouterExtensions
+    private router: RouterExtensions,
+    private authService: AuthService
   ) { }
 
   ngOnInit() {
+    if (this.authService.isLoggedIn) {
+      this.router.navigate(['/main'], { clearHistory: true });
+    }
     this.isLoggingIn = false;
   }
 
-  logIn() {
+  async logIn() {
     this.isLoggingIn = true;
-    firebase.login({
-        type: firebase.LoginType.PHONE,
-        phoneOptions: {
-          phoneNumber: '+19495551234',
-          verificationPrompt: "The received verification code" // default "Verification code"
-        }
-      }).then(
-        result => {
-          this.isLoggingIn = false;
-          console.log('successfully log in\n', result);
-          this.router.navigate(['/home'], { clearHistory: true });
-        },
-        err => {
-          this.isLoggingIn = false;
-          console.log('error =', err);
-        }
-      )
+    this.authService.logIn('+19495551234', 'The received verification code').then(
+      res => {
+        this.isLoggingIn = false;
+        console.log('successfully log in\n', res.uid);
+        this.router.navigate(['/main'], { clearHistory: true });
+      },
+      err => {
+        console.log('error =', err);
+        console.log('something wrong');
+      }
+    );
+    console.log('ID token =', await this.authService.getIDToken());
   }
 
 }
