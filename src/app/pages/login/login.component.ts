@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
     this.authService.logIn('+19495551234', 'The received verification code').then(
       res => {
         this.isLoggingIn = false;
-        console.log('successfully log in\n', res.uid);
+        console.log('successfully log in\n', res);
         this.router.navigate(['/main'], { clearHistory: true });
       },
       err => {
