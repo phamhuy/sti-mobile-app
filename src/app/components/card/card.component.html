@@ -1,0 +1,21 @@
+<CardView>
+  <StackLayout class="card">
+    <!-- Title -->
+    <Label [text]="title" textAlignment="center" class="title"></Label>
+
+    <!-- Content -->
+    <FlexboxLayout *ngFor="let key of keys" justifyContent="space-between">
+      <Label [text]="key" class="key"></Label>
+      <Label [text]="content[key]"></Label>
+    </FlexboxLayout>
+
+    <!-- Actions -->
+    <StackLayout *ngIf="actions" class="hr-light m-10"></StackLayout>
+    <FlexboxLayout justifyContent="space-around">
+      <Button *ngFor="let actionName of actionNames" [text]="actionName" (tap)="actions[actionName].exec.apply(this, actions[actionName].args)"
+        class="btn" flexGrow="1" [shadow]="actions[actionName].shadowData" [color]="actions[actionName].btnTextColor"
+        [backgroundColor]="actions[actionName].btnBackgroundColor"></Button>
+    </FlexboxLayout>
+
+  </StackLayout>
+</CardView>

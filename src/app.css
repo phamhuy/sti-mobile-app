@@ -20,6 +20,11 @@ ActionBar {
   background-color: #12A6C0;
 }
 
+CardView {
+  background-color: white;
+  margin: 1%;
+}
+
 .title {
   margin-bottom: 1%;
   color: #12A6C0;
@@ -30,6 +35,10 @@ TextField {
 }
 
 .small-font {
+  font-size: 10;
+}
+
+.medium-font {
   font-size: 20;
 }
 

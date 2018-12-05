@@ -16,6 +16,7 @@ import { DebtsComponent } from './pages/debts/debts.component';
 import { TransactionsComponent } from './pages/transactions/transactions.component';
 import { ScanComponent } from './pages/scan/scan.component';
 import { MainComponent } from './pages/main/main.component';
+import { CardComponent } from './components/card/card.component';
 
 @NgModule({
     bootstrap: [
@@ -40,7 +41,8 @@ import { MainComponent } from './pages/main/main.component';
         DebtsComponent,
         TransactionsComponent,
         ScanComponent,
-        MainComponent
+        MainComponent,
+        CardComponent
     ],
     schemas: [
         NO_ERRORS_SCHEMA

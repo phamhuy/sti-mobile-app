@@ -4,3 +4,7 @@ TabView {
   selected-tab-text-color: white; */
   font-size: 7;
 }
+
+.tab {
+  font-size: default;
+}
