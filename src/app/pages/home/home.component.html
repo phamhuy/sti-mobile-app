@@ -1,30 +1,44 @@
-<StackLayout>
-  <Label class="greeting" editable="false" text="Hello, Huy"></Label>
-  <ns-card title="Hi" [content]="content" [actions]="actions" class="medium-font"></ns-card>
+<FlexboxLayout android:justifyContent="space-around" flexDirection="column" height="100%" class="hi">
+  <ns-card title="Account Summary" [content]="accountSummary" class="medium-font"></ns-card>
 
-  <FlexboxLayout justifyContent="space-around" flexDirection="column">
-    <!-- Account Summary -->
-    <StackLayout class="summary-container" shadow [elevation]="3">
-      <StackLayout class="summary">
-        <GridLayout rows="auto, auto, auto, auto" columns="*, *">
-          <Label col="0" row="0" text="Account #:"></Label>
-          <Label col="0" row="1" text="Savings Balance:"></Label>
-          <Label col="0" row="2" text="Next Deposit:"></Label>
-          <Label col="0" row="3" text="Next Deposit Date:"></Label>
-          <Label col="1" row="0" textAlignment="right" text="171757"></Label>
-          <Label col="1" row="1" textAlignment="right" text="157"></Label>
-          <Label col="1" row="2" textAlignment="right" text="157"></Label>
-          <Label col="1" row="3" textAlignment="right" text="09/15/2018"></Label>
-        </GridLayout>
-        <Button class="deposit-button" text="Make Deposit" *sdkIfIos shadow="3" (tap)="makeDeposit()"></Button>
-        <Button class="deposit-button" text="Make Deposit" *sdkIfAndroid (tap)="makeDeposit()"></Button>
-      </StackLayout>
+  <!-- Debt Accounts Summary -->
+  <CardView>
+    <StackLayout class="card">
+      <!-- Title -->
+      <Label text="Debt Accounts" class="title"></Label>
+
+      <!-- Content -->
+      <ScrollView>
+        <StackLayout>
+          <StackLayout *ngFor="let debtAccount of debtAccounts" class="medium-font" (tap)="showDebtDetails()">
+            <!-- Creditor -->
+            <FlexboxLayout justifyContent="space-between">
+              <Label text="Creditor:"></Label>
+              <Label>
+                <FormattedString>
+                  <Span [text]="debtAccount.creditor" fontWeight="Bold"></Span>
+                </FormattedString>
+              </Label>
+            </FlexboxLayout>
+
+            <!-- Amount -->
+            <FlexboxLayout justifyContent="space-between">
+              <Label text="Amount:"></Label>
+              <Label>
+                <FormattedString>
+                  <Span [text]="debtAccount.amount | currency" fontWeight="Bold"></Span>
+                </FormattedString>
+              </Label>
+            </FlexboxLayout>
+
+            <!-- Divider -->
+            <StackLayout class="hr-light m-10"></StackLayout>
+          </StackLayout>
+        </StackLayout>
+      </ScrollView>
+
+      <!-- Show All Debt Accounts Button -->
+      <Button class="btn" shadow="3" text="Show All Debts Account" (tap)="goToDebts()" backgroundColor="#12A6C0" bgcolor="#12A6C0" color="white"></Button>
     </StackLayout>
-
-    <!-- Action Buttons -->
-    <Button class="action-button" shadow [elevation]="3" text="Deposit History" (tap)="depositHistory()"></Button>
-    <Button class="action-button" shadow [elevation]="3" text="Transactions"></Button>
-    <Button class="action-button" shadow [elevation]="3" text="Debt Information"></Button>
-    <Button class="action-button" shadow [elevation]="3" text="Scan Documents"></Button>
-  </FlexboxLayout>
-</StackLayout>
+  </CardView>
+</FlexboxLayout>

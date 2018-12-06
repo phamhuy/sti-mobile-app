@@ -1,31 +1,9 @@
-.greeting {
+/* .greeting {
   margin: 1%;
   color: #12A6C0;
   font-size: 30;
-}
-
-FlexboxLayout {
-  height: 85%;
-  font-size: 20;
-}
-
-.summary-container {
+} */
+.card {
+  padding: 10 20 20;
   margin: 1%;
-}
-
-.summary {
-  padding: 3% 15%;
-  background-color: white;
-}
-
-.deposit-button {
-  color: white;
-  background-color: #12A6C0;
-}
-
-.action-button {
-  height: 15%;
-  margin: 1%;
-  color: black;
-  background-color: white;
 }

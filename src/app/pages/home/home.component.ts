@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { CardActionFunction } from '~/app/components/card/card.component';
+import { TabService } from '~/app/services/tab.service';
 
 @Component({
   selector: 'ns-home',
@@ -9,34 +9,42 @@ import { CardActionFunction } from '~/app/components/card/card.component';
   moduleId: module.id,
 })
 export class HomeComponent implements OnInit {
-  content = {
-    label1: 'value1sdfsdfsd',
-    label2asdf: 'value2'
+
+  accountSummary = {
+    'Saving Balance': '$9000.00',
+    'Enrolled Debts': '$10,000.00',
+    'In Progress': '$8000.00',
+    'Paid/Completed': '$500'
   }
 
-  actions = {
-    cancel: new CardActionFunction(this.cancel, ['hi', 'hello'], 'red', 'yellow'),
-    ok: new CardActionFunction(this.cancel, ['hi', 'hello']),
-    // cancel: new CardActionFunction(this.cancel, ['hi', 'hello'])
+  debtAccounts = [
+    {
+      creditor: 'Bank of America',
+      amount: 5664
+    },
+    {
+      creditor: 'Bank of America',
+      amount: 5664
+    }
+  ]
+
+  debtAction = {
+    'Show All Debt Accounts': new CardActionFunction(this, this.goToDebts)
   }
 
   constructor(
-    private router: Router
+    private tabService: TabService
   ) { }
 
   ngOnInit() {
   }
 
-  makeDeposit() {
-    this.router.navigate(['/main', {outlets: { homeTab: 'make-deposit'}}]);
+  goToDebts() {
+    this.tabService.changeTab(3);
   }
 
-  depositHistory() {
-    this.router.navigate(['/deposit-history']);
-  }
-
-  cancel(arg1, arg2, arg3) {
-    console.log('args =', arg1, arg2, arg3);
+  showDebtDetails() {
+    this.tabService.changeTab(3);
   }
 
 }

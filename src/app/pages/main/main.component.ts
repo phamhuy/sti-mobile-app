@@ -1,17 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import { isAndroid } from "tns-core-modules/platform";
 import { Router } from '@angular/router';
+import { TabService } from '~/app/services/tab.service';
 
 @Component({
   selector: 'ns-main',
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.css', './main.css'],
   moduleId: module.id,
+  providers: [TabService]
 })
 export class MainComponent implements OnInit {
+  tabSelectedIndex: number = 0;
 
   constructor(
-    private router: Router
+    private router: Router,
+    private tabService: TabService
   ) {
     this.router.navigate(['/main', {
       outlets: {
@@ -25,6 +29,9 @@ export class MainComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.tabService.tabChangedSource$.subscribe(newIndex => {
+      this.tabSelectedIndex = newIndex;
+    })
   }
 
   getIconSource(icon: string): string {

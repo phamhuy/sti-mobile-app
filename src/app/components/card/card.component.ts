@@ -11,6 +11,7 @@ import { AndroidData, IOSData } from 'nativescript-ng-shadow';
 export class CardComponent implements OnInit {
   @Input() title: string;
   @Input() content: { [key: string]: string };
+  @Input() divider: boolean;
   @Input() actions: { [key: string]: CardActionFunction};
 
   constructor() { }
@@ -26,18 +27,24 @@ export class CardComponent implements OnInit {
     return this.actions ? Object.keys(this.actions) : [];
   }
 
+  onTap() {
+    console.log('tapping');
+  }
+
 }
 
 export class CardActionFunction {
+  componentRef;
   exec: Function;
   args: any[];
   shadowData: AndroidData | IOSData | string;
   btnTextColor: string;
   btnBackgroundColor: string;
 
-  constructor(exec: Function, args: any[], btnTextColor?: string, btnBackgroundColor?: string) {
+  constructor(componentRef, exec: Function, args?: any[], btnTextColor?: string, btnBackgroundColor?: string) {
+    this.componentRef = componentRef;
     this.exec = exec;
-    this.args = args;
+    this.args = args || [];
     this.btnTextColor = btnTextColor || 'white';
     this.btnBackgroundColor = btnBackgroundColor || '#12A6C0';
     this.shadowData = isIOS ? '3' : {

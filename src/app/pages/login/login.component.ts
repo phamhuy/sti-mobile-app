@@ -23,12 +23,13 @@ export class LoginComponent implements OnInit {
     this.isLoggingIn = false;
   }
 
-  async logIn() {
+  logIn() {
     this.isLoggingIn = true;
     this.authService.logIn('+19495551234', 'The received verification code').then(
-      res => {
+      async res => {
         this.isLoggingIn = false;
         console.log('successfully log in\n', res);
+        console.log('ID token =', await this.authService.getIDToken());
         this.router.navigate(['/main'], { clearHistory: true });
       },
       err => {
@@ -36,7 +37,6 @@ export class LoginComponent implements OnInit {
         console.log('something wrong');
       }
     );
-    console.log('ID token =', await this.authService.getIDToken());
   }
 
 }

@@ -1,18 +1,26 @@
 <CardView>
   <StackLayout class="card">
     <!-- Title -->
-    <Label [text]="title" textAlignment="center" class="title"></Label>
+    <Label [text]="title" class="title"></Label>
+    <!-- <StackLayout class="hr-light m-10"></StackLayout> -->
 
     <!-- Content -->
-    <FlexboxLayout *ngFor="let key of keys" justifyContent="space-between">
-      <Label [text]="key" class="key"></Label>
-      <Label [text]="content[key]"></Label>
-    </FlexboxLayout>
+    <StackLayout *ngFor="let key of keys; let i = index">
+      <FlexboxLayout justifyContent="space-between" (tap)="onTap()">
+        <Label [text]="key + ':'" class="key"></Label>
+        <Label>
+          <FormattedString>
+            <Span [text]="content[key]" fontWeight="Bold"></Span>
+          </FormattedString>
+        </Label>
+      </FlexboxLayout>
+      <StackLayout *ngIf="divider && i != keys.length - 1" class="hr-light m-10"></StackLayout>
+    </StackLayout>
 
     <!-- Actions -->
     <StackLayout *ngIf="actions" class="hr-light m-10"></StackLayout>
     <FlexboxLayout justifyContent="space-around">
-      <Button *ngFor="let actionName of actionNames" [text]="actionName" (tap)="actions[actionName].exec.apply(this, actions[actionName].args)"
+      <Button *ngFor="let actionName of actionNames" [text]="actionName" (tap)="actions[actionName].exec.apply(actions[actionName].componentRef, actions[actionName].args)"
         class="btn" flexGrow="1" [shadow]="actions[actionName].shadowData" [color]="actions[actionName].btnTextColor"
         [backgroundColor]="actions[actionName].btnBackgroundColor"></Button>
     </FlexboxLayout>
