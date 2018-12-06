@@ -3,6 +3,8 @@ import { NativeScriptModule } from 'nativescript-angular/nativescript.module';
 import { NgShadowModule } from 'nativescript-ng-shadow';
 import { NativeScriptFormsModule } from 'nativescript-angular/forms';
 import { NativeScriptHttpClientModule } from 'nativescript-angular/http-client';
+import { NativeScriptUISideDrawerModule } from 'nativescript-ui-sidedrawer/angular/side-drawer-directives';
+import { NativeScriptUIListViewModule } from 'nativescript-ui-listview/angular/listview-directives';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -29,7 +31,9 @@ import { MobileInterceptor } from './services/mobile-interceptor';
         AppRoutingModule,
         NgShadowModule,
         NativeScriptFormsModule,
-        NativeScriptHttpClientModule
+        NativeScriptHttpClientModule,
+        NativeScriptUISideDrawerModule,
+        NativeScriptUIListViewModule
     ],
     declarations: [
         AppComponent,

@@ -1,1 +1,15 @@
-/* Add mobile styles for the component here.  */
+.transaction-type-label {
+  color: #12A6C0;
+}
+
+.transaction-select {
+  padding: 10 5 10;
+}
+
+.positive-amount {
+  color: #12A6C0;
+}
+
+.negative-amount {
+  color: red;
+}

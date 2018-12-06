@@ -35,10 +35,6 @@ CardView {
   text-align: center;
 }
 
-TextField {
-  padding: 5;
-}
-
 .small-font {
   font-size: 10;
 }

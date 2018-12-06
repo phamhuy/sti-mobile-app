@@ -1,1 +1,36 @@
-<Button text="transactions works!" class="btn btn-primary"></Button>
+<StackLayout>
+  <!-- Filter -->
+  <CardView>
+    <FlexboxLayout justifyContent="space-between" ios:flexDirection="column" class="p-5">
+      <SearchBar hint="Search or filter" [text]="searchResult" (tap)="openFilterPopup($event)"></SearchBar>
+      <StackLayout class="transaction-select">
+        <Label *ngIf="selectedType" text="Type" class="transaction-type-label t-10"></Label>
+        <DropDown hint="Type" [items]="transactionTypes" (selectedIndexChange)="selectedIndexChanged($event)" class=""></DropDown>
+      </StackLayout>
+    </FlexboxLayout>
+  </CardView>
+
+  <!-- Table -->
+  <CardView>
+    <ListView [items]="transactions">
+      <ng-template let-transaction="item">
+        <StackLayout>
+          <FlexboxLayout justifyContent="space-between" alignItems="center" class="m-5 p-5">
+            <!-- Transaction Type and Date -->
+            <StackLayout>
+              <Label [text]="transactionTypeEnums[transaction.transactionType]" class="t-15"></Label>
+              <Label [text]="transaction.processDate | date" class="t-12"></Label>
+            </StackLayout>
+
+            <!-- Amount -->
+            <Label class="t-15 font-weight-bold p-r-15">
+              <FormattedString>
+                <Span [text]="transaction.amount | currency" [style.color]="transaction.amount >= 0 ? '#12A6C0' : 'red'"></Span>
+              </FormattedString>
+            </Label>
+          </FlexboxLayout>
+        </StackLayout>
+      </ng-template>
+    </ListView>
+  </CardView>
+</StackLayout>

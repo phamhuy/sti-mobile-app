@@ -20,14 +20,9 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.isLoggingIn = true;
-    this.authService.getCurrentUser().then(
-      user => {
-        if (!!user) {
-          this.router.navigate(['/main'], { clearHistory: true });
-        }
-      },
-      err => { }
-    );
+    if (this.authService.isLoggedIn) {
+      this.router.navigate(['/main'], { clearHistory: true });
+    }
     this.isLoggingIn = false;
   }
 

@@ -1,17 +1,22 @@
 import { Injectable } from '@angular/core';
 import * as firebase from 'nativescript-plugin-firebase';
+import { isAndroid } from "tns-core-modules/platform";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  isLoggedIn: boolean = false;
+  isLoggedIn: boolean = !isAndroid;
   redirectUrl: string;
   cachedIDToken: string;
 
   constructor() { }
 
-  logIn(phoneNumber: string, verificationPrompt: string) {
+  logIn(phoneNumber: string, verificationPrompt: string): Promise<any> {
+    if (!isAndroid) {
+      this.isLoggedIn = true;
+      return Promise.resolve(true);
+    }
     return firebase.login({
       type: firebase.LoginType.PHONE,
       phoneOptions: {
@@ -40,6 +45,7 @@ export class AuthService {
   }
 
   signOut() {
+    this.isLoggedIn = false;
     return firebase.logout();
   }
 
