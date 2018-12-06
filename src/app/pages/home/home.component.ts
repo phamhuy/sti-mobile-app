@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CardActionFunction } from '~/app/components/card/card.component';
 import { TabService } from '~/app/services/tab.service';
+import { MobileService } from '~/app/services/mobile.service';
 
 @Component({
   selector: 'ns-home',
@@ -33,7 +34,8 @@ export class HomeComponent implements OnInit {
   }
 
   constructor(
-    private tabService: TabService
+    private tabService: TabService,
+    private mobileService: MobileService
   ) { }
 
   ngOnInit() {

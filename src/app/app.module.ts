@@ -17,6 +17,8 @@ import { TransactionsComponent } from './pages/transactions/transactions.compone
 import { ScanComponent } from './pages/scan/scan.component';
 import { MainComponent } from './pages/main/main.component';
 import { CardComponent } from './components/card/card.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { MobileInterceptor } from './services/mobile-interceptor';
 
 @NgModule({
     bootstrap: [
@@ -46,6 +48,9 @@ import { CardComponent } from './components/card/card.component';
     ],
     schemas: [
         NO_ERRORS_SCHEMA
+    ],
+    providers: [
+        { provide: HTTP_INTERCEPTORS, useClass: MobileInterceptor, multi: true }
     ]
 })
 /*

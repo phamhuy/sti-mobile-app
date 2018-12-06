@@ -6,6 +6,8 @@ import * as firebase from 'nativescript-plugin-firebase';
 })
 export class AuthService {
   isLoggedIn: boolean = false;
+  redirectUrl: string;
+  cachedIDToken: string;
 
   constructor() { }
 
@@ -13,7 +15,7 @@ export class AuthService {
     return firebase.login({
       type: firebase.LoginType.PHONE,
       phoneOptions: {
-        phoneNumber: phoneNumber,
+        phoneNumber: `+1${phoneNumber}`,
         verificationPrompt: verificationPrompt
       }
     }).then(
@@ -23,7 +25,7 @@ export class AuthService {
       },
       err => {
         this.isLoggedIn = false;
-        console.log('error =', err);
+        console.log('auth service: login error =', err);
         throw err;
       }
     );
@@ -31,6 +33,14 @@ export class AuthService {
 
   getIDToken() {
     return firebase.getAuthToken({ forceRefresh: false });
+  }
+
+  getCurrentUser() {
+    return firebase.getCurrentUser();
+  }
+
+  signOut() {
+    return firebase.logout();
   }
 
 }

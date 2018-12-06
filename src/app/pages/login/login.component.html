@@ -3,17 +3,16 @@
 
   <StackLayout class="form">
     <!-- Phone Input -->
-    <TextField hint="Phone Number"></TextField>
+    <TextField hint="Phone Number" [(ngModel)]="phoneNumber"></TextField>
 
     <!-- SSN Input -->
-    <TextField hint="Last 4 SSN digits" secure="true"></TextField>
-    <StackLayout class="spacer"></StackLayout>
+    <TextField hint="Last 4 SSN digits" secure="true" [(ngModel)]="ssn" class="m-b-20"></TextField>
 
     <!-- Login Button -->
-    <Button text="Sign In" [isEnabled]="!isLoggingIn" (tap)="logIn()"></Button>
+    <Button text="Sign In" [isEnabled]="!isLoggingIn && phoneNumber.length == 10" (tap)="logIn()"></Button>
 
     <!-- Spinner -->
-    <ActivityIndicator rowSpan="3" [busy]="isLoggingIn"></ActivityIndicator>
+    <ActivityIndicator rowSpan="3" [busy]="isLoggingIn" class="m-t-5"></ActivityIndicator>
 
   </StackLayout>
 </StackLayout>

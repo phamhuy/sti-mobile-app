@@ -9,12 +9,13 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { ScanComponent } from './pages/scan/scan.component';
 import { MainComponent } from './pages/main/main.component';
 import { MakeDepositComponent } from './pages/make-deposit/make-deposit.component';
+import { AuthGuard } from './services/auth.guard';
 
 const routes: Routes = [
     {
         path: '',
         // redirectTo: '/main(homeTab:/main/home//transactionsTab:/main/transactions//scanTab:/main/scan//debtsTab:/main/debts//profileTab:/main/profile)',
-        redirectTo: 'main',
+        redirectTo: 'login',
         pathMatch: 'full'
     },
     {
@@ -24,6 +25,7 @@ const routes: Routes = [
     {
         path: 'main',
         component: MainComponent,
+        canActivate: [AuthGuard],
         children: [
             {
                 path: 'home',

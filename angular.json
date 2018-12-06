@@ -6,12 +6,26 @@
     "defaultCollection": "@nativescript/schematics"
   },
   "projects": {
-    "hello-world": {
+    "sti-mobile-app": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
-      "prefix": "ns"
+      "prefix": "ns",
+      "architect": {
+        "build": {
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        }
+      }
     }
   },
-  "defaultProject": "hello-world"
+  "defaultProject": "sti-mobile-app"
 }

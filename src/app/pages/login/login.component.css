@@ -17,10 +17,6 @@ TextField {
   font-size: 25;
 }
 
-.spacer {
-  margin: 5% 0;
-}
-
 Button {
   border-radius: 20 20 20 20;
   font-size: 30;

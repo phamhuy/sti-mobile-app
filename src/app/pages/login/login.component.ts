@@ -10,6 +10,8 @@ import { AuthService } from '~/app/services/auth.service';
 })
 export class LoginComponent implements OnInit {
   isLoggingIn: boolean;
+  phoneNumber: string = '';
+  ssn: string; // Last 4 SSN digits
 
   constructor(
     private router: RouterExtensions,
@@ -17,24 +19,28 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    if (this.authService.isLoggedIn) {
-      this.router.navigate(['/main'], { clearHistory: true });
-    }
+    this.isLoggingIn = true;
+    this.authService.getCurrentUser().then(
+      user => {
+        if (!!user) {
+          this.router.navigate(['/main'], { clearHistory: true });
+        }
+      },
+      err => { }
+    );
     this.isLoggingIn = false;
   }
 
   logIn() {
     this.isLoggingIn = true;
-    this.authService.logIn('+19495551234', 'The received verification code').then(
-      async res => {
+    this.phoneNumber = '9495551234';
+    this.authService.logIn(this.phoneNumber, 'The received verification code').then(
+      res => {
         this.isLoggingIn = false;
-        console.log('successfully log in\n', res);
-        console.log('ID token =', await this.authService.getIDToken());
         this.router.navigate(['/main'], { clearHistory: true });
       },
       err => {
-        console.log('error =', err);
-        console.log('something wrong');
+        this.isLoggingIn = false;
       }
     );
   }
