@@ -29,7 +29,7 @@ CardView {
   padding-bottom: 5;
   margin-bottom: 10;
   color: #12A6C0;
-  font-size: 30;
+  font-size: 20;
   border-bottom-color: rgb(235, 235, 235);
   border-bottom-width: 1;
   text-align: center;
@@ -44,7 +44,7 @@ TextField {
 }
 
 .medium-font {
-  font-size: 20;
+  font-size: 15;
 }
 
 .large-font {

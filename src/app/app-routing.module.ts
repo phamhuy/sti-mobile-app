@@ -14,7 +14,7 @@ const routes: Routes = [
     {
         path: '',
         // redirectTo: '/main(homeTab:/main/home//transactionsTab:/main/transactions//scanTab:/main/scan//debtsTab:/main/debts//profileTab:/main/profile)',
-        redirectTo: 'login',
+        redirectTo: 'main',
         pathMatch: 'full'
     },
     {

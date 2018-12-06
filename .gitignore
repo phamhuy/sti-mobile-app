@@ -4,3 +4,6 @@ platforms
 *.js
 *.map
 lib
+.cloud
+App_Resources/Android/settings.gradle
+App_Resources/Android/settings.json
