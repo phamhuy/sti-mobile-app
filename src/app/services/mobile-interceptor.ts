@@ -17,11 +17,10 @@ export class MobileInterceptor implements HttpInterceptor {
     req = req.clone({
       body: {
         fireBaseID: this.authService.cachedIDToken,
-        phoneNumber: req.body.phoneNumber,
-        lastFourSSN: req.body.lastFourSSN
+        phoneNumber: req.body ? req.body.phoneNumber : null,
+        lastFourSSN: req.body ? req.body.lastFourSSN : null
       }
     });
-    console.dir('req =', req);
     return next.handle(req);
   }
 }

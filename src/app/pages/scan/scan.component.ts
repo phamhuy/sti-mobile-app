@@ -18,6 +18,7 @@ export class ScanComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    requestPermissions();
   }
 
   // >> camera-module-photo-code
@@ -33,24 +34,14 @@ export class ScanComponent implements OnInit {
     takePicture(options)
       .then(imageAsset => {
         this.imageTaken = imageAsset;
-        console.log("Size: " + imageAsset.options.width + "x" + imageAsset.options.height);
       }).catch(err => {
         console.log(err.message);
       });
   }
-  // << camera-module-photo-code
 
-  // >> camera-module-perm-code
-  onRequestPermissions() {
-    requestPermissions();
-  }
-  // << camera-module-perm-code
-
-  // >> camera-module-avai-code
   onCheckForCamera() {
     let isCameraAvailable = isAvailable();
     console.log("Is camera hardware available: " + isCameraAvailable);
   }
-  // << camera-module-avai-code
 
 }

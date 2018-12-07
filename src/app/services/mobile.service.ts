@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { DebtAccountSummary } from '../models/debtAccountSummary.model';
 import { environment } from '~/environments/environment';
+import { TransactionList } from '../models/transaction.model';
 
 @Injectable({
   providedIn: 'root'
@@ -17,4 +18,9 @@ export class MobileService {
   getDebtAccountSummary(): Observable<DebtAccountSummary[]> {
     return this.http.post<DebtAccountSummary[]>(`${this.baseUrl}/getDebtAccountSummary`, null);
   }
+
+  getMobileTransactionList(): Observable<TransactionList> {
+    return this.http.post<TransactionList>(`${this.baseUrl}/getMobileTransactionList`, null);
+  }
+
 }

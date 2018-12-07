@@ -37,6 +37,7 @@ export class AuthService {
       async res => {
         this.isLoggedIn = true;
         this.cachedIDToken = await this.getIDToken();
+        console.log('id token =', this.cachedIDToken);
         console.log('cachedIdToken =', this.cachedIDToken);
         return res;
       },
