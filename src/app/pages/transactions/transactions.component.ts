@@ -37,10 +37,10 @@ export class TransactionsComponent implements OnInit {
     this.selectedType = TransactionType[picker.selectedIndex];
   }
 
-  openFilterPopup(event: GestureEventData) {
-    // TODO: implement filter popup
-    console.log('event =', event.eventName, event.type, event.android);
-    SearchBar
+  onSearchBarLoaded(event) {
+    setTimeout(() => {
+      event.object.dismissSoftInput();
+    }, 500);
   }
 
 }
