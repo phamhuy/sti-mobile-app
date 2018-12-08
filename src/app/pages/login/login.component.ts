@@ -4,6 +4,7 @@ import { AuthService } from '~/app/services/auth.service';
 import { User } from 'nativescript-plugin-firebase';
 import { CheckAccountResponse } from '~/app/models/check-account-response.model';
 import { RegisterResponse } from '~/app/models/register-response.model';
+import { DialogService } from '~/app/services/dialog.service';
 
 @Component({
   selector: 'ns-login',
@@ -18,7 +19,8 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private router: RouterExtensions,
-    private authService: AuthService
+    private authService: AuthService,
+    private dialogService: DialogService
   ) { }
 
   ngOnInit() {
@@ -43,24 +45,24 @@ export class LoginComponent implements OnInit {
             if (true || res.additionalUserInfo && res.additionalUserInfo.isNewUser) {
               this.authService.registerMobileAccount(this.phoneNumber).subscribe((res: RegisterResponse) => {
                 if (res.success) {
-                  // TODO: Popup notify user register successfully
-                  console.log('Register Successfully');
-                } else {
-                  // TODO: Popup notify user update successfully
-                  console.log('Existing user is updated successfully');
+                  this.dialogService.alert('Register', 'Register Successfully');
                 }
+              }, err => {
+                this.dialogService.alert('Error!', 'Unable to register! Please contact Customer Service');
+              }, () => {
+                this.isLoggingIn = false;
               });
             }
-            this.isLoggingIn = false;
             this.router.navigate(['/main'], { clearHistory: true });
           },
           err => {
+            this.dialogService.alert('Error!', 'Invalid Verification Code. Please try again.');
             this.isLoggingIn = false;
           }
         );
       } else {
-        // TODO: Display contact customer service popup
-        console.log('account does not exist');
+        this.dialogService.alert('Error!', 'Account does not exist. The phone number and the last four SSN do not match.\nPlease contact customer service at (949)555-1234.');
+        this.isLoggingIn = false;
       }
     });
 

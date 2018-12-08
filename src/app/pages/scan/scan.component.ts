@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ImageAsset } from "tns-core-modules/image-asset";
 import { takePicture, requestPermissions, isAvailable } from "nativescript-camera";
+import { DialogService } from '~/app/services/dialog.service';
 
 @Component({
   selector: 'ns-scan',
@@ -15,15 +16,18 @@ export class ScanComponent implements OnInit {
   public width: number = 300;
   public height: number = 300;
 
-  constructor() { }
+  constructor(
+    private dialogService: DialogService
+  ) { }
 
-  ngOnInit() {
-    requestPermissions();
+  async ngOnInit() {
+    if (!isAvailable()) {
+      await this.dialogService.alert('Unable to Take Picture', 'Camera is not available!');
+    }
   }
 
-  // >> camera-module-photo-code
-
   onTakePhoto() {
+    requestPermissions();
     let options = {
       width: this.width,
       height: this.height,
@@ -35,13 +39,8 @@ export class ScanComponent implements OnInit {
       .then(imageAsset => {
         this.imageTaken = imageAsset;
       }).catch(err => {
-        console.log(err.message);
+        console.log('takePicture:', err.message);
       });
-  }
-
-  onCheckForCamera() {
-    let isCameraAvailable = isAvailable();
-    console.log("Is camera hardware available: " + isCameraAvailable);
   }
 
 }

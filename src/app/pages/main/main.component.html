@@ -4,7 +4,7 @@
       <Image src="res://logo" ios:height="45" android:height="80" class="title-icon"></Image>
     </StackLayout>
   </ActionBar>
-  <TabView [(ngModel)]="tabSelectedIndex">
+  <TabView [(ngModel)]="tabSelectedIndex" androidSelectedTabHighlightColor="#12A6C0" selectedTabTextColor="#12A6C0">
     <StackLayout *tabItem="{title: 'Home', iconSource: getIconSource('icon_home_24')}" class="tab">
       <router-outlet name="homeTab"></router-outlet>
     </StackLayout>
