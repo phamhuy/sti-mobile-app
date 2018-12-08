@@ -16,7 +16,7 @@
               <Label text="Creditor:"></Label>
               <Label>
                 <FormattedString>
-                  <Span [text]="debtAccount.creditor" fontWeight="Bold"></Span>
+                  <Span [text]="debtAccount.creditorName" fontWeight="Bold"></Span>
                 </FormattedString>
               </Label>
             </FlexboxLayout>
@@ -26,7 +26,7 @@
               <Label text="Amount:"></Label>
               <Label>
                 <FormattedString>
-                  <Span [text]="debtAccount.amount | currency" fontWeight="Bold"></Span>
+                  <Span [text]="debtAccount.currentBalance | currency" fontWeight="Bold"></Span>
                 </FormattedString>
               </Label>
             </FlexboxLayout>

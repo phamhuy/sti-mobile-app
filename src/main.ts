@@ -1,10 +1,10 @@
 // this import should be first in order to load some required settings (like globals and reflect-metadata)
-import { platformNativeScriptDynamic } from "nativescript-angular/platform";
+import { platformNativeScriptDynamic } from 'nativescript-angular/platform';
 
-import { AppModule } from "./app/app.module";
+import { AppModule } from './app/app.module';
 import { registerElement } from 'nativescript-angular/element-registry';
 import { CardView } from 'nativescript-cardview';
-import { DropDown } from "nativescript-drop-down";
+import { DropDown } from 'nativescript-drop-down';
 
 registerElement('CardView', () => CardView);
 registerElement('DropDown', () => DropDown);

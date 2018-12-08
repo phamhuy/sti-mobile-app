@@ -1,10 +1,10 @@
 {
   "nativescript": {
     "id": "org.nativescript.stimobileapp",
-    "tns-android": {
+    "tns-ios": {
       "version": "5.0.0"
     },
-    "tns-ios": {
+    "tns-android": {
       "version": "5.0.0"
     }
   },
@@ -32,7 +32,7 @@
     "nativescript-ui-sidedrawer": "^5.0.1",
     "reflect-metadata": "~0.1.8",
     "rxjs": "~6.3.0",
-    "tns-core-modules": "~5.0.2",
+    "tns-core-modules": "^5.0.5",
     "zone.js": "^0.8.26"
   },
   "devDependencies": {

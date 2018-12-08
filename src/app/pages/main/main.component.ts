@@ -11,7 +11,7 @@ import { TabService } from '~/app/services/tab.service';
   providers: [TabService]
 })
 export class MainComponent implements OnInit {
-  tabSelectedIndex: number = 1;
+  tabSelectedIndex: number = 3;
 
   constructor(
     private router: Router,

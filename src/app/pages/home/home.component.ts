@@ -20,12 +20,12 @@ export class HomeComponent implements OnInit {
 
   debtAccounts = [
     {
-      creditor: 'Bank of America',
-      amount: 5664
+      creditorName: 'Bank of America',
+      currentBalance: 5664
     },
     {
-      creditor: 'Bank of America',
-      amount: 5664
+      creditorName: 'Bank of America',
+      currentBalance: 5664
     }
   ]
 

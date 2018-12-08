@@ -14,16 +14,16 @@ export class TransactionsComponent implements OnInit {
   transactionTypes = Object.keys(TransactionType).filter(x => isNaN(Number(x))).map(x => x.replace(/_/g, ' '));
   selectedType: TransactionType | string;
   transactions = [
-    new Transaction(TransactionType.DRAFT, 12345, 0),
-    new Transaction(TransactionType.DRAFT, -12345, 0),
-    new Transaction(TransactionType.DRAFT, 12345, 0),
-    new Transaction(TransactionType.DRAFT, 12345, 0),
-    new Transaction(TransactionType.DRAFT, -12345, 0),
-    new Transaction(TransactionType.DRAFT, 12345, 0),
-    new Transaction(TransactionType.DRAFT, 12345, 0),
-    new Transaction(TransactionType.DRAFT, -12345, 0),
-    new Transaction(TransactionType.DRAFT, 12345, 0),
-    new Transaction(TransactionType.DRAFT, 12345, 0),
+    new Transaction('DRAFT', 12345, 0),
+    new Transaction('DRAFT', -12345, 0),
+    new Transaction('DRAFT', 12345, 0),
+    new Transaction('DRAFT', 12345, 0),
+    new Transaction('DRAFT', -12345, 0),
+    new Transaction('DRAFT', 12345, 0),
+    new Transaction('DRAFT', 12345, 0),
+    new Transaction('DRAFT', -12345, 0),
+    new Transaction('DRAFT', 12345, 0),
+    new Transaction('DRAFT', 12345, 0),
   ]
 
   constructor(
