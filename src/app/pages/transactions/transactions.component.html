@@ -1,6 +1,6 @@
 <StackLayout>
   <!-- Filter -->
-  <CardView>
+  <ns-card-view>
     <FlexboxLayout justifyContent="space-between" ios:flexDirection="column" class="p-5">
       <SearchBar hint="Search or filter" (loaded)="onSearchBarLoaded($event)"></SearchBar>
       <StackLayout class="transaction-select">
@@ -8,10 +8,11 @@
         <DropDown hint="Type" [items]="transactionTypes" (selectedIndexChange)="selectedIndexChanged($event)" class=""></DropDown>
       </StackLayout>
     </FlexboxLayout>
-  </CardView>
+  </ns-card-view>
 
   <!-- Table -->
-  <CardView>
+  <ns-card-view>
+    <Label *ngIf="!transactions || !transactions.length" text="No transactions found"></Label>
     <ListView [items]="transactions">
       <ng-template let-transaction="item">
         <StackLayout>
@@ -32,5 +33,5 @@
         </StackLayout>
       </ng-template>
     </ListView>
-  </CardView>
+  </ns-card-view>
 </StackLayout>

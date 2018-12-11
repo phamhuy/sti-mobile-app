@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CardActionFunction } from '~/app/components/card/card.component';
 import { TabService } from '~/app/services/tab.service';
 import { MobileService } from '~/app/services/mobile.service';
+import { DebtAccountSummary } from '~/app/models/debt-account.model';
 
 @Component({
   selector: 'ns-home',
@@ -18,7 +19,7 @@ export class HomeComponent implements OnInit {
     'Paid/Completed': '$500'
   }
 
-  debtAccounts = [
+  debtAccounts: DebtAccountSummary[] = [
     {
       creditorName: 'Bank of America',
       currentBalance: 5664
@@ -39,8 +40,8 @@ export class HomeComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.mobileService.getDebtAccountSummary().subscribe(res => {
-      console.log('debts =', res);
+    this.mobileService.getDebtAccountSummary().subscribe(debtAccounts => {
+      this.debtAccounts = debtAccounts;
     }, err => {
       console.log('debt err', err);
     });

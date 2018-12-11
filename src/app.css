@@ -20,11 +20,6 @@ ActionBar {
   background-color: #12A6C0;
 }
 
-CardView {
-  background-color: white;
-  margin: 1%;
-}
-
 .title {
   padding-bottom: 5;
   margin-bottom: 10;

@@ -1,0 +1,28 @@
+<ActionBar>
+  <StackLayout orientation="horizontal" horizontalAlignment="center">
+    <Image src="res://logo" ios:height="45" android:height="80" class="title-icon"></Image>
+  </StackLayout>
+</ActionBar>
+
+<StackLayout class="t-20 p-10">
+  <!-- Title -->
+  <Label text="Contact Us" class="title m-t-10"></Label>
+
+  <!-- Phone -->
+  <ns-card-view>
+    <Label text="Telephone" class="title m-b-15"></Label>
+    <Label text="Speak to a representative:"></Label>
+    <Label text="1-844-417-8546"></Label>
+  </ns-card-view>
+
+  <!-- Mailing -->
+  <ns-card-view>
+    <FlexboxLayout flexDirection="column">
+      <Label text="Mailing Address" class="title m-b-15"></Label>
+      <Label text="Settle It, Inc."></Label>
+      <Label text="One City Blvd West"></Label>
+      <Label text="Suite 900"></Label>
+      <Label text="Orange, CA 92868"></Label>
+    </FlexboxLayout>
+  </ns-card-view>
+</StackLayout>

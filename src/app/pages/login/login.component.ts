@@ -31,21 +31,23 @@ export class LoginComponent implements OnInit {
       this.router.navigate(['/main'], { clearHistory: true });
     }
     this.isLoggingIn = false;
+    // this.logIn();
   }
 
   logIn() {
     this.isLoggingIn = true;
     // this.phoneNumber = '9495551234';
     // this.lastFourSSN = '6035'; // account 154
-    this.phoneNumber = '9492231000';
-    this.lastFourSSN = '7961'; // account 66
+    // this.phoneNumber = '9492231000';
+    // this.lastFourSSN = '7961'; // account 66
 
     // Check if user exist in sti
     this.authService.checkStiAccount(this.phoneNumber, this.lastFourSSN).subscribe(
       this.firebaseLogIn.bind(this),
       err => {
+        console.log('err huy =', err.stack);
         this.dialogService.alert('Server Error!', `Unable to connect to the server ${API_URL}!`);
-        this.firebaseLogIn({ exist: true }); // Remove this line in production
+        // this.firebaseLogIn({ exist: true }); // Remove this line in production
       });
   }
 
@@ -53,7 +55,7 @@ export class LoginComponent implements OnInit {
     if (checkAccountResponse.exist) {
       this.authService.logIn(this.phoneNumber, 'The received verification code').then(
         (res: User) => {
-          if (true || res.additionalUserInfo && res.additionalUserInfo.isNewUser) {
+          if (res.additionalUserInfo && res.additionalUserInfo.isNewUser) {
             this.authService.registerMobileAccount(this.phoneNumber).subscribe((res: RegisterResponse) => {
               if (res.success) {
                 this.dialogService.alert('Register', 'Register Successfully');

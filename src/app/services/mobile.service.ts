@@ -15,15 +15,15 @@ export class MobileService {
   ) { }
 
   getDebtAccountSummary(): Observable<DebtAccountSummary[]> {
-    return this.http.post<DebtAccountSummary[]>(`${API_URL}/getDebtAccountSummary`, null);
+    return this.http.get<DebtAccountSummary[]>(`${API_URL}/getDebtAccountSummary`);
   }
 
   getMobileTransactionList(): Observable<TransactionList> {
-    return this.http.post<TransactionList>(`${API_URL}/getMobileTransactionList`, null);
+    return this.http.get<TransactionList>(`${API_URL}/getMobileTransactionList`);
   }
 
   getDebtAccountDetails(): Observable<DebtAccountDetails[]> {
-    return this.http.post<DebtAccountDetails[]>(`${API_URL}/getDebtAccountDetails`, null);
+    return this.http.get<DebtAccountDetails[]>(`${API_URL}/getDebtAccountDetails`);
   }
 
 }

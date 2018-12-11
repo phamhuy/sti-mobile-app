@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {
-  HttpEvent, HttpInterceptor, HttpHandler, HttpRequest
+  HttpEvent, HttpInterceptor, HttpHandler, HttpRequest, HttpHeaders
 } from '@angular/common/http';
 
 import { Observable } from 'rxjs';
@@ -16,10 +16,12 @@ export class MobileInterceptor implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     req = req.clone({
       body: {
-        fireBaseID: this.authService.cachedIDToken,
         phoneNumber: req.body ? req.body.phoneNumber : null,
         lastFourSSN: req.body ? req.body.lastFourSSN : null
-      }
+      },
+      headers: new HttpHeaders({
+        fireBaseID: this.authService.cachedIDToken || '',
+      })
     });
     return next.handle(req);
   }

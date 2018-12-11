@@ -2,7 +2,7 @@
   <ns-card title="Account Summary" [content]="accountSummary" class="medium-font"></ns-card>
 
   <!-- Debt Accounts Summary -->
-  <CardView>
+  <ns-card-view>
     <StackLayout class="card">
       <!-- Title -->
       <Label text="Debt Accounts" class="title"></Label>
@@ -10,6 +10,7 @@
       <!-- Content -->
       <ScrollView>
         <StackLayout>
+          <Label *ngIf="!debtAccounts || !debtAccounts.length" text="No debt account found"></Label>
           <StackLayout *ngFor="let debtAccount of debtAccounts" class="medium-font" (tap)="showDebtDetails()">
             <!-- Creditor -->
             <FlexboxLayout justifyContent="space-between">
@@ -41,5 +42,5 @@
       <Button class="btn" shadow="3" text="Show All Debt Accounts" (tap)="goToDebts()" backgroundColor="#12A6C0"
         bgcolor="#12A6C0" color="white"></Button>
     </StackLayout>
-  </CardView>
+  </ns-card-view>
 </FlexboxLayout>

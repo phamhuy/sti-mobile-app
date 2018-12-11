@@ -6,7 +6,6 @@
   <ScrollView>
     <StackLayout>
       <StackLayout shadow="3" *ngFor="let debtAccount of debtAccounts" class="m-b-5 m-5">
-        <!-- <CardView> -->
         <StackLayout ios:backgroundColor="white" class="medium-font p-15">
           <!-- Creditor -->
           <FlexboxLayout justifyContent="space-between" class="m-5">
@@ -87,7 +86,6 @@
           <StackLayout class="hr-light m-10"></StackLayout>
           <Button [text]="debtAccount.expanded ? 'Hide Details' : 'Show Details'" (tap)="debtAccount.expanded = !debtAccount.expanded"></Button>
         </StackLayout>
-        <!-- </CardView> -->
       </StackLayout>
     </StackLayout>
   </ScrollView>

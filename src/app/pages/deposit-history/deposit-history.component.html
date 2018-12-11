@@ -1,5 +1,6 @@
 <StackLayout class="page">
   <Label class="title large-font" text="Deposit History" textAlignment="center"></Label>
+  <Label *ngIf="!deposits || !deposits.length" text="No deposits found"></Label>
   <ListView [items]="deposits" shadow="3">
     <ng-template let-deposit="item">
       <GrideLayout rows="50, 50" , columns="50, 50">
