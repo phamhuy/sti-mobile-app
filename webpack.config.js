@@ -14,8 +14,6 @@ const { environment: prodEnv } = require('./src/environments/environment.prod');
 const { environment: devEnv } = require('./src/environments/environment');
 
 module.exports = env => {
-    const API_URL = env && env.prod ? prodEnv.baseUrl : devEnv.baseUrl;
-
     // Add your custom Activities, Services and other Android app components here.
     const appComponents = [
         "tns-core-modules/ui/frame",
@@ -26,6 +24,8 @@ module.exports = env => {
     if (!platform) {
         throw new Error("You need to provide a target platform!");
     }
+
+    const API_URL = env && env.prod ? prodEnv.baseUrl : (platform === "android" ? devEnv.androidBaseUrl : devEnv.iosBaseUrl);
 
     const projectRoot = __dirname;
 

@@ -9,7 +9,7 @@ declare var API_URL;
   providedIn: 'root'
 })
 export class AuthService {
-  isLoggedIn: boolean// = !isAndroid;
+  isLoggedIn: boolean = !isAndroid;
   redirectUrl: string;
   cachedIDToken: string;
 

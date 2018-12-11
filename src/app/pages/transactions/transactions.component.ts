@@ -36,7 +36,8 @@ export class TransactionsComponent implements OnInit {
         this.transactions = res.transactionList;
       }
     }, err => {
-      console.log('can\'t get transactions.', err);
+      console.log('can\'t get transactions');
+      console.log('err =', err);
     })
   }
 

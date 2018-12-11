@@ -46,6 +46,7 @@ export class LoginComponent implements OnInit {
       this.firebaseLogIn.bind(this),
       err => {
         this.dialogService.alert('Server Error!', `Unable to connect to the server ${API_URL}!`);
+        this.isLoggingIn = false;
         // this.firebaseLogIn({ exist: true }); // Remove this line in production
       });
   }
