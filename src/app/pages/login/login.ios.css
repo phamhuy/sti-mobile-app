@@ -1,10 +1,18 @@
 TextField {
-  margin: 5 0;
-  border-color: white;
+  margin: 15 0;
+  border-bottom-color: white;
+  border-bottom-width: 1;
+  padding: 5 0;
 }
 
-Button {
+.login-btn {
   color: white;
   border-width: 2;
   border-color: white;
+  margin-top: 5;
+}
+
+.login-btn:disabled {
+  color: #DDDDDD;
+  border-color: #DDDDDD;
 }

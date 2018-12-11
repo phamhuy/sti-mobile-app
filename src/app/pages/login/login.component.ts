@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
     // this.logIn();
   }
 
-  logIn() {
+  login() {
     this.isLoggingIn = true;
     // this.phoneNumber = '9495551234';
     // this.lastFourSSN = '6035'; // account 154
@@ -45,7 +45,6 @@ export class LoginComponent implements OnInit {
     this.authService.checkStiAccount(this.phoneNumber, this.lastFourSSN).subscribe(
       this.firebaseLogIn.bind(this),
       err => {
-        console.log('err huy =', err.stack);
         this.dialogService.alert('Server Error!', `Unable to connect to the server ${API_URL}!`);
         // this.firebaseLogIn({ exist: true }); // Remove this line in production
       });
@@ -53,7 +52,7 @@ export class LoginComponent implements OnInit {
 
   firebaseLogIn(checkAccountResponse: CheckAccountResponse) {
     if (checkAccountResponse.exist) {
-      this.authService.logIn(this.phoneNumber, 'The received verification code').then(
+      this.authService.login(this.phoneNumber, 'The received verification code').then(
         (res: User) => {
           if (res.additionalUserInfo && res.additionalUserInfo.isNewUser) {
             this.authService.registerMobileAccount(this.phoneNumber).subscribe((res: RegisterResponse) => {

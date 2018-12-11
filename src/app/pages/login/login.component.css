@@ -17,7 +17,7 @@ TextField {
   font-size: 25;
 }
 
-Button {
+.login-btn {
   border-radius: 20 20 20 20;
   font-size: 30;
   font-weight: 600;

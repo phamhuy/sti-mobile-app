@@ -9,7 +9,7 @@ declare var API_URL;
   providedIn: 'root'
 })
 export class AuthService {
-  isLoggedIn: boolean = !isAndroid;
+  isLoggedIn: boolean// = !isAndroid;
   redirectUrl: string;
   cachedIDToken: string;
 
@@ -17,14 +17,7 @@ export class AuthService {
     private http: HttpClient
   ) { }
 
-  logIn(phoneNumber: string, verificationPrompt: string): Promise<any> {
-    // For testing ios only, remove in production
-    if (!isAndroid) {
-      this.isLoggedIn = true;
-      return Promise.resolve(true);
-    }
-    // For testing ios only, remove in production
-
+  login(phoneNumber: string, verificationPrompt: string): Promise<any> {
     return firebase.login({
       type: firebase.LoginType.PHONE,
       phoneOptions: {

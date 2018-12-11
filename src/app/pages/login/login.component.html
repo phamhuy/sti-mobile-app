@@ -10,7 +10,13 @@
     <TextField hint="Last 4 SSN digits" secure="true" [(ngModel)]="lastFourSSN" keyboardType="number" class="m-b-20"></TextField>
 
     <!-- Login Button -->
-    <Button text="Sign In" [isEnabled]="!isLoggingIn && phoneNumber.length == 10" (tap)="logIn()"></Button>
+    <Button text="Sign In" [isEnabled]="!isLoggingIn && phoneNumber.length == 10" (tap)="login()" class="login-btn"></Button>
+
+    <!-- Contact Us -->
+    <StackLayout class="m-10">
+      <Button *sdkIfIos text="Contact Us" [nsRouterLink]="['/contact-us']"></Button>
+      <Label *sdkIfAndroid text="Contact Us" [nsRouterLink]="['/contact-us']" color="#007BFF" textAlignment="center"></Label>
+    </StackLayout>
 
     <!-- Spinner -->
     <ActivityIndicator rowSpan="3" [busy]="isLoggingIn" class="m-t-5"></ActivityIndicator>
