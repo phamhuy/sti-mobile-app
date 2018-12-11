@@ -8,7 +8,7 @@ export class DialogService {
 
   constructor() { }
 
-  alert(title: string, message: string, okButtonText: string = 'OK') {
+  alert(title: string, message: string = ' ', okButtonText: string = 'OK') {
     let options: AlertOptions = {
       title: title,
       message: message,

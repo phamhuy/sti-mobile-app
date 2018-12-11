@@ -8,5 +8,5 @@ export const environment = {
     storageBucket: 'sti-mobile-app-test.appspot.com',
     messagingSenderId: '422739635229'
   },
-  baseUrl: 'https://app-sti-mobile-sti.objectbrains.com/rest/settleitRestController'
+  baseUrl: 'https://app-sti2-mobile-sti.objectbrains.com/rest/settleitRestController'
 }

@@ -2,7 +2,7 @@
   <!-- Filter -->
   <CardView>
     <FlexboxLayout justifyContent="space-between" ios:flexDirection="column" class="p-5">
-      <SearchBar hint="Search or filter" [text]="searchResult" (loaded)="onSearchBarLoaded($event)"></SearchBar>
+      <SearchBar hint="Search or filter" (loaded)="onSearchBarLoaded($event)"></SearchBar>
       <StackLayout class="transaction-select">
         <Label *ngIf="selectedType" text="Type" class="transaction-type-label t-10"></Label>
         <DropDown hint="Type" [items]="transactionTypes" (selectedIndexChange)="selectedIndexChanged($event)" class=""></DropDown>

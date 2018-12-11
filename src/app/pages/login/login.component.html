@@ -2,11 +2,12 @@
   <Image src="res://logo"></Image>
 
   <StackLayout class="form">
+    <Label [text]="base_url"></Label>
     <!-- Phone Input -->
     <TextField hint="Phone Number" [(ngModel)]="phoneNumber" keyboardType="phone"></TextField>
 
     <!-- SSN Input -->
-    <TextField hint="Last 4 SSN digits" secure="true" [(ngModel)]="ssn" keyboardType="number" class="m-b-20"></TextField>
+    <TextField hint="Last 4 SSN digits" secure="true" [(ngModel)]="lastFourSSN" keyboardType="number" class="m-b-20"></TextField>
 
     <!-- Login Button -->
     <Button text="Sign In" [isEnabled]="!isLoggingIn && phoneNumber.length == 10" (tap)="logIn()"></Button>

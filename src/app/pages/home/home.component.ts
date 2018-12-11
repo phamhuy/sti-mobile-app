@@ -39,6 +39,11 @@ export class HomeComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.mobileService.getDebtAccountSummary().subscribe(res => {
+      console.log('debts =', res);
+    }, err => {
+      console.log('debt err', err);
+    });
   }
 
   goToDebts() {

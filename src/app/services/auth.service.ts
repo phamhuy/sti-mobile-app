@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import * as firebase from 'nativescript-plugin-firebase';
 import { isAndroid } from "tns-core-modules/platform";
-import { environment } from '~/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+declare var API_URL;
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +12,6 @@ export class AuthService {
   isLoggedIn: boolean = !isAndroid;
   redirectUrl: string;
   cachedIDToken: string;
-  baseUrl: string = environment.baseUrl;
 
   constructor(
     private http: HttpClient
@@ -25,7 +24,6 @@ export class AuthService {
       return Promise.resolve(true);
     }
     // For testing ios only, remove in production
-    console.log('phoneNumber =', phoneNumber);
 
     return firebase.login({
       type: firebase.LoginType.PHONE,
@@ -38,7 +36,6 @@ export class AuthService {
         this.isLoggedIn = true;
         this.cachedIDToken = await this.getIDToken();
         console.log('id token =', this.cachedIDToken);
-        console.log('cachedIdToken =', this.cachedIDToken);
         return res;
       },
       err => {
@@ -58,12 +55,11 @@ export class AuthService {
   }
 
   checkStiAccount(phoneNumber: string, lastFourSSN: string): Observable<any> {
-    console.log('phone =', phoneNumber, lastFourSSN);
-    return this.http.post<any>(`${this.baseUrl}/MobileAccountCheck`, { phoneNumber: phoneNumber, lastFourSSN: lastFourSSN });
+    return this.http.post<any>(`${API_URL}/MobileAccountCheck`, { phoneNumber: phoneNumber, lastFourSSN: lastFourSSN });
   }
 
   registerMobileAccount(phoneNumber: string) {
-    return this.http.post<any>(`${this.baseUrl}/RegisterMobileAccount`, { phoneNumber: phoneNumber, fireBaseID: this.cachedIDToken });
+    return this.http.post<any>(`${API_URL}/RegisterMobileAccount`, { phoneNumber: phoneNumber, fireBaseID: this.cachedIDToken });
   }
 
   signOut() {

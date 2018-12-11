@@ -36,12 +36,12 @@
     "zone.js": "^0.8.26"
   },
   "devDependencies": {
-    "@nativescript/schematics": "~0.4.0",
-    "nativescript-dev-typescript": "~0.7.0",
-    "nativescript-dev-webpack": "~0.18.0",
-    "typescript": "^3.1.6",
     "@angular/compiler-cli": "~7.0.0",
-    "@ngtools/webpack": "~7.0.0"
+    "@nativescript/schematics": "~0.4.0",
+    "@ngtools/webpack": "~7.0.0",
+    "nativescript-dev-typescript": "~0.7.0",
+    "nativescript-dev-webpack": "^0.18.2",
+    "typescript": "3.1.6"
   },
   "readme": "NativeScript Application"
 }
