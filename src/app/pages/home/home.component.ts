@@ -45,7 +45,7 @@ export class HomeComponent implements OnInit {
       if (debtAccounts && debtAccounts.length)
         this.debtAccounts = debtAccounts;
     }, err => {
-      console.log('debt err', err);
+      console.log('Can\'t get debt account summary');
     });
   }
 

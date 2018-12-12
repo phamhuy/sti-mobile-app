@@ -5,6 +5,7 @@ import { User } from 'nativescript-plugin-firebase';
 import { CheckAccountResponse } from '~/app/models/check-account-response.model';
 import { RegisterResponse } from '~/app/models/register-response.model';
 import { DialogService } from '~/app/services/dialog.service';
+import { Page } from 'tns-core-modules/ui/page/page';
 declare var API_URL;
 
 @Component({
@@ -17,15 +18,17 @@ export class LoginComponent implements OnInit {
   isLoggingIn: boolean;
   phoneNumber: string = '';
   lastFourSSN: string;
-  // base_url = API_URL;
+  base_url = API_URL;
 
   constructor(
     private router: RouterExtensions,
     private authService: AuthService,
     private dialogService: DialogService,
+    private page: Page
   ) { }
 
   ngOnInit() {
+    this.page.actionBarHidden = true;
     this.isLoggingIn = true;
     if (this.authService.isLoggedIn) {
       this.router.navigate(['/main'], { clearHistory: true });
