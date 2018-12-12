@@ -15,7 +15,7 @@ import { ContactUsComponent } from './pages/contact-us/contact-us.component';
 const routes: Routes = [
     {
         path: '',
-        redirectTo: 'login',
+        redirectTo: 'main',
         pathMatch: 'full'
     },
     {

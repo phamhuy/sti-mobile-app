@@ -84,7 +84,8 @@
 
           <!-- Show/Hide Details Button -->
           <StackLayout class="hr-light m-10"></StackLayout>
-          <Button [text]="debtAccount.expanded ? 'Hide Details' : 'Show Details'" (tap)="debtAccount.expanded = !debtAccount.expanded"></Button>
+          <Label *sdkIfAndroid [text]="debtAccount.expanded ? 'expand_less' : 'expand_more'" (tap)="debtAccount.expanded = !debtAccount.expanded" class="material-icon expand"></Label>
+          <Button *sdkIfIos [text]="debtAccount.expanded ? 'expand_less' : 'expand_more'" (tap)="debtAccount.expanded = !debtAccount.expanded" class="material-icon expand"></Button>
         </StackLayout>
       </StackLayout>
     </StackLayout>

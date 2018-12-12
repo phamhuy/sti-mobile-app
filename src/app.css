@@ -50,3 +50,7 @@ ActionBar {
 .test {
   background-color: red;
 }
+
+.material-icon {
+  font-family: 'Material Icons', 'MaterialIcons-Regular';
+}
