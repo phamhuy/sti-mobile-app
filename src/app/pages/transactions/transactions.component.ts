@@ -37,7 +37,7 @@ export class TransactionsComponent implements OnInit {
       }
     }, err => {
       console.log('can\'t get transactions');
-      console.log('err =', err);
+      // console.log('err =', err);
     })
   }
 

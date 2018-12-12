@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
   isLoggingIn: boolean;
   phoneNumber: string = '';
   lastFourSSN: string;
-  base_url = API_URL;
+  // base_url = API_URL;
 
   constructor(
     private router: RouterExtensions,

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterExtensions } from 'nativescript-angular/router';
+import { dial } from 'nativescript-phone';
 
 @Component({
   selector: 'ns-contact-us',
@@ -8,6 +9,7 @@ import { RouterExtensions } from 'nativescript-angular/router';
   moduleId: module.id,
 })
 export class ContactUsComponent implements OnInit {
+  phoneNumber = '844-417-8546'
 
   constructor(
     private router: RouterExtensions
@@ -18,6 +20,10 @@ export class ContactUsComponent implements OnInit {
 
   goBack() {
     this.router.backToPreviousPage();
+  }
+
+  dial() {
+    dial(this.phoneNumber, true);
   }
 
 }

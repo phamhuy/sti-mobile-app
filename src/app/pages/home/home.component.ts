@@ -19,6 +19,7 @@ export class HomeComponent implements OnInit {
     'Paid/Completed': '$500'
   }
 
+
   debtAccounts: DebtAccountSummary[] = [
     {
       creditorName: 'Bank of America',
@@ -41,7 +42,8 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.mobileService.getDebtAccountSummary().subscribe(debtAccounts => {
-      this.debtAccounts = debtAccounts;
+      if (debtAccounts && debtAccounts.length)
+        this.debtAccounts = debtAccounts;
     }, err => {
       console.log('debt err', err);
     });

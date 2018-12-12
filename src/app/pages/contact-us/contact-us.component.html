@@ -13,7 +13,8 @@
   <ns-card-view>
     <Label text="Telephone" class="title m-b-15"></Label>
     <Label text="Speak to a representative:"></Label>
-    <Label text="1-844-417-8546"></Label>
+    <Label *sdkIfAndroid text="1-{{phoneNumber}}" class="t-30" color="#12A6C0" (tap)="dial()"></Label>
+    <Button *sdkIfIos text="1-{{phoneNumber}}" class="t-30" (tap)="dial()"></Button>
   </ns-card-view>
 
   <!-- Mailing -->

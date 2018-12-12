@@ -1,3 +1,9 @@
 <StackLayout>
   <Button class="btn btn-primary" text="Sign Out" (tap)="signOut()"></Button>
+
+  <!-- Contact Us -->
+  <StackLayout class="m-10">
+    <Button *sdkIfIos text="Contact Us" [nsRouterLink]="['/contact-us']"></Button>
+    <Label *sdkIfAndroid text="Contact Us" [nsRouterLink]="['/contact-us']" color="#007BFF" textAlignment="center"></Label>
+  </StackLayout>
 </StackLayout>
