@@ -47,6 +47,12 @@ export class HomeComponent implements OnInit {
     }, err => {
       console.log('Can\'t get debt account summary');
     });
+
+    this.mobileService.getAccountSummary().subscribe(accountSummary => {
+      console.log('account summary =', accountSummary);
+    }, err => {
+      console.log('Can\'t get account summary');
+    });
   }
 
   goToDebts() {

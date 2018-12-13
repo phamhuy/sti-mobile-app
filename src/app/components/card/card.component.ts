@@ -27,10 +27,6 @@ export class CardComponent implements OnInit {
     return this.actions ? Object.keys(this.actions) : [];
   }
 
-  onTap() {
-    console.log('tapping');
-  }
-
 }
 
 export class CardActionFunction {

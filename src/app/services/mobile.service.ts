@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { DebtAccountSummary, DebtAccountDetails } from '../models/debt-account.model';
 import { TransactionList } from '../models/transaction.model';
+import { AccountSummary } from '../models/account-summary.model';
 declare var API_URL;
 
 @Injectable({
@@ -13,6 +14,10 @@ export class MobileService {
   constructor(
     private http: HttpClient,
   ) { }
+
+  getAccountSummary(): Observable<AccountSummary> {
+    return this.http.get<AccountSummary>(`${API_URL}/getAccountSummary`);
+  }
 
   getDebtAccountSummary(): Observable<DebtAccountSummary[]> {
     return this.http.get<DebtAccountSummary[]>(`${API_URL}/getDebtAccountSummary`);

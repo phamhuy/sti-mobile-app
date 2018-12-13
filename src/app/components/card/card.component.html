@@ -6,7 +6,7 @@
 
     <!-- Content -->
     <StackLayout *ngFor="let key of keys; let i = index">
-      <FlexboxLayout justifyContent="space-between" (tap)="onTap()">
+      <FlexboxLayout justifyContent="space-between">
         <Label [text]="key + ':'" class="key"></Label>
         <Label>
           <FormattedString>
