@@ -3,44 +3,42 @@
 
   <!-- Debt Accounts Summary -->
   <ns-card-view>
-    <StackLayout class="card">
-      <!-- Title -->
-      <Label text="Debt Accounts" class="title"></Label>
+    <!-- Title -->
+    <Label text="Debt Accounts" class="title"></Label>
 
-      <!-- Content -->
-      <ScrollView>
-        <StackLayout>
-          <Label *ngIf="!debtAccounts || !debtAccounts.length" text="No debt account found"></Label>
-          <StackLayout *ngFor="let debtAccount of debtAccounts" class="medium-font" (tap)="showDebtDetails()">
-            <!-- Creditor -->
-            <FlexboxLayout justifyContent="space-between">
-              <Label text="Creditor:"></Label>
-              <Label>
-                <FormattedString>
-                  <Span [text]="debtAccount.creditorName" fontWeight="Bold"></Span>
-                </FormattedString>
-              </Label>
-            </FlexboxLayout>
+    <!-- Content -->
+    <ScrollView>
+      <StackLayout>
+        <Label *ngIf="!debtAccounts || !debtAccounts.length" text="No debt account found"></Label>
+        <StackLayout *ngFor="let debtAccount of debtAccounts" class="medium-font" (tap)="showDebtDetails()">
+          <!-- Creditor -->
+          <FlexboxLayout justifyContent="space-between">
+            <Label text="Creditor:"></Label>
+            <Label>
+              <FormattedString>
+                <Span [text]="debtAccount.creditorName" fontWeight="Bold"></Span>
+              </FormattedString>
+            </Label>
+          </FlexboxLayout>
 
-            <!-- Amount -->
-            <FlexboxLayout justifyContent="space-between">
-              <Label text="Amount:"></Label>
-              <Label>
-                <FormattedString>
-                  <Span [text]="debtAccount.currentBalance | currency" fontWeight="Bold"></Span>
-                </FormattedString>
-              </Label>
-            </FlexboxLayout>
+          <!-- Amount -->
+          <FlexboxLayout justifyContent="space-between">
+            <Label text="Amount:"></Label>
+            <Label>
+              <FormattedString>
+                <Span [text]="debtAccount.currentBalance | currency" fontWeight="Bold"></Span>
+              </FormattedString>
+            </Label>
+          </FlexboxLayout>
 
-            <!-- Divider -->
-            <StackLayout class="hr-light m-10"></StackLayout>
-          </StackLayout>
+          <!-- Divider -->
+          <StackLayout class="hr-light m-10"></StackLayout>
         </StackLayout>
-      </ScrollView>
+      </StackLayout>
+    </ScrollView>
 
-      <!-- Show All Debt Accounts Button -->
-      <Button class="btn" shadow="3" text="Show All Debt Accounts >>" (tap)="goToDebts()" backgroundColor="#12A6C0"
-        bgcolor="#12A6C0" color="white"></Button>
-    </StackLayout>
+    <!-- Show All Debt Accounts Button -->
+    <Button shadow="3" text="Show All Debt Accounts" (tap)="goToDebts()" backgroundColor="#12A6C0" bgcolor="#12A6C0"
+      color="white"></Button>
   </ns-card-view>
 </FlexboxLayout>
