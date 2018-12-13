@@ -3,6 +3,11 @@
     <StackLayout orientation="horizontal" horizontalAlignment="center">
       <Image src="res://logo" ios:height="45" android:height="80" class="title-icon"></Image>
     </StackLayout>
+    <ActionItem ios.position="right" android.systemIcon="ic_account_circle" (tap)="goToProfile()">
+      <Button *sdkIfIos text="account_circle" class="profile-icon" color="white"></Button>
+      <!-- <Image *src="res://logo" ios:height="45" android:height="80" class="title-icon"></Image> -->
+      <!-- <Label text="Profile" class="profile-text"></Label> -->
+    </ActionItem>
   </ActionBar>
   <TabView [(ngModel)]="tabSelectedIndex" androidSelectedTabHighlightColor="#12A6C0" selectedTabTextColor="#12A6C0">
     <StackLayout *tabItem="{title: 'Home', iconSource: getIconSource('icon_home_24')}" class="tab">
@@ -21,8 +26,8 @@
       <router-outlet name="debtsTab"></router-outlet>
     </StackLayout>
 
-    <StackLayout *tabItem="{title: 'Profile', iconSource: getIconSource('icon_profile_24')}" class="tab">
-      <router-outlet name="profileTab"></router-outlet>
+    <StackLayout *tabItem="{title: 'Notifications', iconSource: getIconSource('icon_notification_24')}" class="tab">
+      <router-outlet name="notificationsTab"></router-outlet>
     </StackLayout>
   </TabView>
 </StackLayout>

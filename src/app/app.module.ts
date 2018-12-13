@@ -23,6 +23,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MobileInterceptor } from './services/mobile-interceptor';
 import { ContactUsComponent } from './pages/contact-us/contact-us.component';
 import { CardViewComponent } from './components/card-view/card-view.component';
+import { NotificationsComponent } from './pages/notifications/notifications.component';
 
 @NgModule({
     bootstrap: [
@@ -52,7 +53,8 @@ import { CardViewComponent } from './components/card-view/card-view.component';
         MainComponent,
         CardComponent,
         ContactUsComponent,
-        CardViewComponent
+        CardViewComponent,
+        NotificationsComponent
     ],
     schemas: [
         NO_ERRORS_SCHEMA

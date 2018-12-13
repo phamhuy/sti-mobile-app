@@ -8,3 +8,12 @@
 .tab {
   padding: 5;
 }
+
+.profile-icon {
+  font-family: 'Material Icons', 'MaterialIcons-Regular';
+  font-size: 24;
+}
+
+/* .profile-text {
+  font-size: 7;
+} */

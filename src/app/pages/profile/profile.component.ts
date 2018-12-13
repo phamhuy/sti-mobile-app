@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { AuthService } from '~/app/services/auth.service';
 import { RouterExtensions } from 'nativescript-angular/router';
 import { DialogService } from '~/app/services/dialog.service';
+import { Page } from 'tns-core-modules/ui/page/page';
 
 @Component({
   selector: 'ns-profile',
@@ -14,10 +15,12 @@ export class ProfileComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private router: RouterExtensions,
-    private dialogService: DialogService
+    private dialogService: DialogService,
+    private page: Page
   ) { }
 
   ngOnInit() {
+    this.page.actionBarHidden = false;
   }
 
   signOut() {
@@ -30,6 +33,12 @@ export class ProfileComponent implements OnInit {
         }
       }
     )
+  }
+
+  goBack() {
+    console.log('going back');
+    this.page.actionBarHidden = true;
+    this.router.navigate(['/main', { outlets: { homeTab: 'home' } }])
   }
 
 }

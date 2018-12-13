@@ -1,3 +1,13 @@
+<ActionBar android:title="">
+  <StackLayout orientation="horizontal" horizontalAlignment="center">
+    <Image src="res://logo" ios:height="45" android:height="80" class="title-icon"></Image>
+  </StackLayout>
+  <NavigationButton android.systemIcon="ic_menu_back" text="hi" (tap)="goBack()"></NavigationButton>
+  <ActionItem *sdkIfIos ios.position="left">
+    <Button text="arrow_back_ios" class="material-icon" (tap)="goBack()"></Button>
+  </ActionItem>
+</ActionBar>
+
 <StackLayout>
   <Button class="btn btn-primary" text="Sign Out" (tap)="signOut()"></Button>
 

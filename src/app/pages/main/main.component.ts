@@ -23,7 +23,7 @@ export class MainComponent implements OnInit {
         transactionsTab: 'transactions',
         scanTab: 'scan',
         debtsTab: 'debts',
-        profileTab: 'profile'
+        notificationsTab: 'notifications'
       }
     }]);
   }
@@ -38,6 +38,10 @@ export class MainComponent implements OnInit {
     const iconPrefix = isAndroid ? "res://" : "res://tabIcons/";
 
     return iconPrefix + icon;
+  }
+
+  goToProfile() {
+    this.router.navigate(['/main', { outlets: { homeTab: 'profile' } }])
   }
 
 }

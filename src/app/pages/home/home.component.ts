@@ -41,6 +41,7 @@ export class HomeComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    console.log('home init');
     this.mobileService.getDebtAccountSummary().subscribe(debtAccounts => {
       if (debtAccounts && debtAccounts.length)
         this.debtAccounts = debtAccounts;

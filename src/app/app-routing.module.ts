@@ -11,6 +11,7 @@ import { MainComponent } from './pages/main/main.component';
 import { MakeDepositComponent } from './pages/make-deposit/make-deposit.component';
 import { AuthGuard } from './services/auth.guard';
 import { ContactUsComponent } from './pages/contact-us/contact-us.component';
+import { NotificationsComponent } from './pages/notifications/notifications.component';
 
 const routes: Routes = [
     {
@@ -57,9 +58,14 @@ const routes: Routes = [
                 outlet: 'debtsTab'
             },
             {
+                path: 'notifications',
+                component: NotificationsComponent,
+                outlet: 'notificationsTab'
+            },
+            {
                 path: 'profile',
                 component: ProfileComponent,
-                outlet: 'profileTab'
+                outlet: 'homeTab'
             }
         ]
     },
