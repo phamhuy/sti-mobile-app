@@ -13,8 +13,14 @@
   <ns-card-view>
     <Label text="Telephone" class="title m-b-15"></Label>
     <Label text="Speak to a representative:"></Label>
-    <Label *sdkIfAndroid text="1-{{phoneNumber}}" class="t-30" color="#12A6C0" (tap)="dial()"></Label>
-    <Button *sdkIfIos text="1-{{phoneNumber}}" class="t-30" (tap)="dial()"></Button>
+      <Label *sdkIfAndroid class="t-30" color="#12A6C0" (tap)="dial()">
+        <Span text="call" class="mat-icon"></Span>
+        <Span text="1-{{phoneNumber}}"></Span>
+      </Label>
+    <Button *sdkIfIos class="t-30" (tap)="dial()">
+      <Span text="call" class="mat-icon"></Span>
+      <Span text="1-{{phoneNumber}}"></Span>
+    </Button>
   </ns-card-view>
 
   <!-- Mailing -->
