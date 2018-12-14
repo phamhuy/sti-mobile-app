@@ -49,7 +49,7 @@ export class TransactionsComponent implements OnInit {
   onSearchBarLoaded(event) {
     setTimeout(() => {
       event.object.dismissSoftInput();
-    }, 500);
+    }, 700);
   }
 
 }

@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { isAndroid } from "tns-core-modules/platform";
-import { Router, ActivatedRoute, ActivatedRouteSnapshot } from '@angular/router';
+import { isAndroid, isIOS } from 'tns-core-modules/platform';
+import { Router, ActivatedRoute } from '@angular/router';
 import { TabService } from '~/app/services/tab.service';
 import { SelectedIndexChangedEventData } from 'nativescript-drop-down';
+import { EventData, ContentView, Color, Page } from 'tns-core-modules/ui/page/page';
+import { Label } from 'tns-core-modules/ui/label';
 
 @Component({
   selector: 'ns-main',
@@ -32,7 +34,8 @@ export class MainComponent implements OnInit {
   constructor(
     private router: Router,
     private tabService: TabService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private page: Page
   ) {
     this.router.navigate(['/main', {
       outlets: {
@@ -67,12 +70,55 @@ export class MainComponent implements OnInit {
   }
 
   getIconSource(icon: string): string {
-    const iconPrefix = isAndroid ? "res://" : "res://tabIcons/";
+    const iconPrefix = isAndroid ? 'res://' : 'res://tabIcons/';
 
     return iconPrefix + icon;
   }
 
   onSelectedIndexChanged(event: SelectedIndexChangedEventData) {
+  }
+
+  onTabViewLoaded(event: EventData) {
+    const tabView = <any>event.object;
+    const notifIndex = 4;
+    const count = 1 - 0;
+
+    if (isIOS && count) {
+      const notifView = tabView.ios.tabBar.items[notifIndex];
+      notifView.badgeValue = count.toString();
+    }
+
+    if (isAndroid && count) {
+      const nativeTabView = tabView._tabLayout.getChildAt(0);
+      const notifView = nativeTabView.getChildAt(notifIndex);
+
+      // Create badge label
+      const label = new Label();
+      label.text = count.toString();
+      label.fontSize = 12;
+      label.verticalAlignment = 'middle';
+      label.horizontalAlignment = 'center';
+      label.color = new Color('white');
+
+      // Create badge view container
+      const badgeView = new ContentView();
+      badgeView.backgroundColor = 'red';
+      badgeView.width = 20;
+      badgeView.height = 20;
+      badgeView.borderColor = 'red';
+      badgeView.borderRadius = 15;
+      badgeView.marginTop = -40;
+      badgeView.marginRight = -17;
+
+      // Add the badge label to badge view container
+      badgeView.content = label;
+      (<any>badgeView)._inheritStyleScope((<any>tabView)._styleScope);
+      badgeView._setupUI(tabView._context);
+      badgeView.onLoaded();
+
+      // Add the badge view container to the notifView
+      notifView.addView(badgeView.nativeView);
+    }
   }
 
   goToProfile() {

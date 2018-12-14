@@ -18,25 +18,25 @@
   </ActionBar>
 
   <!-- Tab View -->
-  <TabView [(ngModel)]="selectedTabIndex" (selectedIndexChanged)="onSelectedIndexChanged($event)"
+  <TabView [(ngModel)]="selectedTabIndex" (loaded)="onTabViewLoaded($event)" (selectedIndexChanged)="onSelectedIndexChanged($event)"
     androidSelectedTabHighlightColor="#12A6C0" selectedTabTextColor="#12A6C0">
-    <StackLayout *tabItem="{title: 'Home', iconSource: getIconSource('icon_home_24')}" class="tab">
+    <StackLayout badgeValue="4" *tabItem="{title: 'Home', iconSource: getIconSource('icon_home_24')}" class="tab">
       <router-outlet name="homeTab"></router-outlet>
     </StackLayout>
 
-    <StackLayout *tabItem="{title: 'Transactions', iconSource: getIconSource('icon_transactions_24')}" class="tab">
+    <StackLayout badgeValue="4" *tabItem="{title: 'Transactions', iconSource: getIconSource('icon_transactions_24')}" class="tab">
       <router-outlet name="transactionsTab"></router-outlet>
     </StackLayout>
 
-    <StackLayout *tabItem="{title: 'Scan', iconSource: getIconSource('icon_camera_24')}" class="tab">
+    <StackLayout badgeValue="4" *tabItem="{title: 'Scan', iconSource: getIconSource('icon_camera_24')}" class="tab">
       <router-outlet name="scanTab"></router-outlet>
     </StackLayout>
 
-    <StackLayout *tabItem="{title: 'Debts', iconSource: getIconSource('icon_dollar_24')}" class="tab">
+    <StackLayout badgeValue="4" *tabItem="{title: 'Debts', iconSource: getIconSource('icon_dollar_24')}" class="tab">
       <router-outlet name="debtsTab"></router-outlet>
     </StackLayout>
 
-    <StackLayout *tabItem="{title: 'Notifications', iconSource: getIconSource('icon_notification_24')}" class="tab">
+    <StackLayout badgeValue="4" *tabItem="{title: 'Notifications', iconSource: getIconSource('icon_notification_24')}" class="tab">
       <router-outlet name="notificationsTab"></router-outlet>
     </StackLayout>
   </TabView>
