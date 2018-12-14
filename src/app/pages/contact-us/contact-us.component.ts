@@ -16,6 +16,7 @@ export class ContactUsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    console.log('huy');
   }
 
   goBack() {

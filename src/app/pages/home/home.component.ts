@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CardActionFunction } from '~/app/components/card/card.component';
 import { TabService } from '~/app/services/tab.service';
 import { MobileService } from '~/app/services/mobile.service';
+import { Subscription } from 'rxjs';
 import { DebtAccountSummary } from '~/app/models/debt-account.model';
 
 @Component({
@@ -10,7 +11,8 @@ import { DebtAccountSummary } from '~/app/models/debt-account.model';
   styleUrls: ['./home.component.css', './home.css'],
   moduleId: module.id,
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, OnDestroy {
+  subscriptions: Subscription[];
 
   accountSummary = {
     'Saving Balance': '$9000.00',
@@ -18,7 +20,6 @@ export class HomeComponent implements OnInit {
     'In Progress': '$8000.00',
     'Paid/Completed': '$500'
   }
-
 
   debtAccounts: DebtAccountSummary[] = [
     {
@@ -41,19 +42,20 @@ export class HomeComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    console.log('home init');
-    this.mobileService.getDebtAccountSummary().subscribe(debtAccounts => {
+    this.subscriptions = [];
+    let subscription = this.mobileService.getAccountSummary().subscribe(accountSummary => {
+    }, err => {
+      console.log('Can\'t get account summary');
+    });
+    this.subscriptions.push(subscription);
+
+    subscription = this.mobileService.getDebtAccountSummary().subscribe(debtAccounts => {
       if (debtAccounts && debtAccounts.length)
         this.debtAccounts = debtAccounts;
     }, err => {
       console.log('Can\'t get debt account summary');
     });
-
-    this.mobileService.getAccountSummary().subscribe(accountSummary => {
-      console.log('account summary =', accountSummary);
-    }, err => {
-      console.log('Can\'t get account summary');
-    });
+    this.subscriptions.push(subscription);
   }
 
   goToDebts() {
@@ -62,6 +64,10 @@ export class HomeComponent implements OnInit {
 
   showDebtDetails() {
     this.tabService.changeTab(3);
+  }
+
+  ngOnDestroy() {
+    this.subscriptions.forEach(subscription => subscription.unsubscribe());
   }
 
 }

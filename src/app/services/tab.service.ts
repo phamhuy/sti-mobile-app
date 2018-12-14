@@ -4,6 +4,7 @@ import { Subject }    from 'rxjs';
 @Injectable()
 export class TabService {
   private tabChangedSource = new Subject<number>();
+  routeStack: TabRoute[] = [];
 
   // Observable string streams
   tabChangedSource$ = this.tabChangedSource.asObservable();
@@ -12,4 +13,9 @@ export class TabService {
   changeTab(index: number) {
     this.tabChangedSource.next(index);
   }
+}
+
+export class TabRoute {
+  tabIndex: number;
+  path: string;
 }

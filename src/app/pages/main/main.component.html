@@ -1,15 +1,25 @@
 <StackLayout>
-  <ActionBar>
+  <ActionBar class="p-r-10 p-t-10">
+    <!-- Back Button -->
+    <NavigationButton *sdkIfAndroid="!!routeStack" (tap)="goBack()" android.systemIcon="ic_menu_back"></NavigationButton>
+    <ActionItem *sdkIfIos="!!routeStack" ios.position="left" (tap)="goBack()">
+      <Button text="arrow_back_ios" class="material-icon"></Button>
+    </ActionItem>
+
+    <!-- Logo -->
     <StackLayout orientation="horizontal" horizontalAlignment="center">
       <Image src="res://logo" ios:height="45" android:height="80" class="title-icon"></Image>
     </StackLayout>
+
+    <!-- Profile -->
     <ActionItem ios.position="right" android.systemIcon="ic_account_circle" (tap)="goToProfile()">
       <Button *sdkIfIos text="account_circle" class="profile-icon" color="white"></Button>
-      <!-- <Image *src="res://logo" ios:height="45" android:height="80" class="title-icon"></Image> -->
-      <!-- <Label text="Profile" class="profile-text"></Label> -->
     </ActionItem>
   </ActionBar>
-  <TabView [(ngModel)]="tabSelectedIndex" androidSelectedTabHighlightColor="#12A6C0" selectedTabTextColor="#12A6C0">
+
+  <!-- Tab View -->
+  <TabView [(ngModel)]="selectedTabIndex" (selectedIndexChanged)="onSelectedIndexChanged($event)"
+    androidSelectedTabHighlightColor="#12A6C0" selectedTabTextColor="#12A6C0">
     <StackLayout *tabItem="{title: 'Home', iconSource: getIconSource('icon_home_24')}" class="tab">
       <router-outlet name="homeTab"></router-outlet>
     </StackLayout>
