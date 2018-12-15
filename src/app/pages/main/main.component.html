@@ -1,43 +1,45 @@
-<StackLayout>
-  <ActionBar class="p-r-10 p-t-10">
-    <!-- Back Button -->
-    <NavigationButton *sdkIfAndroid="!!routeStack" (tap)="goBack()" android.systemIcon="ic_menu_back"></NavigationButton>
-    <ActionItem *sdkIfIos="!!routeStack" ios.position="left" (tap)="goBack()">
-      <Button text="arrow_back_ios" class="mat-icon"></Button>
-    </ActionItem>
+<ActionBar>
+  <!-- Back Button -->
+  <NavigationButton *sdkIfAndroid="!!routeStack" (tap)="goBack()" android.systemIcon="ic_menu_back"></NavigationButton>
+  <ActionItem *sdkIfIos="!!routeStack" ios.position="left" (tap)="goBack()">
+    <Button text="arrow_back_ios" class="mat-icon"></Button>
+  </ActionItem>
 
-    <!-- Logo -->
-    <StackLayout orientation="horizontal" horizontalAlignment="center">
-      <Image src="res://logo" ios:height="45" android:height="80" class="title-icon"></Image>
-    </StackLayout>
+  <!-- Logo -->
+  <StackLayout orientation="horizontal" horizontalAlignment="center">
+    <Image src="res://logo" ios:height="45" android:height="80" class="title-icon"></Image>
+  </StackLayout>
 
-    <!-- Profile -->
-    <ActionItem ios.position="right" android.systemIcon="ic_account_circle" (tap)="goToProfile()">
-      <Button *sdkIfIos text="account_circle" class="profile-icon" color="white"></Button>
-    </ActionItem>
-  </ActionBar>
+  <!-- Profile -->
+  <ActionItem ios.position="right" (tap)="goToProfile()">
+    <Button class="profile-btn">
+      <Span text="account_circle"></Span>
+    </Button>
+  </ActionItem>
+</ActionBar>
 
-  <!-- Tab View -->
-  <TabView [(ngModel)]="selectedTabIndex" (loaded)="onTabViewLoaded($event)" (selectedIndexChanged)="onSelectedIndexChanged($event)"
-    androidSelectedTabHighlightColor="#12A6C0" selectedTabTextColor="#12A6C0">
-    <StackLayout badgeValue="4" *tabItem="{title: 'Home', iconSource: getIconSource('icon_home_24')}" class="tab">
-      <router-outlet name="homeTab"></router-outlet>
-    </StackLayout>
+<!-- Tab View -->
+<TabView [(ngModel)]="selectedTabIndex" (loaded)="onTabViewLoaded($event)" (selectedIndexChanged)="onSelectedIndexChanged($event)"
+  androidSelectedTabHighlightColor="#12A6C0" selectedTabTextColor="#12A6C0">
+  <StackLayout badgeValue="4" *tabItem="{title: 'Home', iconSource: getIconSource('icon_home_24')}" class="tab">
+    <router-outlet name="homeTab"></router-outlet>
+  </StackLayout>
 
-    <StackLayout badgeValue="4" *tabItem="{title: 'Transactions', iconSource: getIconSource('icon_transactions_24')}" class="tab">
-      <router-outlet name="transactionsTab"></router-outlet>
-    </StackLayout>
+  <StackLayout badgeValue="4" *tabItem="{title: 'Transactions', iconSource: getIconSource('icon_transactions_24')}"
+    class="tab">
+    <router-outlet name="transactionsTab"></router-outlet>
+  </StackLayout>
 
-    <StackLayout badgeValue="4" *tabItem="{title: 'Scan', iconSource: getIconSource('icon_camera_24')}" class="tab">
-      <router-outlet name="scanTab"></router-outlet>
-    </StackLayout>
+  <StackLayout badgeValue="4" *tabItem="{title: 'Scan', iconSource: getIconSource('icon_camera_24')}" class="tab">
+    <router-outlet name="scanTab"></router-outlet>
+  </StackLayout>
 
-    <StackLayout badgeValue="4" *tabItem="{title: 'Debts', iconSource: getIconSource('icon_dollar_24')}" class="tab">
-      <router-outlet name="debtsTab"></router-outlet>
-    </StackLayout>
+  <StackLayout badgeValue="4" *tabItem="{title: 'Debts', iconSource: getIconSource('icon_dollar_24')}" class="tab">
+    <router-outlet name="debtsTab"></router-outlet>
+  </StackLayout>
 
-    <StackLayout badgeValue="4" *tabItem="{title: 'Notifications', iconSource: getIconSource('icon_notification_24')}" class="tab">
-      <router-outlet name="notificationsTab"></router-outlet>
-    </StackLayout>
-  </TabView>
-</StackLayout>
+  <StackLayout badgeValue="4" *tabItem="{title: 'Notifications', iconSource: getIconSource('icon_notification_24')}"
+    class="tab">
+    <router-outlet name="notificationsTab"></router-outlet>
+  </StackLayout>
+</TabView>
