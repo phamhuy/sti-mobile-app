@@ -33,40 +33,47 @@ const routes: Routes = [
         canActivate: [AuthGuard],
         children: [
             {
-                path: 'home',
-                component: HomeComponent,
-                outlet: 'homeTab'
+                outlet: 'homeTab',
+                path: '',
+                children: [
+                    {
+                        path: '',
+                        component: HomeComponent,
+                    },
+                    {
+                        path: 'home',
+                        component: HomeComponent,
+                    },
+                    {
+                        path: 'make-deposit',
+                        component: MakeDepositComponent
+                    },
+                    {
+                        path: 'profile',
+                        component: ProfileComponent
+                    }
+                ]
             },
             {
-                path: 'make-deposit',
-                component: MakeDepositComponent,
-                outlet: 'homeTab'
+                outlet: 'transactionsTab',
+                path: '',
+                component: TransactionsComponent
             },
             {
-                path: 'transactions',
-                component: TransactionsComponent,
-                outlet: 'transactionsTab'
+                outlet: 'scanTab',
+                path: '',
+                component: ScanComponent
             },
             {
-                path: 'scan',
-                component: ScanComponent,
-                outlet: 'scanTab'
+                outlet: 'debtsTab',
+                path: '',
+                component: DebtsComponent
             },
             {
-                path: 'debts',
-                component: DebtsComponent,
-                outlet: 'debtsTab'
+                outlet: 'notificationsTab',
+                path: '',
+                component: NotificationsComponent
             },
-            {
-                path: 'notifications',
-                component: NotificationsComponent,
-                outlet: 'notificationsTab'
-            },
-            {
-                path: 'profile',
-                component: ProfileComponent,
-                outlet: 'homeTab'
-            }
         ]
     },
 ];

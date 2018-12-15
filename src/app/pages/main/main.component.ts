@@ -3,7 +3,7 @@ import { isAndroid, isIOS } from 'tns-core-modules/platform';
 import { Router, ActivatedRoute } from '@angular/router';
 import { TabService } from '~/app/services/tab.service';
 import { SelectedIndexChangedEventData } from 'nativescript-drop-down';
-import { EventData, ContentView, Color, Page } from 'tns-core-modules/ui/page/page';
+import { EventData, ContentView, Color } from 'tns-core-modules/ui/page/page';
 import { Label } from 'tns-core-modules/ui/label';
 
 @Component({
@@ -35,18 +35,7 @@ export class MainComponent implements OnInit {
     private router: Router,
     private tabService: TabService,
     private activatedRoute: ActivatedRoute,
-    private page: Page
-  ) {
-    this.router.navigate(['/main', {
-      outlets: {
-        homeTab: 'home',
-        transactionsTab: 'transactions',
-        scanTab: 'scan',
-        debtsTab: 'debts',
-        notificationsTab: 'notifications'
-      }
-    }]);
-  }
+  ) { }
 
   ngOnInit() {
     // Subscribe to tab change event emitted from a tab
@@ -90,7 +79,6 @@ export class MainComponent implements OnInit {
 
     if (isAndroid && count) {
       const nativeTabView = tabView._tabLayout.getChildAt(0);
-      const notifView = nativeTabView.getChildAt(notifIndex);
 
       // Create badge label
       const label = new Label();
@@ -117,14 +105,17 @@ export class MainComponent implements OnInit {
       badgeView.onLoaded();
 
       // Add the badge view container to the notifView
-      notifView.addView(badgeView.nativeView);
+      setTimeout(() => {
+        const notifView = nativeTabView.getChildAt(notifIndex);
+        notifView.addView(badgeView.nativeView);
+      }, 0);
     }
   }
 
   goToProfile() {
-    const routeIndex = this.outletToRouteIndex[this.curOutlet];
-    const curPath = this.activatedRoute.children[routeIndex].routeConfig.path;
-    this.tabService.routeStack.push({ tabIndex: this.selectedTabIndex, path: curPath });
+    const routeIndex = this.outletToRouteIndex['homeTab'];
+    const curPath = this.activatedRoute.children[routeIndex].routeConfig.path || 'home';
+    this.tabService.routeStack.push({ tabIndex: 0, path: curPath });
 
     this.router.navigate(['/main', { outlets: { homeTab: 'profile' } }]);
     this.selectedTabIndex = 0;
@@ -134,9 +125,8 @@ export class MainComponent implements OnInit {
     const route = this.tabService.routeStack.pop();
     const outlets = {};
     outlets[this.tabIndexToOutlet[route.tabIndex]] = route.path;
-    outlets[this.curOutlet] = this.tabIndexToDefaultRoute[this.selectedTabIndex];
-    this.router.navigate(['/main', { outlets: outlets }]);
     this.selectedTabIndex = route.tabIndex;
+    this.router.navigate(['/main', { outlets: outlets }]);
   }
 
 }
