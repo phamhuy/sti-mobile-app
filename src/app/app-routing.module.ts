@@ -12,6 +12,7 @@ import { MakeDepositComponent } from './pages/make-deposit/make-deposit.componen
 import { AuthGuard } from './services/auth.guard';
 import { ContactUsComponent } from './pages/contact-us/contact-us.component';
 import { NotificationsComponent } from './pages/notifications/notifications.component';
+import { CanActivate } from '@angular/router/src/utils/preactivation';
 
 const routes: Routes = [
     {
@@ -47,10 +48,6 @@ const routes: Routes = [
                     {
                         path: 'make-deposit',
                         component: MakeDepositComponent
-                    },
-                    {
-                        path: 'profile',
-                        component: ProfileComponent
                     }
                 ]
             },
@@ -73,9 +70,14 @@ const routes: Routes = [
                 outlet: 'notificationsTab',
                 path: '',
                 component: NotificationsComponent
-            },
+            }
         ]
     },
+    {
+        path: 'profile',
+        component: ProfileComponent,
+        canActivate: [AuthGuard]
+    }
 ];
 
 @NgModule({

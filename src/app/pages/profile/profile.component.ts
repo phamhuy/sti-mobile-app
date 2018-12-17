@@ -32,5 +32,8 @@ export class ProfileComponent implements OnInit {
     )
   }
 
+  goBack() {
+    this.router.backToPreviousPage();
+  }
 
 }

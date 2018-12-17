@@ -113,20 +113,21 @@ export class MainComponent implements OnInit {
   }
 
   goToProfile() {
-    const routeIndex = this.outletToRouteIndex['homeTab'];
-    const curPath = this.activatedRoute.children[routeIndex].routeConfig.path || 'home';
-    this.tabService.routeStack.push({ tabIndex: 0, path: curPath });
+    // Using the stack route from tab service:
+    // const routeIndex = this.outletToRouteIndex['homeTab'];
+    // const curPath = this.activatedRoute.children[routeIndex].routeConfig.path || 'home';
+    // this.tabService.routeStack.push({ tabIndex: 0, path: curPath });
 
-    this.router.navigate(['/main', { outlets: { homeTab: 'profile' } }]);
-    this.selectedTabIndex = 0;
+    // this.router.navigate(['/main', { outlets: { homeTab: 'profile' } }]);
+    // this.selectedTabIndex = 0;
   }
 
   goBack() {
-    const route = this.tabService.routeStack.pop();
-    const outlets = {};
-    outlets[this.tabIndexToOutlet[route.tabIndex]] = route.path;
-    this.selectedTabIndex = route.tabIndex;
-    this.router.navigate(['/main', { outlets: outlets }]);
+    // const route = this.tabService.routeStack.pop();
+    // const outlets = {};
+    // outlets[this.tabIndexToOutlet[route.tabIndex]] = route.path;
+    // this.selectedTabIndex = route.tabIndex;
+    // this.router.navigate(['/main', { outlets: outlets }]);
   }
 
 }

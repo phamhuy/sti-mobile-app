@@ -11,7 +11,7 @@
   </StackLayout>
 
   <!-- Profile -->
-  <ActionItem ios.position="right" (tap)="goToProfile()">
+  <ActionItem ios.position="right" [nsRouterLink]="['/profile']">
     <Button class="profile-btn">
       <Span text="account_circle"></Span>
     </Button>
