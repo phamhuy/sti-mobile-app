@@ -1,8 +1,32 @@
 <StackLayout>
-    <ScrollView sdkExampleTitle sdkToggleNavButton>
-        <FlexboxLayout flexDirection="column">
-            <Button text="Take Photo" class="btn btn-primary btn-active" (tap)="onTakePhoto()" flexGrow="1"></Button>
-            <Image [src]="imageTaken" flexGrow="3" class="p-15 img-rounded"></Image>
-        </FlexboxLayout>
-    </ScrollView>
+  <StackLayout orientation="horizontal" horizontalAlignment="center">
+    <!-- IOS Camera and Upload Buttons -->
+    <StackLayout *sdkIfIos class="mat-icon scan-btn m-15" horizontalAlignment="center" verticalAlignment="center">
+      <Button (tap)="onTakePhoto()" shadow="3">
+        <Span text="camera_alt" color="#12A6C0"></Span>
+      </Button>
+    </StackLayout>
+    <StackLayout *sdkIfIos class="mat-icon scan-btn m-15" horizontalAlignment="center" verticalAlignment="center">
+      <Button (tap)="onUploadPhoto()" shadow="3">
+        <Span text="cloud_upload" color="#12A6C0"></Span>
+      </Button>
+    </StackLayout>
+
+    <!-- Android Camera and Upload Buttons -->
+    <StackLayout *sdkIfAndroid class="mat-icon scan-btn m-10" horizontalAlignment="center" verticalAlignment="center">
+      <Button (tap)="onTakePhoto()">
+        <Span text="camera_alt" color="#12A6C0"></Span>
+      </Button>
+    </StackLayout>
+    <StackLayout *sdkIfAndroid class="mat-icon scan-btn m-10" horizontalAlignment="center" verticalAlignment="center">
+      <Button (tap)="onUploadPhoto()">
+        <Span text="cloud_upload" color="#12A6C0"></Span>
+      </Button>
+    </StackLayout>
+  </StackLayout>
+
+  <!-- Image -->
+  <FlexboxLayout flexDirection="column">
+    <Image [src]="selectedImage" flexGrow="3" class="p-15 img-rounded"></Image>
+  </FlexboxLayout>
 </StackLayout>
