@@ -1,12 +1,12 @@
 <StackLayout>
   <FlexboxLayout justifyContent="space-between" flexDirection="column">
-    <Label class="title large-font" text="Make Payment" textAlignment="center"></Label>
-    <Label class="alert medium-font" text="You are making a deposit" textAlignment="center"></Label>
+    <Label class="title t-30" text="Make Payment" textAlignment="center"></Label>
+    <Label class="alert t-15" text="You are making a deposit" textAlignment="center"></Label>
 
     <!-- Existing ACH Details -->
     <StackLayout shadow="3" class="card">
       <GridLayout rows="auto, auto, auto, auto, auto, auto" , columns="*, *">
-        <Label row="0" col="0" colSpan="2" text="Existing ACH Details" textAlignment="center" class="medium-font"></Label>
+        <Label row="0" col="0" colSpan="2" text="Existing ACH Details" textAlignment="center" class="t-15"></Label>
         <Label row="1" col="0" text="Acct. Holder Name"></Label>
         <Label row="1" col="1" textAlignment="right" text="John Smith"></Label>
         <Label row="2" col="0" text="Bank Name"></Label>
@@ -22,7 +22,7 @@
 
     <!-- Deposit Details -->
     <StackLayout shadow="3" class="card">
-      <GridLayout rows="auto, auto, auto" , columns="*, *" class="medium-font">
+      <GridLayout rows="auto, auto, auto" , columns="*, *" class="t-15">
         <Label row="0" col="0" colSpan="2" text="Deposit Details" textAlignment="center"></Label>
         <Label row="1" col="0" text="Date"></Label>
         <TextField row="1" col="1" class="input" shadow="3"></TextField>
@@ -32,13 +32,13 @@
     </StackLayout>
 
     <!-- Action Buttons -->
-    <FlexboxLayout *sdkIfAndroid class="actions medium-font" shadow="3">
+    <FlexboxLayout *sdkIfAndroid class="actions t-15" shadow="3">
       <Button flexGrow="1" text="Cancel" class="action-button cancel-button"></Button>
       <Button flexGrow="1" text="Schedule" class="action-button sti-btn"></Button>
     </FlexboxLayout>
 
     <StackLayout *sdkIfIos shadow="3">
-      <FlexboxLayout class="actions medium-font">
+      <FlexboxLayout class="actions t-15">
         <Button flexGrow="1" text="Cancel" class="action-button cancel-button" shadow="3"></Button>
         <Button flexGrow="1" text="Schedule" class="action-button sti-btn" shadow="3"></Button>
       </FlexboxLayout>

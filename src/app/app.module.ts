@@ -18,7 +18,6 @@ import { DebtsComponent } from './pages/debts/debts.component';
 import { TransactionsComponent } from './pages/transactions/transactions.component';
 import { ScanComponent } from './pages/scan/scan.component';
 import { MainComponent } from './pages/main/main.component';
-import { CardComponent } from './components/card/card.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MobileInterceptor } from './services/mobile-interceptor';
 import { ContactUsComponent } from './pages/contact-us/contact-us.component';
@@ -51,7 +50,6 @@ import { NotificationsComponent } from './pages/notifications/notifications.comp
         TransactionsComponent,
         ScanComponent,
         MainComponent,
-        CardComponent,
         ContactUsComponent,
         CardViewComponent,
         NotificationsComponent

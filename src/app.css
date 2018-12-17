@@ -30,18 +30,6 @@ ActionBar {
   text-align: center;
 }
 
-.small-font {
-  font-size: 10;
-}
-
-.medium-font {
-  font-size: 15;
-}
-
-.large-font {
-  font-size: 30;
-}
-
 .sti-btn {
   background-color: #12A6C0;
   color: white;

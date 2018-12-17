@@ -1,5 +1,4 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { CardActionFunction } from '~/app/components/card/card.component';
 import { TabService } from '~/app/services/tab.service';
 import { MobileService } from '~/app/services/mobile.service';
 import { Subscription } from 'rxjs';
@@ -15,10 +14,10 @@ export class HomeComponent implements OnInit, OnDestroy {
   subscriptions: Subscription[];
 
   accountSummary = {
-    'Saving Balance': '$9000.00',
-    'Enrolled Debts': '$10,000.00',
-    'In Progress': '$8000.00',
-    'Paid/Completed': '$500'
+    savingBalance: 9000,
+    enrolledDebts: 10000,
+    inProgress: 8000,
+    paid: 500
   }
 
   debtAccounts: DebtAccountSummary[] = [
@@ -31,10 +30,6 @@ export class HomeComponent implements OnInit, OnDestroy {
       currentBalance: 5664
     }
   ]
-
-  debtAction = {
-    'Show All Debt Accounts': new CardActionFunction(this, this.goToDebts)
-  }
 
   constructor(
     private tabService: TabService,
