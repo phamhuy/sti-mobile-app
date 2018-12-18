@@ -14,7 +14,7 @@ import { Label } from 'tns-core-modules/ui/label';
   providers: [TabService]
 })
 export class MainComponent implements OnInit {
-  selectedTabIndex: number = 1;
+  selectedTabIndex: number = 3;
   tabIndexToOutlet = {
     0: 'homeTab',
     1: 'transactionsTab',

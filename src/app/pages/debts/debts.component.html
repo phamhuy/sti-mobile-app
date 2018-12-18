@@ -5,89 +5,90 @@
   <!-- Content -->
   <ScrollView>
     <StackLayout>
-      <StackLayout shadow="3" *ngFor="let debtAccount of debtAccounts" class="m-b-5 m-5">
-        <StackLayout ios:backgroundColor="white" class="t-15 p-15">
-          <!-- Creditor -->
-          <FlexboxLayout justifyContent="space-between" class="m-5">
-            <Label text="Creditor:"></Label>
-            <Label>
-              <FormattedString>
-                <Span [text]="debtAccount.creditorName" fontWeight="Bold" fontWeight="Bold"></Span>
-              </FormattedString>
-            </Label>
-          </FlexboxLayout>
+      <Label *ngIf="!debtAccounts || !debtAccounts.length" text="No Debt Accounts Found" textAlignment="center"></Label>
+      <ns-card-view *ngFor="let debtAccount of debtAccounts">
+        <!-- Creditor -->
+        <FlexboxLayout justifyContent="space-between" class="m-5">
+          <Label text="Creditor:"></Label>
+          <Label>
+            <FormattedString>
+              <Span [text]="debtAccount.creditorName" fontWeight="Bold" fontWeight="Bold"></Span>
+            </FormattedString>
+          </Label>
+        </FlexboxLayout>
 
-          <!-- Amount -->
-          <FlexboxLayout justifyContent="space-between" class="m-5">
-            <Label text="Amount:"></Label>
-            <Label>
-              <FormattedString>
-                <Span [text]="debtAccount.currentBalance | currency" fontWeight="Bold" fontWeight="Bold"></Span>
-              </FormattedString>
-            </Label>
-          </FlexboxLayout>
+        <!-- Amount -->
+        <FlexboxLayout justifyContent="space-between" class="m-5">
+          <Label text="Amount:"></Label>
+          <Label>
+            <FormattedString>
+              <Span [text]="debtAccount.currentBalance | currency" fontWeight="Bold" fontWeight="Bold"></Span>
+            </FormattedString>
+          </Label>
+        </FlexboxLayout>
 
-          <!-- Details -->
-          <StackLayout *ngIf="debtAccount.expanded">
-            <StackLayout class="hr-light m-10"></StackLayout>
-            <!-- Days Delinquent -->
-            <FlexboxLayout justifyContent="space-between" class="p-5">
-              <Label text="Days Delinquent:"></Label>
-              <Label>
-                <FormattedString>
-                  <Span [text]="debtAccount.daysDelinquent" fontWeight="Bold"></Span>
-                </FormattedString>
-              </Label>
-            </FlexboxLayout>
-
-            <!-- Debt Status -->
-            <FlexboxLayout justifyContent="space-between" class="p-5">
-              <Label text="Debt Status:"></Label>
-              <Label>
-                <FormattedString>
-                  <Span [text]="debtAccountStatusEnums[debtAccount.debtAccountStatus]" fontWeight="Bold"></Span>
-                </FormattedString>
-              </Label>
-            </FlexboxLayout>
-
-            <!-- Current Balance -->
-            <FlexboxLayout justifyContent="space-between" class="p-5">
-              <Label text="Current Balance:"></Label>
-              <Label>
-                <FormattedString>
-                  <Span [text]="debtAccount.currentBalance | currency" fontWeight="Bold"></Span>
-                </FormattedString>
-              </Label>
-            </FlexboxLayout>
-
-            <!-- Settlement Date -->
-            <StackLayout class="hr-light m-10"></StackLayout>
-            <FlexboxLayout justifyContent="space-between" class="p-5">
-              <Label text="Settlement Date:"></Label>
-              <Label>
-                <FormattedString>
-                  <Span [text]="debtAccount.settlementDate | date" fontWeight="Bold"></Span>
-                </FormattedString>
-              </Label>
-            </FlexboxLayout>
-
-            <!-- % Settled -->
-            <FlexboxLayout justifyContent="space-between" class="p-5">
-              <Label text="% Settled:"></Label>
-              <Label>
-                <FormattedString>
-                  <Span [text]="debtAccount.percentSettled | percent" fontWeight="Bold"></Span>
-                </FormattedString>
-              </Label>
-            </FlexboxLayout>
-          </StackLayout>
-
-          <!-- Show/Hide Details Button -->
+        <!-- Details -->
+        <StackLayout *ngIf="debtAccount.expanded">
           <StackLayout class="hr-light m-10"></StackLayout>
-          <Label *sdkIfAndroid [text]="debtAccount.expanded ? 'expand_less' : 'expand_more'" (tap)="debtAccount.expanded = !debtAccount.expanded" class="mat-icon expand"></Label>
-          <Button *sdkIfIos [text]="debtAccount.expanded ? 'expand_less' : 'expand_more'" (tap)="debtAccount.expanded = !debtAccount.expanded" class="mat-icon expand"></Button>
+          <!-- Days Delinquent -->
+          <FlexboxLayout justifyContent="space-between" class="p-5">
+            <Label text="Days Delinquent:"></Label>
+            <Label>
+              <FormattedString>
+                <Span [text]="debtAccount.daysDelinquent" fontWeight="Bold"></Span>
+              </FormattedString>
+            </Label>
+          </FlexboxLayout>
+
+          <!-- Debt Status -->
+          <FlexboxLayout justifyContent="space-between" class="p-5">
+            <Label text="Debt Status:"></Label>
+            <Label>
+              <FormattedString>
+                <Span [text]="debtAccountStatusEnums[debtAccount.debtAccountStatus]" fontWeight="Bold"></Span>
+              </FormattedString>
+            </Label>
+          </FlexboxLayout>
+
+          <!-- Current Balance -->
+          <FlexboxLayout justifyContent="space-between" class="p-5">
+            <Label text="Current Balance:"></Label>
+            <Label>
+              <FormattedString>
+                <Span [text]="debtAccount.currentBalance | currency" fontWeight="Bold"></Span>
+              </FormattedString>
+            </Label>
+          </FlexboxLayout>
+
+          <!-- Settlement Date -->
+          <StackLayout class="hr-light m-10"></StackLayout>
+          <FlexboxLayout justifyContent="space-between" class="p-5">
+            <Label text="Settlement Date:"></Label>
+            <Label>
+              <FormattedString>
+                <Span [text]="debtAccount.settlementDate | date" fontWeight="Bold"></Span>
+              </FormattedString>
+            </Label>
+          </FlexboxLayout>
+
+          <!-- % Settled -->
+          <FlexboxLayout justifyContent="space-between" class="p-5">
+            <Label text="% Settled:"></Label>
+            <Label>
+              <FormattedString>
+                <Span [text]="debtAccount.percentSettled | percent" fontWeight="Bold"></Span>
+              </FormattedString>
+            </Label>
+          </FlexboxLayout>
         </StackLayout>
-      </StackLayout>
+
+        <!-- Show/Hide Details Button -->
+        <StackLayout class="hr-light m-10"></StackLayout>
+        <Label *sdkIfAndroid [text]="debtAccount.expanded ? 'expand_less' : 'expand_more'" (tap)="debtAccount.expanded = !debtAccount.expanded"
+          class="mat-icon expand"></Label>
+        <Button *sdkIfIos [text]="debtAccount.expanded ? 'expand_less' : 'expand_more'" (tap)="debtAccount.expanded = !debtAccount.expanded"
+          class="mat-icon expand"></Button>
+      </ns-card-view>
     </StackLayout>
   </ScrollView>
 </StackLayout>
