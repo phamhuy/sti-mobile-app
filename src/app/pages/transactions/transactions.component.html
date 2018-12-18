@@ -13,7 +13,7 @@
   <!-- Table -->
   <ns-card-view>
     <Label *ngIf="!transactions || !transactions.length" text="No transactions found"></Label>
-    <ListView [items]="transactions">
+    <ListView [items]="transactions" height="100%">
       <ng-template let-transaction="item">
         <StackLayout>
           <FlexboxLayout justifyContent="space-between" alignItems="center" class="m-5 p-5">
