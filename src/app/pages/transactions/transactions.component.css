@@ -4,8 +4,6 @@
 
 .transaction-select {
   padding: 10 5 10;
-  /* border-bottom-width: 1;
-  border-bottom-color: rgb(235, 235, 235); */
 }
 
 .positive-amount {
@@ -15,7 +13,3 @@
 .negative-amount {
   color: red;
 }
-
-/* .card {
-  padding: 20;
-} */

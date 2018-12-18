@@ -1,0 +1,13 @@
+.search-bar-container {
+  border-radius: 15;
+  padding-top: -1;
+}
+
+SearchBar {
+  background-color: white;
+}
+
+.transaction-select-container {
+  border-bottom-width: 1;
+  border-bottom-color: #BBBBBB;
+}

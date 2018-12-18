@@ -1,11 +1,16 @@
 <StackLayout>
   <!-- Filter -->
   <ns-card-view>
-    <FlexboxLayout justifyContent="space-between" ios:flexDirection="column" class="p-5">
-      <SearchBar hint="Search or filter" (loaded)="onSearchBarLoaded($event)"></SearchBar>
-      <StackLayout class="transaction-select">
+    <FlexboxLayout justifyContent="space-between" ios:flexDirection="row" class="p-5 input-field">
+      <!-- Search Bar -->
+      <StackLayout class="search-bar-container" width="70%">
+        <SearchBar hint="Search" (loaded)="onSearchBarLoaded($event)" width="100%"></SearchBar>
+      </StackLayout>
+
+      <!-- Transaction Types Select -->
+      <StackLayout class="transaction-select-container" flexGrow="1">
         <Label *ngIf="selectedType" text="Type" class="transaction-type-label t-10"></Label>
-        <DropDown hint="Type" [items]="transactionTypes" (selectedIndexChange)="selectedIndexChanged($event)" class=""></DropDown>
+        <DropDown hint="Type" [items]="transactionTypes" (selectedIndexChange)="selectedIndexChanged($event)" class="transaction-select"></DropDown>
       </StackLayout>
     </FlexboxLayout>
   </ns-card-view>

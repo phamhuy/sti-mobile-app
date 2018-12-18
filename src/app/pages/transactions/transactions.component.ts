@@ -6,12 +6,14 @@ import { MobileService } from '~/app/services/mobile.service';
 @Component({
   selector: 'ns-transactions',
   templateUrl: './transactions.component.html',
-  styleUrls: ['./transactions.component.css'],
+  styleUrls: ['./transactions.component.css', './transactions.css'],
   moduleId: module.id,
 })
 export class TransactionsComponent implements OnInit {
+  searchInput: string;
   transactionTypeEnums = TransactionType;
-  transactionTypes = Object.keys(TransactionType).filter(x => isNaN(Number(x))).map(x => x.replace(/_/g, ' '));
+  transactionTypes = Object.keys(TransactionType).map(x => TransactionType[x]);
+  indexToTransactipType: { [key: number]: string };
   selectedType: TransactionType | string;
   transactions = [
     new Transaction('DRAFT', 12345, 0),
@@ -38,18 +40,28 @@ export class TransactionsComponent implements OnInit {
     }, err => {
       console.log('can\'t get transactions');
       // console.log('err =', err);
-    })
+    });
+
+    // Init indexToTransactipType
+    this.indexToTransactipType = {};
+    for (let index in Object.keys(TransactionType)) {
+      this.indexToTransactipType[index] = Object.keys(TransactionType)[index];
+    }
+
   }
 
   selectedIndexChanged(args) {
     let picker = <ListPicker>args.object;
-    this.selectedType = TransactionType[picker.selectedIndex];
+    this.selectedType = this.indexToTransactipType[picker.selectedIndex];
   }
 
   onSearchBarLoaded(event) {
     setTimeout(() => {
       event.object.dismissSoftInput();
     }, 700);
+  }
+
+  onTextChange(event) {
   }
 
 }
