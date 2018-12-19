@@ -1,12 +1,13 @@
 export class DebtAccountSummary {
+  debtAccountPk: number;
   creditorName: string;
   currentBalance: number;
 }
 
 export class DebtAccountDetails {
   debtAccountPk: number;
-  creditorName;
-  accountNumber;
+  creditorName: string;
+  accountNumber: string;
   stipulation: DebtAccountStipulationStatus;
   servicer: any; // Creditor
   originalDebtAmount: number;
@@ -18,6 +19,7 @@ export class DebtAccountDetails {
   percentSettled: number;
   delinquencyStatus: DelinquencyStatus;
   debtAccountStatus: DebtAccountStatus;
+  private static debtAccountPkCount = 0;
 
   constructor(creditorName, originalDebtAmount, daysDelinquent, debtAccountStatus, currentBalance, settlementDate, percentSettled) {
     this.creditorName = creditorName;
@@ -27,6 +29,7 @@ export class DebtAccountDetails {
     this.currentBalance = currentBalance;
     this.settlementDate = settlementDate;
     this.percentSettled = percentSettled;
+    this.debtAccountPk = ++DebtAccountDetails.debtAccountPkCount;
   }
 }
 

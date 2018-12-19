@@ -22,10 +22,12 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   debtAccounts: DebtAccountSummary[] = [
     {
+      debtAccountPk: 3,
       creditorName: 'Bank of America',
       currentBalance: 5664
     },
     {
+      debtAccountPk: 4,
       creditorName: 'Bank of America',
       currentBalance: 5664
     }
@@ -57,8 +59,9 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.tabService.changeTab(3);
   }
 
-  showDebtDetails() {
+  showDebtDetails(debtAccountPk: number) {
     this.tabService.changeTab(3);
+    this.tabService.selectDebtAccount(debtAccountPk);
   }
 
   ngOnDestroy() {

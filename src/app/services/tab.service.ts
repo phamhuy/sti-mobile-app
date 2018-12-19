@@ -4,15 +4,21 @@ import { Subject }    from 'rxjs';
 @Injectable()
 export class TabService {
   private tabChangedSource = new Subject<number>();
+  private debtAccountSelectedSource = new Subject<number>();
   routeStack: TabRoute[] = [];
 
-  // Observable string streams
+  // Observable streams
   tabChangedSource$ = this.tabChangedSource.asObservable();
+  debtAccountSelectedSource$ = this.debtAccountSelectedSource.asObservable();
 
-  // Service message commands
   changeTab(index: number) {
     this.tabChangedSource.next(index);
   }
+
+  selectDebtAccount(debtAccountPk: number) {
+    this.debtAccountSelectedSource.next(debtAccountPk);
+  }
+
 }
 
 export class TabRoute {

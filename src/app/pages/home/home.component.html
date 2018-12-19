@@ -57,7 +57,7 @@
     <ScrollView>
       <StackLayout>
         <Label *ngIf="!debtAccounts || !debtAccounts.length" text="No debt account found"></Label>
-        <StackLayout *ngFor="let debtAccount of debtAccounts" class="t-15" (tap)="showDebtDetails()">
+        <StackLayout *ngFor="let debtAccount of debtAccounts" class="t-15" (tap)="showDebtDetails(debtAccount.debtAccountPk)">
           <!-- Creditor -->
           <FlexboxLayout justifyContent="space-between">
             <Label text="Creditor:"></Label>
