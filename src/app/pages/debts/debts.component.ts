@@ -1,10 +1,11 @@
 import { Component, OnInit, ElementRef, ViewChild, ViewChildren, QueryList } from '@angular/core';
 import { MobileService } from '~/app/services/mobile.service';
 import { DebtAccountDetails, DebtAccountStatus } from '~/app/models/debt-account.model';
-import { isAndroid } from "tns-core-modules/platform";
+import { isAndroid, isIOS } from "tns-core-modules/platform";
 import { TabService } from '~/app/services/tab.service';
 import { ScrollView } from 'tns-core-modules/ui/scroll-view';
 import { StackLayout } from 'tns-core-modules/ui/layouts/stack-layout/stack-layout';
+import { Color } from 'tns-core-modules/color/color';
 
 @Component({
   selector: 'ns-debts',
@@ -60,6 +61,7 @@ export class DebtsComponent implements OnInit {
     this.tabService.debtAccountSelectedSource$.subscribe(debtAccountPk => {
       setTimeout(() => {
         const scrollView = <ScrollView>this.scrollView.nativeElement;
+        // scrollView.onLoaded();
 
         if (this.debtCards.length != this.debtAccounts.length) {
           console.log('this.debtCards.length != this.debtAccounts.length', this.debtCards.length, this.debtAccounts.length);
@@ -75,10 +77,16 @@ export class DebtsComponent implements OnInit {
         });
 
         if (selectedDebtAccount) {
-          selectedDebtAccount['expanded'] = true;
-          scrollView.scrollToVerticalOffset(scrollView.verticalOffset + selectedDebtAccount.nativeElement.getLocationRelativeTo(scrollView).y, true);
+          const selectedDebtAccountView = <StackLayout>selectedDebtAccount.nativeElement.parent;
+
+          // Animate the selected debt account
+          selectedDebtAccountView.backgroundColor = '#12A6C0';
+          selectedDebtAccountView.animate({ backgroundColor: new Color('white'), duration: 500 });
+
+          // Scroll to the selected debt account
+          scrollView.scrollToVerticalOffset(scrollView.verticalOffset + selectedDebtAccountView.getLocationRelativeTo(scrollView).y, isIOS);
         }
-      }, 1);
+      }, 100);
     });
   }
 
