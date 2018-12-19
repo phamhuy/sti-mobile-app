@@ -1,1 +1,10 @@
-<Button text="notifications works!" class="btn btn-primary"></Button>
+<Label *ngIf="!notifications || !notifications.length" text="There is no notification" textAlignment="center"></Label>
+<ns-card-view *ngIf="notifications && notifications.length">
+  <ListView [items]="notifications">
+    <ng-template let-transaction="item">
+      <StackLayout class="m-5 p-5">
+        <Label text="notif"></Label>
+      </StackLayout>
+    </ng-template>
+  </ListView>
+</ns-card-view>
