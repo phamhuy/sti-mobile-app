@@ -12,7 +12,6 @@ import { MainComponent } from './main.component';
 import { SharedModule } from '~/app/shared/shared.module';
 
 @NgModule({
-  id: 'main-module',
   declarations: [
     MainComponent,
     HomeComponent,

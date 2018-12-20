@@ -83,9 +83,9 @@ export class DebtsComponent implements OnInit {
           selectedDebtAccountView.animate({ backgroundColor: new Color('white'), duration: 500 });
 
           // Scroll to the selected debt account
-          scrollView.scrollToVerticalOffset(scrollView.verticalOffset + selectedDebtAccountView.getLocationRelativeTo(scrollView).y, isIOS);
+          scrollView.scrollToVerticalOffset(scrollView.verticalOffset + selectedDebtAccountView.getLocationRelativeTo(scrollView).y - 5, isIOS);
         }
-      }, 100);
+      }, 200);
     });
   }
 
