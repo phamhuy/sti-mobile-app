@@ -15,10 +15,6 @@ export class MobileInterceptor implements HttpInterceptor {
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     req = req.clone({
-      body: {
-        phoneNumber: req.body ? req.body.phoneNumber : null,
-        lastFourSSN: req.body ? req.body.lastFourSSN : null
-      },
       headers: new HttpHeaders({
         fireBaseID: this.authService.cachedIDToken || '',
       })
