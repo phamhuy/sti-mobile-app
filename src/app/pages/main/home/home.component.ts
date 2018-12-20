@@ -8,7 +8,6 @@ import { DebtAccountSummary } from '~/app/models/debt-account.model';
   selector: 'ns-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css', './home.css'],
-  moduleId: module.id,
 })
 export class HomeComponent implements OnInit, OnDestroy {
   subscriptions: Subscription[];

@@ -33,7 +33,6 @@ export class IfIosDirective {
   private device: Device;
   private hasView: boolean = false;
 
-  @Input('sdkIfIos') condition: boolean;
   constructor(@Inject(DEVICE) device: Device, container: ViewContainerRef, templateRef: TemplateRef<Object>) {
     this.container = container;
     this.templateRef = templateRef;

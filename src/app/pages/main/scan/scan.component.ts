@@ -8,7 +8,6 @@ import { create } from "nativescript-imagepicker";
   selector: 'ns-scan',
   templateUrl: './scan.component.html',
   styleUrls: ['./scan.component.css', './scan.css'],
-  moduleId: module.id,
 })
 export class ScanComponent implements OnInit {
   selectedImage: ImageAsset;

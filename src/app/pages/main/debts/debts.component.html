@@ -1,13 +1,10 @@
 <StackLayout>
-  <!-- Title -->
-  <Label text="Debt Accounts" class="title m-t-20"></Label>
-
-  <!-- Content -->
   <ScrollView #scrollView>
     <StackLayout>
       <Label *ngIf="!debtAccounts || !debtAccounts.length" text="No Debt Accounts Found" textAlignment="center"></Label>
       <ns-card-view *ngFor="let debtAccount of debtAccounts">
         <StackLayout #debtCards>
+          <!-- Creditor -->
           <FlexboxLayout justifyContent="space-between" class="m-5">
             <Label text="Creditor:"></Label>
             <Label>
@@ -16,7 +13,6 @@
               </FormattedString>
             </Label>
           </FlexboxLayout>
-          <!-- Creditor -->
 
           <!-- Amount -->
           <FlexboxLayout justifyContent="space-between" class="m-5">

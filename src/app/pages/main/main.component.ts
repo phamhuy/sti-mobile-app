@@ -10,7 +10,6 @@ import { Label } from 'tns-core-modules/ui/label';
   selector: 'ns-main',
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.css', './main.css'],
-  moduleId: module.id,
   providers: [TabService]
 })
 export class MainComponent implements OnInit {

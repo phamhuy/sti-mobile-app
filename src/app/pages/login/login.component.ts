@@ -6,6 +6,7 @@ import { CheckAccountResponse } from '~/app/models/check-account-response.model'
 import { RegisterResponse } from '~/app/models/register-response.model';
 import { DialogService } from '~/app/services/dialog.service';
 import { Page } from 'tns-core-modules/ui/page/page';
+import { MobileService } from '~/app/services/mobile.service';
 declare var API_URL;
 
 @Component({
@@ -31,7 +32,7 @@ export class LoginComponent implements OnInit {
     this.page.actionBarHidden = true;
     this.isLoggingIn = true;
     if (this.authService.isLoggedIn) {
-      this.router.navigate(['/main'], { clearHistory: true });
+      // this.router.navigate(['/main'], { clearHistory: true });
     }
     this.isLoggingIn = false;
     // this.logIn();

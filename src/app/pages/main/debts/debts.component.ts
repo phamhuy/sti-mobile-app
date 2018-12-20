@@ -11,7 +11,6 @@ import { Color } from 'tns-core-modules/color/color';
   selector: 'ns-debts',
   templateUrl: './debts.component.html',
   styleUrls: ['./debts.component.css'],
-  moduleId: module.id,
 })
 export class DebtsComponent implements OnInit {
   @ViewChild('scrollView') scrollView: ElementRef;

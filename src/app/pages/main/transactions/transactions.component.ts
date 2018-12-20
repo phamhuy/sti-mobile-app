@@ -7,7 +7,6 @@ import { MobileService } from '~/app/services/mobile.service';
   selector: 'ns-transactions',
   templateUrl: './transactions.component.html',
   styleUrls: ['./transactions.component.css', './transactions.css'],
-  moduleId: module.id,
 })
 export class TransactionsComponent implements OnInit {
   searchInput: string;

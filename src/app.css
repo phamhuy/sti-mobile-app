@@ -13,7 +13,7 @@ refer to http://docs.nativescript.org/ui/theme.
 @import 'platform.css';
 
 Page {
-  background-color: rgb(235, 235, 235);
+  background-color: #EBEBEB;
 }
 
 ActionBar {
@@ -25,7 +25,7 @@ ActionBar {
   margin-bottom: 10;
   color: #12A6C0;
   font-size: 20;
-  border-bottom-color: rgb(235, 235, 235);
+  border-bottom-color: #EBEBEB;
   border-bottom-width: 1;
   text-align: center;
 }

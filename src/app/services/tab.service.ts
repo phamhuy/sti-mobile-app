@@ -1,7 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Subject }    from 'rxjs';
+import { MainModule } from '../pages/main/main.module';
 
-@Injectable()
+@Injectable({
+  providedIn: MainModule
+})
 export class TabService {
   private tabChangedSource = new Subject<number>();
   private debtAccountSelectedSource = new Subject<number>();
