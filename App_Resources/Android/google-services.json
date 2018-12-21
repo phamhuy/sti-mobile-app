@@ -8,9 +8,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:422739635229:android:4372777fe3c1e48d",
+        "mobilesdk_app_id": "1:422739635229:android:aac739c34ecaa4de",
         "android_client_info": {
-          "package_name": "org.nativescript.stimobileapp"
+          "package_name": "com.objectbrains.stimobileappdev"
         }
       },
       "oauth_client": [

@@ -7,9 +7,9 @@
 	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
 	<string>ca-app-pub-3940256099942544/4411468910</string>
 	<key>CLIENT_ID</key>
-	<string>422739635229-i4e1766at64mh769se21gubkj405tjd7.apps.googleusercontent.com</string>
+	<string>422739635229-1fga2puddrb229486sa1climllf8ckjf.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.422739635229-i4e1766at64mh769se21gubkj405tjd7</string>
+	<string>com.googleusercontent.apps.422739635229-1fga2puddrb229486sa1climllf8ckjf</string>
 	<key>API_KEY</key>
 	<string>AIzaSyAw-gHs8Hg5eujt8xD4QDtYE8F_5NBaT4A</string>
 	<key>GCM_SENDER_ID</key>
@@ -17,7 +17,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>org.nativescript.stimobileapp</string>
+	<string>com.objectbrains.stimobileappdev</string>
 	<key>PROJECT_ID</key>
 	<string>sti-mobile-app-test</string>
 	<key>STORAGE_BUCKET</key>
@@ -33,7 +33,7 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:422739635229:ios:4372777fe3c1e48d</string>
+	<string>1:422739635229:ios:aac739c34ecaa4de</string>
 	<key>DATABASE_URL</key>
 	<string>https://sti-mobile-app-test.firebaseio.com</string>
 </dict>
