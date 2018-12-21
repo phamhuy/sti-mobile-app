@@ -4,13 +4,16 @@
   <StackLayout class="form">
     <!-- <Label [text]="base_url"></Label> -->
     <!-- Phone Input -->
-    <TextField hint="Phone Number" [(ngModel)]="phoneNumber" keyboardType="phone"></TextField>
+    <TextField #phoneInput hint="Phone Number" [(ngModel)]="phoneNumber" keyboardType="number" maxLength="10"
+      (textChange)="validateInput(phoneInput, ssnInput)"></TextField>
 
     <!-- SSN Input -->
-    <TextField hint="Last 4 SSN digits" secure="true" [(ngModel)]="lastFourSSN" keyboardType="number" class="m-b-20"></TextField>
+    <TextField #ssnInput hint="Last 4 SSN digits" secure="true" [(ngModel)]="lastFourSSN" keyboardType="number"
+      returnKeyType="done" maxLength="4" class="m-b-20" (textChange)="validateInput(phoneInput, ssnInput)"
+      (returnPress)="validateInput(phoneInput, ssnInput) && login()"></TextField>
 
     <!-- Login Button -->
-    <Button text="Sign In" [isEnabled]="!isLoggingIn && phoneNumber.length == 10" (tap)="login()" class="login-btn"></Button>
+    <Button #loginBtn text="Sign In" isEnabled="false" (tap)="login()" class="login-btn"></Button>
 
     <!-- Contact Us -->
     <StackLayout class="m-10">
@@ -20,6 +23,5 @@
 
     <!-- Spinner -->
     <ActivityIndicator rowSpan="3" [busy]="isLoggingIn" class="m-t-5"></ActivityIndicator>
-
   </StackLayout>
 </StackLayout>

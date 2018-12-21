@@ -1,12 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { RouterExtensions } from 'nativescript-angular/router';
 import { AuthService } from '~/app/services/auth.service';
 import { User } from 'nativescript-plugin-firebase';
 import { CheckAccountResponse } from '~/app/models/check-account-response.model';
 import { RegisterResponse } from '~/app/models/register-response.model';
 import { DialogService } from '~/app/services/dialog.service';
-import { Page } from 'tns-core-modules/ui/page/page';
-import { MobileService } from '~/app/services/mobile.service';
+import { Page, PropertyChangeData } from 'tns-core-modules/ui/page/page';
+import { Button } from 'tns-core-modules/ui/button';
+import { TextField } from 'tns-core-modules/ui/text-field';
 declare var API_URL;
 
 @Component({
@@ -16,9 +17,10 @@ declare var API_URL;
   moduleId: module.id,
 })
 export class LoginComponent implements OnInit {
+  @ViewChild('loginBtn') loginBtn: ElementRef;
   isLoggingIn: boolean;
   phoneNumber: string = '';
-  lastFourSSN: string;
+  lastFourSSN: string = '';
   base_url = API_URL;
 
   constructor(
@@ -39,6 +41,7 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
+    console.log('logging in');
     this.isLoggingIn = true;
     // this.phoneNumber = '9495551234';
     // this.lastFourSSN = '6035'; // account 154
@@ -82,4 +85,18 @@ export class LoginComponent implements OnInit {
       this.isLoggingIn = false;
     }
   }
+
+  validateInput(phoneInput: TextField, ssnInput: TextField) {
+    const phoneNumber = phoneInput.text;
+    const lastFourSSN = ssnInput.text;
+    const phoneRegex = /[0-9]{10}/;
+    const lastFourSSNRegex = /[0-9]{4}/;
+
+    const loginBtn = <Button>this.loginBtn.nativeElement;
+    loginBtn.isEnabled = phoneRegex.test(phoneNumber) && lastFourSSNRegex.test(lastFourSSN);
+
+    // console.log('huy')
+    return loginBtn.isEnabled;
+  }
+
 }
