@@ -48,5 +48,16 @@
   	<string>tel</string>
   	<string>telprompt</string>
 	</array>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.422739635229-1fga2puddrb229486sa1climllf8ckjf</string>
+			</array>
+		</dict>
+	</array>
 </dict>
 </plist>

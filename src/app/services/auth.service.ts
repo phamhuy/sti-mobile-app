@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import * as firebase from 'nativescript-plugin-firebase';
-import { isAndroid } from "tns-core-modules/platform";
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 declare var API_URL;
@@ -9,7 +8,7 @@ declare var API_URL;
   providedIn: 'root'
 })
 export class AuthService {
-  isLoggedIn: boolean = !isAndroid;
+  isLoggedIn: boolean;
   redirectUrl: string;
   cachedIDToken: string;
 
@@ -28,7 +27,6 @@ export class AuthService {
       async res => {
         this.isLoggedIn = true;
         this.cachedIDToken = await this.getIDToken();
-        console.log('id token =', this.cachedIDToken);
         return res;
       },
       err => {
