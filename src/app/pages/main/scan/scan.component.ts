@@ -20,27 +20,28 @@ export class ScanComponent implements OnInit {
     private dialogService: DialogService
   ) { }
 
-  async ngOnInit() {
-    if (!isAvailable()) {
-      await this.dialogService.alert('Unable to Take Picture', 'Camera is not available!');
-    }
+  ngOnInit() {
   }
 
   async onTakePhoto() {
-    await requestPermissions();
-    let options = {
-      width: this.width,
-      height: this.height,
-      keepAspectRatio: this.keepAspectRatio,
-      saveToGallery: this.saveToGallery
-    };
+    if (!isAvailable()) {
+      await this.dialogService.alert('Unable to Take Picture', 'Camera is not available!');
+      return;
+    }
 
-    takePicture(options)
-      .then(imageAsset => {
-        this.selectedImage = imageAsset;
-      }).catch(err => {
-        console.log('takePicture:', err.message);
-      });
+    try {
+      let options = {
+        width: this.width,
+        height: this.height,
+        keepAspectRatio: this.keepAspectRatio,
+        saveToGallery: this.saveToGallery
+      };
+
+      await requestPermissions();
+      this.selectedImage = await takePicture(options);
+    } catch(err) {
+      console.log(err);
+    }
   }
 
   async onUploadPhoto() {
@@ -48,12 +49,13 @@ export class ScanComponent implements OnInit {
       mode: 'single'
     });
 
-    await context.authorize();
-    context.present().then(images => {
+    try {
+      await context.authorize();
+      const images = await context.present();
       this.selectedImage = images[0];
-    }, err => {
-      console.log('onUploadPhoto:', err.message);
-    });
+    } catch(err) {
+      console.log(err);
+    }
   }
 
 }
