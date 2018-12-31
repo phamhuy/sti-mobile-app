@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { NativeScriptRouterModule } from 'nativescript-angular/router';
-import { Routes } from '@angular/router';
+import { Routes, PreloadAllModules } from '@angular/router';
 import { LoginComponent } from './pages/login/login.component';
 import { AuthGuard } from './services/auth.guard';
 import { ContactUsComponent } from './pages/contact-us/contact-us.component';
@@ -27,7 +27,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-    imports: [NativeScriptRouterModule.forRoot(routes)],
+    imports: [NativeScriptRouterModule.forRoot(routes, {preloadingStrategy: PreloadAllModules})],
     exports: [NativeScriptRouterModule]
 })
 export class AppRoutingModule { }
