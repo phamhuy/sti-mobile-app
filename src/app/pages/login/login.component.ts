@@ -5,7 +5,7 @@ import { User } from 'nativescript-plugin-firebase';
 import { CheckAccountResponse } from '~/app/models/check-account-response.model';
 import { RegisterResponse } from '~/app/models/register-response.model';
 import { DialogService } from '~/app/services/dialog.service';
-import { Page, PropertyChangeData } from 'tns-core-modules/ui/page/page';
+import { Page } from 'tns-core-modules/ui/page/page';
 import { Button } from 'tns-core-modules/ui/button';
 import { TextField } from 'tns-core-modules/ui/text-field';
 declare var API_URL;
@@ -34,19 +34,15 @@ export class LoginComponent implements OnInit {
     this.page.actionBarHidden = true;
     this.isLoggingIn = true;
     if (this.authService.isLoggedIn) {
-      // this.router.navigate(['/main'], { clearHistory: true });
+      this.router.navigate(['/main'], { clearHistory: true });
     }
     this.isLoggingIn = false;
-    // this.logIn();
   }
 
   login() {
-    console.log('logging in');
     this.isLoggingIn = true;
-    // this.phoneNumber = '9495551234';
-    // this.lastFourSSN = '6035'; // account 154
-    // this.phoneNumber = '9492231000';
-    // this.lastFourSSN = '7961'; // account 66
+    const loginBtn = <Button>this.loginBtn.nativeElement;
+    loginBtn.isEnabled = false;
 
     // Check if user exist in sti
     this.authService.checkStiAccount(this.phoneNumber, this.lastFourSSN).subscribe(
@@ -54,11 +50,12 @@ export class LoginComponent implements OnInit {
       err => {
         this.dialogService.alert('Server Error!', `Unable to connect to the server ${API_URL}!`);
         this.isLoggingIn = false;
-        // this.firebaseLogIn({ exist: true }); // Remove this line in production
+        loginBtn.isEnabled = true;
       });
   }
 
   firebaseLogIn(checkAccountResponse: CheckAccountResponse) {
+    const loginBtn = <Button>this.loginBtn.nativeElement;
     if (checkAccountResponse.exist) {
       this.authService.login(this.phoneNumber, 'The received verification code').then(
         (res: User) => {
@@ -71,18 +68,23 @@ export class LoginComponent implements OnInit {
               this.dialogService.alert('Error!', 'Unable to register! Please contact Customer Service');
             }, () => {
               this.isLoggingIn = false;
+              loginBtn.isEnabled = true;
             });
           }
           this.router.navigate(['/main'], { clearHistory: true });
         },
         err => {
-          this.dialogService.alert('Error!', 'Invalid Verification Code. Please try again.');
           this.isLoggingIn = false;
+          loginBtn.isEnabled = true;
+          if (err !== 'Prompt was canceled') {
+            this.dialogService.alert('Error!', 'Invalid Verification Code. Please try again.');
+          }
         }
       );
     } else {
       this.dialogService.alert('Error!', 'Account does not exist. The phone number and the last four SSN do not match.\nPlease contact customer service at (949)555-1234.');
       this.isLoggingIn = false;
+      loginBtn.isEnabled = true;
     }
   }
 
@@ -95,7 +97,6 @@ export class LoginComponent implements OnInit {
     const loginBtn = <Button>this.loginBtn.nativeElement;
     loginBtn.isEnabled = phoneRegex.test(phoneNumber) && lastFourSSNRegex.test(lastFourSSN);
 
-    // console.log('huy')
     return loginBtn.isEnabled;
   }
 

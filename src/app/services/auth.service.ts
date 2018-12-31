@@ -31,7 +31,6 @@ export class AuthService {
       },
       err => {
         this.isLoggedIn = false;
-        console.log('auth service: login error =', err);
         throw err;
       }
     );
