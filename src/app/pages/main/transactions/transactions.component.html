@@ -8,10 +8,11 @@
       </StackLayout>
 
       <!-- Transaction Types Select -->
-      <StackLayout class="transaction-select-container" flexGrow="1">
-        <Label *ngIf="selectedType" text="Type" class="transaction-type-label t-10"></Label>
-        <DropDown hint="Type" [items]="transactionTypes" (selectedIndexChange)="selectedIndexChanged($event)" class="transaction-select"></DropDown>
-      </StackLayout>
+      <DockLayout class="transaction-select-container" flexGrow="1">
+        <Label dock="top" text="Type" class="transaction-type-label t-10"></Label>
+        <DropDown accessoryViewVisible="false" selectedIndex="0" [items]="transactionTypes" (selectedIndexChange)="selectedIndexChanged($event)"
+          class="transaction-select"></DropDown>
+      </DockLayout>
     </FlexboxLayout>
   </ns-card-view>
 

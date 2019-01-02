@@ -9,6 +9,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MobileInterceptor } from './services/mobile-interceptor';
 import { ContactUsComponent } from './pages/contact-us/contact-us.component';
 import { SharedModule } from './shared/shared.module';
+import { DropDownModule } from "nativescript-drop-down/angular";
 
 @NgModule({
     bootstrap: [
@@ -23,7 +24,8 @@ import { SharedModule } from './shared/shared.module';
         NativeScriptModule,
         AppRoutingModule,
         NativeScriptHttpClientModule,
-        SharedModule
+        SharedModule,
+        DropDownModule
     ],
     schemas: [
         NO_ERRORS_SCHEMA

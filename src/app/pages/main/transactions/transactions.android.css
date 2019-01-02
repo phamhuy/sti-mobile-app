@@ -1,4 +1,13 @@
 .transaction-select-container {
   border-bottom-width: 1;
-  border-bottom-color: #EBEBEB;
+  border-bottom-color: #ebebeb;
+}
+
+.transaction-select {
+  padding: 0 5;
+}
+
+.transaction-type-label {
+  color: #12A6C0;
+  padding: 0 5;
 }
