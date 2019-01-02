@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { isAndroid, isIOS } from 'tns-core-modules/platform';
-import { Router, ActivatedRoute } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { TabService } from '~/app/services/tab.service';
 import { SelectedIndexChangedEventData } from 'nativescript-drop-down';
 import { EventData, ContentView, Color } from 'tns-core-modules/ui/page/page';
@@ -31,7 +31,6 @@ export class MainComponent implements OnInit {
   outletToRouteIndex; // A dictionary that maps an outlet name to its index in activatedRoute.children
 
   constructor(
-    private router: Router,
     private tabService: TabService,
     private activatedRoute: ActivatedRoute,
   ) { }

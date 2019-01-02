@@ -1,7 +1,8 @@
 <StackLayout>
   <ScrollView #scrollView>
     <StackLayout>
-      <Label *ngIf="!debtAccounts || !debtAccounts.length" text="No Debt Accounts Found" textAlignment="center"></Label>
+      <Label *ngIf="(!debtAccounts || !debtAccounts.length) && !isLoading" text="No Debt Accounts Found" textAlignment="center"></Label>
+      <ActivityIndicator *ngIf="isLoading" [busy]="isLoading"></ActivityIndicator>
       <ns-card-view *ngFor="let debtAccount of debtAccounts">
         <StackLayout #debtCards>
           <!-- Creditor -->

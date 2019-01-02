@@ -17,8 +17,9 @@
 
   <!-- Table -->
   <ns-card-view>
-    <Label *ngIf="!transactions || !transactions.length" text="No transactions found"></Label>
-    <ListView [items]="transactions" height="100%">
+    <Label *ngIf="(!transactions || !transactions.length) && !isLoading" text="No transactions found" textAlignment="center"></Label>
+    <ActivityIndicator *ngIf="isLoading" [busy]="isLoading"></ActivityIndicator>
+    <ListView *ngIf="!isLoading && transactions && transactions.length" [items]="transactions" height="100%">
       <ng-template let-transaction="item">
         <StackLayout>
           <FlexboxLayout justifyContent="space-between" alignItems="center" class="m-5 p-5">

@@ -1,16 +1,17 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { TabService } from '~/app/services/tab.service';
 import { MobileService } from '~/app/services/mobile.service';
-import { Subscription } from 'rxjs';
 import { DebtAccountSummary } from '~/app/models/debt-account.model';
+import { finalize } from 'rxjs/operators';
 
 @Component({
   selector: 'ns-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css', './home.css'],
 })
-export class HomeComponent implements OnInit, OnDestroy {
-  subscriptions: Subscription[];
+export class HomeComponent implements OnInit {
+  isLoadingAccountSummary: boolean = true;
+  isLoadingDebtAccountSummary: boolean = true;
 
   accountSummary = {
     savingBalance: 9000,
@@ -38,20 +39,25 @@ export class HomeComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
-    this.subscriptions = [];
-    let subscription = this.mobileService.getAccountSummary().subscribe(accountSummary => {
-    }, err => {
-      console.log('Can\'t get account summary');
-    });
-    this.subscriptions.push(subscription);
+    this.mobileService.getAccountSummary()
+      .pipe(
+        finalize(() => this.isLoadingAccountSummary = false)
+      )
+      .subscribe(accountSummary => {
+      }, err => {
+        console.log('Can\'t get account summary');
+      });
 
-    subscription = this.mobileService.getDebtAccountSummary().subscribe(debtAccounts => {
-      if (debtAccounts && debtAccounts.length)
-        this.debtAccounts = debtAccounts;
-    }, err => {
-      console.log('Can\'t get debt account summary');
-    });
-    this.subscriptions.push(subscription);
+    this.mobileService.getDebtAccountSummary()
+      .pipe(
+        finalize(() => this.isLoadingDebtAccountSummary = false)
+      )
+      .subscribe(debtAccounts => {
+        if (debtAccounts && debtAccounts.length)
+          this.debtAccounts = debtAccounts;
+      }, err => {
+        console.log('Can\'t get debt account summary');
+      });
   }
 
   goToDebts() {
@@ -61,10 +67,6 @@ export class HomeComponent implements OnInit, OnDestroy {
   showDebtDetails(debtAccountPk: number) {
     this.tabService.changeTab(3);
     this.tabService.selectDebtAccount(debtAccountPk);
-  }
-
-  ngOnDestroy() {
-    this.subscriptions.forEach(subscription => subscription.unsubscribe());
   }
 
 }

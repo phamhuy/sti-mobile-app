@@ -6,6 +6,7 @@ import { TabService } from '~/app/services/tab.service';
 import { ScrollView } from 'tns-core-modules/ui/scroll-view';
 import { StackLayout } from 'tns-core-modules/ui/layouts/stack-layout/stack-layout';
 import { Color } from 'tns-core-modules/color/color';
+import { finalize } from 'rxjs/operators';
 
 @Component({
   selector: 'ns-debts',
@@ -15,6 +16,7 @@ import { Color } from 'tns-core-modules/color/color';
 export class DebtsComponent implements OnInit {
   @ViewChild('scrollView') scrollView: ElementRef;
   @ViewChildren('debtCards') debtCards: QueryList<ElementRef<StackLayout>>;
+  isLoading: boolean = true;
   debtAccountStatusEnums = DebtAccountStatus;
   debtAccountPkToDebtAccountDetails: { [key: number]: DebtAccountDetails }; // A dictionary that maps from a debtAccountPk its corresponding debt account details
 
@@ -35,16 +37,19 @@ export class DebtsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.mobileService.getDebtAccountDetails().subscribe(res => {
-      if (res) {
-        // this.debtAccounts = res;
-      }
-      for (let debtAccount of this.debtAccounts) {
-        debtAccount['expanded'] = false;
-      }
-    }, err => {
-      console.log('Can\'t get debt account details');
-    });
+    this.mobileService.getDebtAccountDetails()
+      .pipe(
+        finalize(() => this.isLoading = false)
+      ).subscribe(res => {
+        if (res) {
+          // this.debtAccounts = res;
+        }
+        for (let debtAccount of this.debtAccounts) {
+          debtAccount['expanded'] = false;
+        }
+      }, err => {
+        console.log('Can\'t get debt account details');
+      });
 
     if (!isAndroid) {
       this.debtAccounts.forEach(x => x['expanded'] = false);
