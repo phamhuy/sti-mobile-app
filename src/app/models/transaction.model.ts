@@ -9,7 +9,7 @@ export class Transaction {
   payeePk: number;
   creditorPk: number;
   amount: number;
-  transactionType: TransactionType;
+  transactionType: TransactionType | string;
   discrepancyMessage: string;
   transactionId: number;
   transactionPk: number;
@@ -32,16 +32,17 @@ export class Transaction {
 }
 
 export enum TransactionType {
-  DRAFT = 'Draft',
-  SETTLEMENT = 'Settlement',
-  PERFORMANCE_FEE = 'Performance Fee',
-  DISBURSEMENT_FEE = 'Disbursement Fee',
-  SETTLEMENT_ADVANCE = 'Settlement Advance',
-  ACH_CREDIT_FEE = 'ACH Credit Fee',
-  REFUND = 'Refund',
-  DPG_FEE = 'DPG Fee',
-  TRANSFER = 'Transfer',
-  UNREGISTERED = 'Unregistered'
+  ALL,
+  DRAFT,
+  SETTLEMENT,
+  PERFORMANCE_FEE,
+  DISBURSEMENT_FEE,
+  SETTLEMENT_ADVANCE,
+  ACH_CREDIT_FEE,
+  REFUND,
+  DPG_FEE,
+  TRANSFER,
+  UNREGISTERED
 }
 
 export enum TransactionStatus {

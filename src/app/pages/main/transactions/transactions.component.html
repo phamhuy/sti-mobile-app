@@ -10,7 +10,7 @@
       <!-- Transaction Types Select -->
       <DockLayout class="transaction-select-container" flexGrow="1">
         <Label dock="top" text="Type" class="transaction-type-label t-10"></Label>
-        <DropDown accessoryViewVisible="false" selectedIndex="0" [items]="transactionTypes" (selectedIndexChange)="selectedIndexChanged($event)"
+        <DropDown accessoryViewVisible="false" selectedIndex="1" [items]="transactionTypes" (selectedIndexChange)="selectedIndexChanged($event)"
           class="transaction-select"></DropDown>
       </DockLayout>
     </FlexboxLayout>
@@ -18,15 +18,15 @@
 
   <!-- Table -->
   <ns-card-view>
-    <Label *ngIf="(!transactions || !transactions.length) && !isLoading" text="No transactions found" textAlignment="center"></Label>
+    <Label *ngIf="(!filteredTransactions || !filteredTransactions.length) && !isLoading" text="No transactions found" textAlignment="center"></Label>
     <ActivityIndicator *ngIf="isLoading" [busy]="isLoading"></ActivityIndicator>
-    <ListView *ngIf="!isLoading && transactions && transactions.length" [items]="transactions" height="100%">
+    <ListView *ngIf="!isLoading && filteredTransactions && filteredTransactions.length" [items]="filteredTransactions" height="100%">
       <ng-template let-transaction="item">
         <StackLayout>
           <FlexboxLayout justifyContent="space-between" alignItems="center" class="m-5 p-5">
             <!-- Transaction Type and Date -->
             <StackLayout>
-              <Label [text]="transactionTypeEnums[transaction.transactionType]" class="t-15"></Label>
+              <Label [text]="transaction.transactionType" class="t-15"></Label>
               <Label [text]="transaction.processDate | date" class="t-12"></Label>
             </StackLayout>
 

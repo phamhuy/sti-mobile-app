@@ -12,22 +12,21 @@ import { finalize } from 'rxjs/operators';
 export class TransactionsComponent implements OnInit {
   isLoading: boolean = true;
   searchInput: string;
-  transactionTypeEnums = TransactionType;
-  transactionTypes = Object.keys(TransactionType).map(x => TransactionType[x]);
-  indexToTransactipType: { [key: number]: string };
-  selectedType: TransactionType | string;
+  transactionTypes = Object.keys(TransactionType).filter(x => isNaN(Number(x))).map(x => this.camelize(x));
+  selectedType: TransactionType;
   transactions = [
-    new Transaction('DRAFT', 12345, 0),
-    new Transaction('DRAFT', -12345, 0),
-    new Transaction('DRAFT', 12345, 0),
-    new Transaction('DRAFT', 12345, 0),
-    new Transaction('DRAFT', -12345, 0),
-    new Transaction('DRAFT', 12345, 0),
-    new Transaction('DRAFT', 12345, 0),
-    new Transaction('DRAFT', -12345, 0),
-    new Transaction('DRAFT', 12345, 0),
-    new Transaction('DRAFT', 12345, 0),
-  ]
+    new Transaction(TransactionType.DRAFT, 12345, 0),
+    new Transaction(TransactionType.DRAFT, -12345, 0),
+    new Transaction(TransactionType.DRAFT, 12345, 0),
+    new Transaction(TransactionType.DRAFT, 12345, 0),
+    new Transaction(TransactionType.DRAFT, -12345, 0),
+    new Transaction(TransactionType.DRAFT, 12345, 0),
+    new Transaction(TransactionType.DRAFT, 12345, 0),
+    new Transaction(TransactionType.DRAFT, -12345, 0),
+    new Transaction(TransactionType.DRAFT, 12345, 0),
+    new Transaction(TransactionType.DRAFT, 12345, 0),
+  ];
+  filteredTransactions: Transaction[] = this.transactions;
 
   constructor(
     private mobileService: MobileService
@@ -41,21 +40,25 @@ export class TransactionsComponent implements OnInit {
       .subscribe(res => {
         if (res) {
           this.transactions = res.transactionList;
+          this.filterTransactions();
         }
       }, err => {
         console.log('can\'t get transactions');
       });
-
-    // Init indexToTransactipType
-    this.indexToTransactipType = {};
-    for (let index in Object.keys(TransactionType)) {
-      this.indexToTransactipType[index] = Object.keys(TransactionType)[index];
-    }
   }
 
   selectedIndexChanged(args) {
     let picker = <ListPicker>args.object;
-    this.selectedType = this.indexToTransactipType[picker.selectedIndex];
+    this.selectedType = picker.selectedIndex;
+    this.filterTransactions();
+  }
+
+  filterTransactions() {
+    this.filteredTransactions = this.transactions
+      .filter(transaction => this.selectedType == TransactionType.ALL || TransactionType[transaction.transactionType.toString()] == this.selectedType)
+      .map(transaction => {
+        return new Transaction(this.camelize(transaction.transactionType.toString()), transaction.amount, transaction.processDate);
+      });
   }
 
   onSearchBarLoaded(event) {
@@ -65,6 +68,10 @@ export class TransactionsComponent implements OnInit {
   }
 
   onTextChange(event) {
+  }
+
+  camelize(sentence: string) {
+    return sentence.replace(/_/g, ' ').toLowerCase().replace(/\w\S*/g, word => word.charAt(0).toLocaleUpperCase() + word.substr(1));
   }
 
 }
