@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import * as firebase from 'nativescript-plugin-firebase';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-declare var API_URL;
+import { environment } from '~/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +11,7 @@ export class AuthService {
   isLoggedIn: boolean;
   redirectUrl: string;
   cachedIDToken: string;
+  baseUrl = environment.baseUrl;
 
   constructor(
     private http: HttpClient
@@ -45,11 +46,11 @@ export class AuthService {
   }
 
   checkStiAccount(phoneNumber: string, lastFourSSN: string): Observable<any> {
-    return this.http.post<any>(`${API_URL}/MobileAccountCheck`, { phoneNumber: phoneNumber, lastFourSSN: lastFourSSN });
+    return this.http.post<any>(`${this.baseUrl}/MobileAccountCheck`, { phoneNumber: phoneNumber, lastFourSSN: lastFourSSN });
   }
 
   registerMobileAccount(phoneNumber: string) {
-    return this.http.post<any>(`${API_URL}/RegisterMobileAccount`, { phoneNumber: phoneNumber, fireBaseID: this.cachedIDToken });
+    return this.http.post<any>(`${this.baseUrl}/RegisterMobileAccount`, { phoneNumber: phoneNumber, fireBaseID: this.cachedIDToken });
   }
 
   signOut() {

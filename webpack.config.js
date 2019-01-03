@@ -10,8 +10,6 @@ const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
 const { NativeScriptWorkerPlugin } = require("nativescript-worker-loader/NativeScriptWorkerPlugin");
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 const { AngularCompilerPlugin } = require("@ngtools/webpack");
-const { environment: prodEnv } = require('./src/environments/environment.prod');
-const { environment: devEnv } = require('./src/environments/environment');
 
 module.exports = env => {
     // Add your custom Activities, Services and other Android app components here.
@@ -25,7 +23,6 @@ module.exports = env => {
         throw new Error("You need to provide a target platform!");
     }
 
-    const API_URL = env && env.prod ? prodEnv.baseUrl : (platform === "android" ? devEnv.androidBaseUrl : devEnv.iosBaseUrl);
 
     const projectRoot = __dirname;
 
@@ -212,8 +209,10 @@ module.exports = env => {
             // Define useful constants like TNS_WEBPACK
             new webpack.DefinePlugin({
                 "global.TNS_WEBPACK": "true",
-                "process": undefined,
-                "API_URL": JSON.stringify(API_URL)
+                // "process": undefined,
+                "process.env": {
+                    environment: (env && Object.prototype.hasOwnProperty.call(env, 'environment')) ? JSON.stringify(env.environment) : undefined
+                  }
             }),
             // Remove all files from the out dir.
             new CleanWebpackPlugin([`${dist}/**/*`]),

@@ -8,7 +8,7 @@ import { DialogService } from '~/app/services/dialog.service';
 import { Page } from 'tns-core-modules/ui/page/page';
 import { Button } from 'tns-core-modules/ui/button';
 import { TextField } from 'tns-core-modules/ui/text-field';
-declare var API_URL;
+import { environment } from '~/environments/environment';
 
 @Component({
   selector: 'ns-login',
@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
   isLoggingIn: boolean;
   phoneNumber: string = '';
   lastFourSSN: string = '';
-  base_url = API_URL;
+  base_url = environment.baseUrl;
 
   constructor(
     private router: RouterExtensions,
@@ -48,7 +48,7 @@ export class LoginComponent implements OnInit {
     this.authService.checkStiAccount(this.phoneNumber, this.lastFourSSN).subscribe(
       this.firebaseLogIn.bind(this),
       err => {
-        this.dialogService.alert('Server Error!', `Unable to connect to the server ${API_URL}!`);
+        this.dialogService.alert('Server Error!', `Unable to connect to the server ${environment.baseUrl}!`);
         this.isLoggingIn = false;
         loginBtn.isEnabled = true;
       });
