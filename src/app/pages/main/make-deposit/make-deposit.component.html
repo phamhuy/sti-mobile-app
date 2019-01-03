@@ -1,48 +1,83 @@
-<StackLayout>
-  <FlexboxLayout justifyContent="space-between" flexDirection="column">
-    <Label class="title t-30" text="Make Payment" textAlignment="center"></Label>
-    <Label class="alert t-15" text="You are making a deposit" textAlignment="center"></Label>
+<ActionBar>
+  <StackLayout orientation="horizontal" horizontalAlignment="center">
+    <Image src="res://logo" ios:height="45" android:height="80" class="title-icon"></Image>
+  </StackLayout>
+  <NavigationButton text="Back" android.systemIcon="ic_menu_back" (tap)="goBack()"></NavigationButton>
+</ActionBar>
 
-    <!-- Existing ACH Details -->
-    <StackLayout shadow="3" class="card">
-      <GridLayout rows="auto, auto, auto, auto, auto, auto" , columns="*, *">
-        <Label row="0" col="0" colSpan="2" text="Existing ACH Details" textAlignment="center" class="t-15"></Label>
-        <Label row="1" col="0" text="Acct. Holder Name"></Label>
-        <Label row="1" col="1" textAlignment="right" text="John Smith"></Label>
-        <Label row="2" col="0" text="Bank Name"></Label>
-        <Label row="2" col="1" textAlignment="right" text="Chase Chxn"></Label>
-        <Label row="3" col="0" text="Account Type"></Label>
-        <Label row="3" col="1" textAlignment="right" text="Checking"></Label>
-        <Label row="4" col="0" text="Account Number"></Label>
-        <Label row="4" col="1" textAlignment="right" text="xxxxxxx1212"></Label>
-        <Label row="5" col="0" text="Routing Number"></Label>
-        <Label row="5" col="1" textAlignment="right" text="999999963"></Label>
-      </GridLayout>
-    </StackLayout>
+<StackLayout class="p-5 t-15">
+  <Label text="Make Payment" textAlignment="center" class="title m-t-10"></Label>
 
-    <!-- Deposit Details -->
-    <StackLayout shadow="3" class="card">
-      <GridLayout rows="auto, auto, auto" , columns="*, *" class="t-15">
-        <Label row="0" col="0" colSpan="2" text="Deposit Details" textAlignment="center"></Label>
-        <Label row="1" col="0" text="Date"></Label>
-        <TextField row="1" col="1" class="input" shadow="3"></TextField>
-        <Label row="2" col="0" text="Amount"></Label>
-        <TextField row="2" col="1" class="input" shadow="3"></TextField>
-      </GridLayout>
-    </StackLayout>
+  <!-- Existing ACH Details -->
+  <ns-card-view>
+    <!-- Title -->
+    <Label text="Existing ACH Details" class="title"></Label>
 
-    <!-- Action Buttons -->
-    <FlexboxLayout *sdkIfAndroid class="actions t-15" shadow="3">
-      <Button flexGrow="1" text="Cancel" class="action-button cancel-button"></Button>
-      <Button flexGrow="1" text="Schedule" class="action-button sti-btn"></Button>
+    <!-- Account Holder Name -->
+    <FlexboxLayout justifyContent="space-between" class="p-5">
+      <Label text="Acct. Holder Name:"></Label>
+      <ActivityIndicator *ngIf="isLoading" [busy]="isLoading" width="15" height="15"></ActivityIndicator>
+      <Label *ngIf="!isLoading" text="John Smith" class="font-weight-bold"></Label>
     </FlexboxLayout>
 
-    <StackLayout *sdkIfIos shadow="3">
-      <FlexboxLayout class="actions t-15">
-        <Button flexGrow="1" text="Cancel" class="action-button cancel-button" shadow="3"></Button>
-        <Button flexGrow="1" text="Schedule" class="action-button sti-btn" shadow="3"></Button>
-      </FlexboxLayout>
-    </StackLayout>
+    <!-- Bank Name -->
+    <FlexboxLayout justifyContent="space-between" class="p-5">
+      <Label text="Bank Name:"></Label>
+      <ActivityIndicator *ngIf="isLoading" [busy]="isLoading" width="15" height="15"></ActivityIndicator>
+      <Label *ngIf="!isLoading" text="Chase" class="font-weight-bold"></Label>
+    </FlexboxLayout>
 
-  </FlexboxLayout>
+    <!-- Account Type -->
+    <FlexboxLayout justifyContent="space-between" class="p-5">
+      <Label text="Account Type:"></Label>
+      <ActivityIndicator *ngIf="isLoading" [busy]="isLoading" width="15" height="15"></ActivityIndicator>
+      <Label *ngIf="!isLoading" text="Checking" class="font-weight-bold"></Label>
+    </FlexboxLayout>
+
+    <!-- Account Number -->
+    <FlexboxLayout justifyContent="space-between" class="p-5">
+      <Label text="Account Number:"></Label>
+      <ActivityIndicator *ngIf="isLoading" [busy]="isLoading" width="15" height="15"></ActivityIndicator>
+      <Label *ngIf="!isLoading" text="xxxx1212" class="font-weight-bold"></Label>
+    </FlexboxLayout>
+
+    <!-- Account Routing Number -->
+    <FlexboxLayout justifyContent="space-between" class="p-5">
+      <Label text="Routing Number:"></Label>
+      <ActivityIndicator *ngIf="isLoading" [busy]="isLoading" width="15" height="15"></ActivityIndicator>
+      <Label *ngIf="!isLoading" text="123456789" class="font-weight-bold"></Label>
+    </FlexboxLayout>
+  </ns-card-view>
+
+  <!-- Deposit Details -->
+  <ns-card-view>
+    <Label text="Deposit Details" class="title"></Label>
+
+    <!-- Date -->
+    <FlexboxLayout justifyContent="space-between" class="p-5">
+      <Label text="Date:"></Label>
+      <FlexboxLayout #dateBtn *sdkIfAndroid (tap)="pickDate(dateBtn)" color="#12A6C0" alignItems="center">
+        <Label text="date_range" class="mat-icon m-r-5"></Label>
+        <Label [text]="date | date"></Label>
+      </FlexboxLayout>
+      <StackLayout *sdkIfIos orientation="horizontal" color="#12A6C0">
+        <Button (tap)="pickDate()">
+          <Span text="date_range" class="mat-icon"></Span>
+        </Button>
+        <Button [text]="date | date" (tap)="pickDate()"></Button>
+      </StackLayout>
+    </FlexboxLayout>
+
+    <!-- Amount -->
+    <FlexboxLayout justifyContent="space-between" class="p-5">
+      <Label text="Amount:"></Label>
+      <StackLayout orientation="horizontal">
+        <Label text="$"></Label>
+        <TextField hint="00.00" [(ngModel)]="amount" keyboardType="number" class="p-0"></TextField>
+      </StackLayout>
+    </FlexboxLayout>
+  </ns-card-view>
+
+  <!-- Schedule Deposit Button -->
+  <Button text="Schedule" backgroundColor="#12A6C0" color="white" class="m-5 t-20" borderRadius="10" ios:height="50"></Button>
 </StackLayout>

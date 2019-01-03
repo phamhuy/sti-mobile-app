@@ -1,41 +1,5 @@
-.alert {
-  background-color: #A21CE8;
-  color: white;
-  height: 5%;
-  font-weight: 700;
-  margin: 1%;
-}
-
-.card {
-  margin: 1%;
-}
-
-GridLayout {
-  background-color: white;
-  padding: 3% 15%;
-  padding-bottom: 20%;
-}
-
-GridLayout > Label {
-  margin: 10;
-}
-
-.input {
-  border-width: 0;
-  background-color: white;
-  margin: 10 1%;
-}
-
-.actions {
-  background-color: white;
-  padding: 15%;
-  margin: 1%;
-}
-
-.action-button {
-  margin: 0 5%;
-}
-
-.cancel-button {
-  background-color: white;
+TextField {
+  border-bottom-width: 1;
+  border-bottom-color: #EBEBEB;
+  margin-left: 5;
 }

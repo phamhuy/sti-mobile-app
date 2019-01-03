@@ -19,20 +19,7 @@ const routes: Routes = [
       {
         outlet: 'homeTab',
         path: '',
-        children: [
-          {
-            path: '',
-            component: HomeComponent,
-          },
-          {
-            path: 'home',
-            component: HomeComponent,
-          },
-          {
-            path: 'make-deposit',
-            component: MakeDepositComponent
-          }
-        ]
+        component: HomeComponent,
       },
       {
         outlet: 'transactionsTab',
@@ -60,6 +47,10 @@ const routes: Routes = [
     path: 'profile',
     component: ProfileComponent
   },
+  {
+    path: 'make-deposit',
+    component: MakeDepositComponent
+  }
 ];
 
 @NgModule({
