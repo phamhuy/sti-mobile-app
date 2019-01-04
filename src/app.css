@@ -30,6 +30,13 @@ ActionBar {
   text-align: center;
 }
 
+.page-title {
+  color: #12A6C0;
+  font-size: 20;
+  text-align: center;
+  margin: 10
+}
+
 .sti-btn {
   background-color: #12A6C0;
   color: white;

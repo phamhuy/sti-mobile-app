@@ -13,6 +13,7 @@ export class MakeDepositComponent implements OnInit {
   date: Date | number;
   amount: number;
   picker: ModalDatetimepicker;
+  isLoading: boolean;
 
   constructor(
     private router: RouterExtensions
