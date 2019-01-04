@@ -8,21 +8,13 @@
           <!-- Creditor -->
           <FlexboxLayout justifyContent="space-between" class="m-5">
             <Label text="Creditor:"></Label>
-            <Label>
-              <FormattedString>
-                <Span [text]="debtAccount.creditorName" fontWeight="Bold" fontWeight="Bold"></Span>
-              </FormattedString>
-            </Label>
+            <Label [text]="debtAccount.creditorName" class="font-weight-bold"></Label>
           </FlexboxLayout>
 
           <!-- Amount -->
           <FlexboxLayout justifyContent="space-between" class="m-5">
             <Label text="Amount:"></Label>
-            <Label>
-              <FormattedString>
-                <Span [text]="debtAccount.currentBalance | currency" fontWeight="Bold" fontWeight="Bold"></Span>
-              </FormattedString>
-            </Label>
+            <Label [text]="debtAccount.currentBalance | currency" class="font-weight-bold"></Label>
           </FlexboxLayout>
 
           <!-- Details -->
@@ -31,52 +23,32 @@
             <!-- Days Delinquent -->
             <FlexboxLayout justifyContent="space-between" class="p-5">
               <Label text="Days Delinquent:"></Label>
-              <Label>
-                <FormattedString>
-                  <Span [text]="debtAccount.daysDelinquent" fontWeight="Bold"></Span>
-                </FormattedString>
-              </Label>
+              <Label [text]="debtAccount.daysDelinquent" class="font-weight-bold"></Label>
             </FlexboxLayout>
 
             <!-- Debt Status -->
             <FlexboxLayout justifyContent="space-between" class="p-5">
               <Label text="Debt Status:"></Label>
-              <Label>
-                <FormattedString>
-                  <Span [text]="debtAccountStatusEnums[debtAccount.debtAccountStatus]" fontWeight="Bold"></Span>
-                </FormattedString>
-              </Label>
+              <Label [text]="debtAccountStatusEnums[debtAccount.debtAccountStatus]" class="font-weight-bold"></Label>
             </FlexboxLayout>
 
             <!-- Current Balance -->
             <FlexboxLayout justifyContent="space-between" class="p-5">
               <Label text="Current Balance:"></Label>
-              <Label>
-                <FormattedString>
-                  <Span [text]="debtAccount.currentBalance | currency" fontWeight="Bold"></Span>
-                </FormattedString>
-              </Label>
+              <Label [text]="debtAccount.currentBalance | currency" class="font-weight-bold"></Label>
             </FlexboxLayout>
 
             <!-- Settlement Date -->
             <StackLayout class="hr-light m-10"></StackLayout>
             <FlexboxLayout justifyContent="space-between" class="p-5">
               <Label text="Settlement Date:"></Label>
-              <Label>
-                <FormattedString>
-                  <Span [text]="debtAccount.settlementDate | date" fontWeight="Bold"></Span>
-                </FormattedString>
-              </Label>
+              <Label [text]="debtAccount.settlementDate | date" class="font-weight-bold"></Label>
             </FlexboxLayout>
 
             <!-- % Settled -->
             <FlexboxLayout justifyContent="space-between" class="p-5">
               <Label text="% Settled:"></Label>
-              <Label>
-                <FormattedString>
-                  <Span [text]="debtAccount.percentSettled | percent" fontWeight="Bold"></Span>
-                </FormattedString>
-              </Label>
+              <Label [text]="debtAccount.percentSettled | percent" class="font-weight-bold"></Label>
             </FlexboxLayout>
           </StackLayout>
 

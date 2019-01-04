@@ -15,16 +15,16 @@ export class TransactionsComponent implements OnInit {
   transactionTypes = Object.keys(TransactionType).filter(x => isNaN(Number(x))).map(x => this.camelize(x));
   selectedType: TransactionType;
   transactions = [
-    new Transaction(TransactionType.DRAFT, 12345, 0),
-    new Transaction(TransactionType.DRAFT, -12345, 0),
-    new Transaction(TransactionType.DRAFT, 12345, 0),
-    new Transaction(TransactionType.DRAFT, 12345, 0),
-    new Transaction(TransactionType.DRAFT, -12345, 0),
-    new Transaction(TransactionType.DRAFT, 12345, 0),
-    new Transaction(TransactionType.DRAFT, 12345, 0),
-    new Transaction(TransactionType.DRAFT, -12345, 0),
-    new Transaction(TransactionType.DRAFT, 12345, 0),
-    new Transaction(TransactionType.DRAFT, 12345, 0),
+    new Transaction('DRAFT', 12345, 0),
+    new Transaction('DRAFT', -12345, 0),
+    new Transaction('DRAFT', 12345, 0),
+    new Transaction('DRAFT', 12345, 0),
+    new Transaction('DRAFT', -12345, 0),
+    new Transaction('DRAFT', 12345, 0),
+    new Transaction('DRAFT', 12345, 0),
+    new Transaction('DRAFT', -12345, 0),
+    new Transaction('DRAFT', 12345, 0),
+    new Transaction('DRAFT', 12345, 0),
   ];
   filteredTransactions: Transaction[] = this.transactions;
 

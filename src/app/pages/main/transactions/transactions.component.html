@@ -18,9 +18,11 @@
 
   <!-- Table -->
   <ns-card-view>
-    <Label *ngIf="(!filteredTransactions || !filteredTransactions.length) && !isLoading" text="No transactions found" textAlignment="center"></Label>
+    <Label *ngIf="(!filteredTransactions || !filteredTransactions.length) && !isLoading" text="No transactions found"
+      textAlignment="center"></Label>
     <ActivityIndicator *ngIf="isLoading" [busy]="isLoading"></ActivityIndicator>
-    <ListView *ngIf="!isLoading && filteredTransactions && filteredTransactions.length" [items]="filteredTransactions" height="100%">
+    <ListView *ngIf="!isLoading && filteredTransactions && filteredTransactions.length" [items]="filteredTransactions"
+      height="100%">
       <ng-template let-transaction="item">
         <StackLayout>
           <FlexboxLayout justifyContent="space-between" alignItems="center" class="m-5 p-5">
@@ -31,11 +33,8 @@
             </StackLayout>
 
             <!-- Amount -->
-            <Label class="t-15 font-weight-bold p-r-15">
-              <FormattedString>
-                <Span [text]="transaction.amount | currency" [style.color]="transaction.amount >= 0 ? '#12A6C0' : 'red'"></Span>
-              </FormattedString>
-            </Label>
+            <Label [text]="transaction.amount | currency" [style.color]="transaction.amount >= 0 ? '#12A6C0' : 'red'"
+              class="t-15 font-weight-bold p-r-15"></Label>
           </FlexboxLayout>
         </StackLayout>
       </ng-template>

@@ -11,44 +11,28 @@
         <FlexboxLayout justifyContent="space-between" class="p-5">
           <Label text="Saving Balance:"></Label>
           <ActivityIndicator *ngIf="isLoadingAccountSummary" [busy]="isLoadingAccountSummary" width="15" height="15"></ActivityIndicator>
-          <Label *ngIf="!isLoadingAccountSummary">
-            <FormattedString>
-              <Span [text]="accountSummary.savingBalance | currency" fontWeight="Bold"></Span>
-            </FormattedString>
-          </Label>
+          <Label *ngIf="!isLoadingAccountSummary" [text]="accountSummary.savingBalance | currency" class="font-weight-bold"></Label>
         </FlexboxLayout>
 
         <!-- Enrolled Debts -->
         <FlexboxLayout justifyContent="space-between" class="p-5">
           <Label text="Enrolled Debts:"></Label>
           <ActivityIndicator *ngIf="isLoadingAccountSummary" [busy]="isLoadingAccountSummary" width="15" height="15"></ActivityIndicator>
-          <Label *ngIf="!isLoadingAccountSummary">
-            <FormattedString>
-              <Span [text]="accountSummary.enrolledDebts | currency" fontWeight="Bold"></Span>
-            </FormattedString>
-          </Label>
+          <Label *ngIf="!isLoadingAccountSummary" [text]="accountSummary.enrolledDebts | currency" class="font-weight-bold"></Label>
         </FlexboxLayout>
 
         <!-- In Progress -->
         <FlexboxLayout justifyContent="space-between" class="p-5">
           <Label text="In Progress:"></Label>
           <ActivityIndicator *ngIf="isLoadingAccountSummary" [busy]="isLoadingAccountSummary" width="15" height="15"></ActivityIndicator>
-          <Label *ngIf="!isLoadingAccountSummary">
-            <FormattedString>
-              <Span [text]="accountSummary.inProgress | currency" fontWeight="Bold"></Span>
-            </FormattedString>
-          </Label>
+          <Label *ngIf="!isLoadingAccountSummary" [text]="accountSummary.inProgress | currency" class="font-weight-bold"></Label>
         </FlexboxLayout>
 
         <!-- Paid/Completed -->
         <FlexboxLayout justifyContent="space-between" class="p-5">
           <Label text="Paid/Completed:"></Label>
           <ActivityIndicator *ngIf="isLoadingAccountSummary" [busy]="isLoadingAccountSummary" width="15" height="15"></ActivityIndicator>
-          <Label *ngIf="!isLoadingAccountSummary">
-            <FormattedString>
-              <Span [text]="accountSummary.paid | currency" fontWeight="Bold"></Span>
-            </FormattedString>
-          </Label>
+          <Label *ngIf="!isLoadingAccountSummary" [text]="accountSummary.paid | currency" class="font-weight-bold"></Label>
         </FlexboxLayout>
       </StackLayout>
     </ns-card-view>
@@ -62,7 +46,8 @@
       <ScrollView>
         <StackLayout>
           <!-- No debt accounts -->
-          <Label *ngIf="(!debtAccounts || !debtAccounts.length) && !isLoadingDebtAccountSummary" text="No debt account found" textAlignment="center"></Label>
+          <Label *ngIf="(!debtAccounts || !debtAccounts.length) && !isLoadingDebtAccountSummary" text="No debt account found"
+            textAlignment="center"></Label>
 
           <!-- Spinner -->
           <ActivityIndicator *ngIf="isLoadingDebtAccountSummary" [busy]="isLoadingDebtAccountSummary"></ActivityIndicator>
@@ -72,19 +57,11 @@
             <GridLayout rows="auto, auto" columns="*, *, auto">
               <!-- Creditor -->
               <Label row="0" col="0" text="Creditor:" class="p-5"></Label>
-              <Label row="0" col="1" textAlignment="right" class="p-5">
-                <FormattedString>
-                  <Span [text]="debtAccount.creditorName" fontWeight="Bold"></Span>
-                </FormattedString>
-              </Label>
+              <Label row="0" col="1" textAlignment="right" [text]="accountSummary.paid | currency" class="p-5 font-weight-bold"></Label>
 
               <!-- Amount -->
               <Label row="1" col="0" text="Amount:" class="p-5"></Label>
-              <Label row="1" col="1" textAlignment="right" class="p-5">
-                <FormattedString>
-                  <Span [text]="debtAccount.currentBalance | currency" fontWeight="Bold"></Span>
-                </FormattedString>
-              </Label>
+              <Label row="1" col="1" textAlignment="right" [text]="debtAccount.currentBalance | currency" class="p-5 font-weight-bold"></Label>
 
               <!-- Show Details Button -->
               <Button row="0" col="2" rowSpan="2" (tap)="showDebtDetails(debtAccount.debtAccountPk)" class="show-detail-btn">
@@ -104,7 +81,9 @@
     </ns-card-view>
 
     <!-- Despoit Button -->
-      <Button *sdkIfIos text="Make Deposit" shadow="3" backgroundColor="#12A6C0" color="white" [nsRouterLink]="['/main/make-deposit']" class="m-5"></Button>
-      <Button *sdkIfAndroid text="Make Deposit" backgroundColor="#12A6C0" color="white" [nsRouterLink]="['/main/make-deposit']" class="m-t-5 m-b-5"></Button>
+    <Button *sdkIfIos text="Make Deposit" shadow="3" backgroundColor="#12A6C0" color="white" [nsRouterLink]="['/main/make-deposit']"
+      class="m-5"></Button>
+    <Button *sdkIfAndroid text="Make Deposit" backgroundColor="#12A6C0" color="white" [nsRouterLink]="['/main/make-deposit']"
+      class="m-t-5 m-b-5"></Button>
   </StackLayout>
 </ScrollView>
