@@ -1,29 +1,18 @@
-# NativeScript Angular Template
+# Installation
+1. Install Android and iOS requirements:
+`ruby -e "$(curl -fsSL https://www.nativescript.org/setup/mac)"`
+Note: Make sure environment variable ANDROID_HOME is pointing to Android sdk folder (e.g. "/Users/bob/Library/Android/sdk").
+2. Install Nativescript CLI:
+`npm install -g nativescript`
+3. Create a virtual Android device using the Android Virtual Device Manager in Android Studio.
 
-This template creates a "Hello, world" NativeScript app using TypeScript and Angular.
+# Compile
+### Run on Android emulators
+`tns run android --bundle --env.environment="prod"`
 
-You can create a new app that uses this template with either the `--template` option.
+### Run on iOS simulators
+`tns run ios --bundle --env.environment="prod"`
 
-```
-tns create my-app-name --template tns-template-hello-world-ng
-```
-
-Or the `--ng` shorthand.
-
-```
-tns create my-app-name --ng
-```
-
-> Note: Both commands will create a new NativeScript app that uses the latest version of this template published to [npm] (https://www.npmjs.com/package/tns-template-hello-world-ng).
-
-If you want to create a new app that uses the source of the template from the `master` branch, you can execute the following:
-
-```
-tns create my-app-name --template https://github.com/NativeScript/template-hello-world-ng.git#master
-```
-
-**NB:** Please, have in mind that the master branch may refer to dependencies that are not on NPM yet!
-
-# Issues
-
-Issues related to `template-hello-world-ng` template should be logged in the https://github.com/NativeScript/NativeScript repository.
+# Contact Info
+Email: hqpham1@uci.edu
+Phone: (949)394-6149
